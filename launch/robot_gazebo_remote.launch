@@ -1,0 +1,26 @@
+<launch>
+    <param name="robot_description" command="cat '$(find autonomus_transport_industrial_system)/urdf/car.urdf'"/>
+
+    <!-- send fake joint values -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+        <param name="use_gui" value="False"/>
+    </node>
+
+    <!-- Combine joint values -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
+
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find autonomus_transport_industrial_system)/worlds/competition_with_button.world"/>
+        <arg name="paused" value="false"/>
+        <arg name="use_sim_time" value="true"/>
+        <arg name="gui" value="true"/>
+        <arg name="headless" value="false"/>
+        <arg name="debug" value="false"/>
+        <remap from="tf" to="gazebo_tf"/>
+    </include>
+
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model my_robot -x .2 -y .2 -z 0.1 -param robot_description" />
+
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find autonomus_transport_industrial_system)/rviz/rviz_rm.rviz"/>
+
+</launch>

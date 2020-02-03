@@ -1,0 +1,60 @@
+{
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "/home/robomaster/catkin_ws/devel/include",
+                "/home/robomaster/AprilTag_localization/devel_isolated/move_base/include",
+                "/home/robomaster/AprilTag_localization/devel_isolated/global_planner/include",
+                "/home/robomaster/AprilTag_localization/devel_isolated/navfn/include",
+                "/home/robomaster/AprilTag_localization/devel_isolated/dwa_local_planner/include",
+                "/home/robomaster/AprilTag_localization/devel_isolated/base_local_planner/include",
+                "/home/robomaster/AprilTag_localization/devel_isolated/costmap_2d/include",
+                "/home/robomaster/AprilTag_localization/devel_isolated/amcl/include",
+                "/home/robomaster/AprilTag_localization/devel_isolated/stereo_image_proc/include",
+                "/home/robomaster/AprilTag_localization/devel_isolated/image_view/include",
+                "/home/robomaster/AprilTag_localization/devel_isolated/image_rotate/include",
+                "/home/robomaster/AprilTag_localization/devel_isolated/image_publisher/include",
+                "/home/robomaster/AprilTag_localization/devel_isolated/image_proc/include",
+                "/home/robomaster/AprilTag_localization/devel_isolated/bluefox2/include",
+                "/home/robomaster/AprilTag_localization/devel_isolated/apriltag_ros/include",
+                "/opt/ros/melodic/include",
+                "/home/robomaster/catkin_ws/src/navigation/amcl/include",
+                "/home/robomaster/catkin_ws/src/navigation/base_local_planner/include",
+                "/home/robomaster/catkin_ws/src/navigation/carrot_planner/include",
+                "/home/robomaster/catkin_ws/src/navigation/clear_costmap_recovery/include",
+                "/home/robomaster/catkin_ws/src/navigation/costmap_2d/include",
+                "/home/robomaster/catkin_ws/src/image_pipeline/depth_image_proc/include",
+                "/home/robomaster/catkin_ws/src/navigation/dwa_local_planner/include",
+                "/home/robomaster/catkin_ws/src/navigation/global_planner/include",
+                "/home/robomaster/catkin_ws/src/image_pipeline/image_proc/include",
+                "/home/robomaster/catkin_ws/src/imu_tools/imu_complementary_filter/include",
+                "/home/robomaster/catkin_ws/src/imu_tools/imu_filter_madgwick/include",
+                "/home/robomaster/catkin_ws/src/navigation/map_server/include",
+                "/home/robomaster/catkin_ws/src/navigation/move_base/include",
+                "/home/robomaster/catkin_ws/src/navigation/move_slow_and_clear/include",
+                "/home/robomaster/catkin_ws/src/navigation/nav_core/include",
+                "/home/robomaster/catkin_ws/src/navigation/navfn/include",
+                "/home/robomaster/catkin_ws/src/realsense-ros/realsense2_camera/include",
+                "/home/robomaster/catkin_ws/src/rf2o_laser_odometry/include",
+                "/home/robomaster/catkin_ws/src/robot_localization/include",
+                "/home/robomaster/catkin_ws/src/navigation/rotate_recovery/include",
+                "/home/robomaster/catkin_ws/src/image_pipeline/stereo_image_proc/include",
+                "/home/robomaster/catkin_ws/src/turtlebot3_simulations/turtlebot3_fake/include",
+                "/home/robomaster/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/include",
+                "/home/robomaster/catkin_ws/src/usb_cam/include",
+                "/home/robomaster/catkin_ws/src/navigation/voxel_grid/include",
+                "/usr/include"
+            ],
+            "name": "Linux",
+            "intelliSenseMode": "gcc-x64",
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+}

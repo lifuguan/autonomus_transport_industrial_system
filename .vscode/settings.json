@@ -1,0 +1,21 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/robomaster/catkin_ws/devel/lib/python2.7/dist-packages",
+        "/home/robomaster/AprilTag_localization/devel_isolated/move_base/lib/python2.7/dist-packages",
+        "/home/robomaster/AprilTag_localization/devel_isolated/global_planner/lib/python2.7/dist-packages",
+        "/home/robomaster/AprilTag_localization/devel_isolated/navfn/lib/python2.7/dist-packages",
+        "/home/robomaster/AprilTag_localization/devel_isolated/dwa_local_planner/lib/python2.7/dist-packages",
+        "/home/robomaster/AprilTag_localization/devel_isolated/base_local_planner/lib/python2.7/dist-packages",
+        "/home/robomaster/AprilTag_localization/devel_isolated/costmap_2d/lib/python2.7/dist-packages",
+        "/home/robomaster/AprilTag_localization/devel_isolated/amcl/lib/python2.7/dist-packages",
+        "/home/robomaster/AprilTag_localization/devel_isolated/stereo_image_proc/lib/python2.7/dist-packages",
+        "/home/robomaster/AprilTag_localization/devel_isolated/image_view/lib/python2.7/dist-packages",
+        "/home/robomaster/AprilTag_localization/devel_isolated/image_rotate/lib/python2.7/dist-packages",
+        "/home/robomaster/AprilTag_localization/devel_isolated/image_publisher/lib/python2.7/dist-packages",
+        "/home/robomaster/AprilTag_localization/devel_isolated/image_proc/lib/python2.7/dist-packages",
+        "/home/robomaster/AprilTag_localization/devel_isolated/camera_calibration/lib/python2.7/dist-packages",
+        "/home/robomaster/AprilTag_localization/devel_isolated/bluefox2/lib/python2.7/dist-packages",
+        "/home/robomaster/AprilTag_localization/devel_isolated/apriltag_ros/lib/python2.7/dist-packages",
+        "/opt/ros/melodic/lib/python2.7/dist-packages"
+    ]
+}

@@ -1,7 +1,7 @@
 /*
  * @Author: lifuguan
  * @Date: 2019-11-27 16:24:05
- * @LastEditTime: 2019-11-30 16:52:13
+ * @LastEditTime: 2020-02-21 17:21:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/src/test.cpp
@@ -13,6 +13,9 @@
 #include <tf/message_filter.h>
 
 #include <message_filters/subscriber.h>
+
+#include "../include/utility.h"
+
 
 class PoseDrawer
 {
@@ -79,5 +82,6 @@ int main(int argc, char **argv)
         ros::spinOnce();
         rate.sleep();
     }
+    
     return 0;
 }

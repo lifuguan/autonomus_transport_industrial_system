@@ -17,5 +17,8 @@
         "/home/robomaster/AprilTag_localization/devel_isolated/bluefox2/lib/python2.7/dist-packages",
         "/home/robomaster/AprilTag_localization/devel_isolated/apriltag_ros/lib/python2.7/dist-packages",
         "/opt/ros/melodic/lib/python2.7/dist-packages"
-    ]
+    ],
+    "files.associations": {
+        "cmath": "cpp"
+    }
 }

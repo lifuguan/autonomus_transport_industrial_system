@@ -1,7 +1,7 @@
 /*
  * @Author: lifuguan
  * @Date: 2019-11-27 16:24:05
- * @LastEditTime: 2020-02-26 14:48:04
+ * @LastEditTime: 2020-02-27 15:16:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/src/test.cpp
@@ -15,6 +15,7 @@
 #include <message_filters/subscriber.h>
 
 #include "../include/utility.h"
+#include "../include/PoseDrawer.h"
 
 int main(int argc, char **argv)
 {
@@ -22,6 +23,7 @@ int main(int argc, char **argv)
     ros::NodeHandle nh;
 
     AutonomusTransportIndustrialSystem::PoseDrawer pd(nh);
+    pd.PoseListener("pose_a", "B");
 
     tf::TransformBroadcaster goal_frame_broadcaster;
     ros::Publisher pose_publisher_a = nh.advertise<geometry_msgs::PoseStamped>("pose_a", 1);

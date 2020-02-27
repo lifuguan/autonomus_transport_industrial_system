@@ -23,6 +23,8 @@
 
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find autonomus_transport_industrial_system)/rviz/rviz_rm.rviz"/>
 
-    <node pkg="tf" type="static_transform_publisher" name="camera" args="0.0 0.0 0.0 -1.57 0 -1.57 camera_front_link camera_front 100" />
+    <node pkg="tf" type="static_transform_publisher" name="camera_front" args="0.0 0.0 0.0 -1.57 0 -1.57 camera_front_link camera_front 100" />
+    <node pkg="tf" type="static_transform_publisher" name="camera_right" args="0.0 0.0 0.0 -1.57 0 -1.57 camera_right_link camera_right 100" />
+    <node pkg="tf" type="static_transform_publisher" name="camera_left" args="0.0 0.0 0.0 -1.57 0 -1.57 camera_left_link camera_left 100" />
 
 </launch>

@@ -1,0 +1,43 @@
+\begin{thebibliography}{1}
+
+\bibitem{1570477}
+G.~{Grisettiyz}, C.~{Stachniss}, and W.~{Burgard}, ``Improving grid-based slam
+  with rao-blackwellized particle filters by adaptive proposals and selective
+  resampling,'' in {\em Proceedings of the 2005 IEEE International Conference
+  on Robotics and Automation}, pp.~2432--2437, 2005.
+
+\bibitem{murORB2}
+R.~Mur-Artal and J.~D. Tard\'os, ``{ORB-SLAM2}: an open-source {SLAM} system
+  for monocular, stereo and {RGB-D} cameras,'' {\em IEEE Transactions on
+  Robotics}, vol.~33, no.~5, pp.~1255--1262, 2017.
+
+\bibitem{8421746}
+T.~{Qin}, P.~{Li}, and S.~{Shen}, ``Vins-mono: A robust and versatile monocular
+  visual-inertial state estimator,'' {\em IEEE Transactions on Robotics},
+  vol.~34, no.~4, pp.~1004--1020, 2018.
+
+\bibitem{8576618}
+S.~{Tsao} and S.~{Jan}, ``Observability analysis and performance evaluation of
+  ekf-based visual-inertial odometry with online intrinsic camera parameter
+  calibration,'' {\em IEEE Sensors Journal}, vol.~19, no.~7, pp.~2695--2703,
+  2019.
+
+\bibitem{8630025}
+J.~{Jackson}, K.~{Brink}, B.~{Forsgren}, D.~{Wheeler}, and T.~{McLain},
+  ``Direct relative edge optimization, a robust alternative for pose graph
+  optimization,'' {\em IEEE Robotics and Automation Letters}, vol.~4, no.~2,
+  pp.~1932--1939, 2019.
+
+\bibitem{6942562}
+L.~{Palmieri} and K.~O. {Arras}, ``A novel rrt extend function for efficient
+  and smooth mobile robot motion planning,'' in {\em 2014 IEEE/RSJ
+  International Conference on Intelligent Robots and Systems}, pp.~205--211,
+  2014.
+
+\bibitem{8784487}
+L.~{Wenzheng}, L.~{Junjun}, and Y.~{Shunli}, ``An improved dijkstra's algorithm
+  for shortest path planning on 2d grid maps,'' in {\em 2019 IEEE 9th
+  International Conference on Electronics Information and Emergency
+  Communication (ICEIEC)}, pp.~438--441, 2019.
+
+\end{thebibliography}

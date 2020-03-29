@@ -19,13 +19,16 @@
 \contentsline {subsubsection}{\numberline {3.2.4}全局路径规划：Dijskra}{8}{subsubsection.3.2.4}% 
 \contentsline {subsubsection}{\numberline {3.2.5}全局路径规划：RRT*的改进方法}{8}{subsubsection.3.2.5}% 
 \contentsline {subsection}{\numberline {3.3}AGV姿态控制算法描述}{9}{subsection.3.3}% 
-\contentsline {subsection}{\numberline {3.4}基于RGBD的物体识别与定位算法描述}{9}{subsection.3.4}% 
-\contentsline {subsection}{\numberline {3.5}基于Web和MySQL的控制终端描述}{9}{subsection.3.5}% 
-\contentsline {subsubsection}{\numberline {3.5.1}机器人与服务器的通信}{9}{subsubsection.3.5.1}% 
-\contentsline {subsubsection}{\numberline {3.5.2}网页与服务器通信}{9}{subsubsection.3.5.2}% 
-\contentsline {section}{\numberline {第4章}实验部分}{10}{section.4}% 
-\contentsline {subsection}{\numberline {4.1}GUI控制程序演示}{10}{subsection.4.1}% 
-\contentsline {subsection}{\numberline {4.2}仿真模型构建}{10}{subsection.4.2}% 
-\contentsline {subsection}{\numberline {4.3}流程图}{10}{subsection.4.3}% 
-\contentsline {subsection}{\numberline {4.4}运行情况}{10}{subsection.4.4}% 
-\contentsline {section}{参考文献}{10}{subsection.4.4}% 
+\contentsline {subsubsection}{\numberline {3.3.1}AGV姿态控制}{9}{subsubsection.3.3.1}% 
+\contentsline {subsubsection}{\numberline {3.3.2}AGV的运动学分析}{9}{subsubsection.3.3.2}% 
+\contentsline {subsubsection}{\numberline {3.3.3}AGV姿态控制算法}{11}{subsubsection.3.3.3}% 
+\contentsline {subsection}{\numberline {3.4}基于RGBD的物体识别与定位算法描述}{11}{subsection.3.4}% 
+\contentsline {subsection}{\numberline {3.5}基于Web和MySQL的控制终端描述}{11}{subsection.3.5}% 
+\contentsline {subsubsection}{\numberline {3.5.1}机器人与服务器的通信}{11}{subsubsection.3.5.1}% 
+\contentsline {subsubsection}{\numberline {3.5.2}网页与服务器通信}{12}{subsubsection.3.5.2}% 
+\contentsline {section}{\numberline {第4章}实验部分}{12}{section.4}% 
+\contentsline {subsection}{\numberline {4.1}GUI控制程序演示}{12}{subsection.4.1}% 
+\contentsline {subsection}{\numberline {4.2}仿真模型构建}{12}{subsection.4.2}% 
+\contentsline {subsection}{\numberline {4.3}流程图}{12}{subsection.4.3}% 
+\contentsline {subsection}{\numberline {4.4}运行情况}{12}{subsection.4.4}% 
+\contentsline {section}{参考文献}{12}{subsection.4.4}% 

@@ -40,4 +40,13 @@ L.~{Wenzheng}, L.~{Junjun}, and Y.~{Shunli}, ``An improved dijkstra's algorithm
   International Conference on Electronics Information and Emergency
   Communication (ICEIEC)}, pp.~438--441, 2019.
 
+\bibitem{杨远航基于模糊控制的}
+杨远航 and 方庆琯, ``基于模糊控制的agv轨迹跟踪研究,'' {\em
+  起重运输机械}, no.~02, pp.~21--23.
+
+\bibitem{8623691}
+B.~{Xu} and D.~{Wang}, ``Magnetic locating agv navigation based on kalman
+  filter and pid control,'' in {\em 2018 Chinese Automation Congress (CAC)},
+  pp.~2509--2512.
+
 \end{thebibliography}

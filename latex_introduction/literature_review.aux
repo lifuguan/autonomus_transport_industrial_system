@@ -21,67 +21,47 @@
 \HyPL@Entry{2<</S/D>>}
 \@writefile{toc}{\contentsline {section}{\numberline {第1章}简介}{1}{section.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.1}AGV的导航（Navigation）}{1}{subsection.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}AGV的导引控制（Guidance）}{1}{subsection.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}AGV的路径规划（Layout designing）}{1}{subsection.1.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {第2章}工程分解:硬件部分}{2}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}AGV底盘}{2}{subsection.2.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces AGV底盘的CAD模型}}{2}{figure.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}LiDAR传感器}{2}{subsection.2.2}\protected@file@percent }
 \citation{1570477}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}RGBD传感器}{3}{subsection.2.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces 连接图}}{3}{figure.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {第3章}工程分解:软件部分}{3}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}SLAM算法描述}{3}{subsection.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}SLAM定义}{3}{subsubsection.3.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}AGV的姿态控制（Steering control）}{2}{subsection.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {第2章}导航部分}{2}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}SLAM算法描述}{2}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.1}SLAM定义}{2}{subsubsection.2.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.2}激光雷达:GMAPPING}{2}{subsubsection.2.1.2}\protected@file@percent }
 \citation{murORB2}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}激光雷达:GMAPPING}{4}{subsubsection.3.1.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces 机器人从标记为a的点开始，然后遍历标记为b的第一个循环。 然后，它在标记为c，d的循环中移动，并移回到标记为a的位置和标记为b的循环中。 它访问标记为f和g的两个大循环。 环境的大小为250 m x 215 m，机器人行进了1.9 km。 所描绘的地图已生成80个粒子。 矩形显示地图的多个部分的放大图。}}{4}{figure.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.3}稀疏法:ORB-SLAM2}{4}{subsubsection.3.1.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces 机器人从标记为a的点开始，然后遍历标记为b的第一个循环。 然后，它在标记为c，d的循环中移动，并移回到标记为a的位置和标记为b的循环中。 它访问标记为f和g的两个大循环。 环境的大小为250 m x 215 m，机器人行进了1.9 km。 所描绘的地图已生成80个粒子。 矩形显示地图的多个部分的放大图。}}{3}{figure.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.3}稀疏法:ORB-SLAM2}{3}{subsubsection.2.1.3}\protected@file@percent }
 \citation{8421746}
 \citation{8576618,8630025}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces ORB-SLAM主要分为三个线程进行，也就是如图所示的，分别是Tracking、LocalMapping和LoopClosing}}{5}{figure.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.4}多传感器融合:VINS-Mono}{5}{subsubsection.3.1.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces 总体架构图}}{6}{figure.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}路径规划算法描述}{7}{subsection.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}总体概述}{7}{subsubsection.3.2.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces 导航总体架构图}}{7}{figure.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}代价地图的建立}{7}{subsubsection.3.2.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces 代价地图表示形式}}{7}{figure.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces ORB-SLAM主要分为三个线程进行，也就是如图所示的，分别是Tracking、LocalMapping和LoopClosing}}{4}{figure.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.4}多传感器融合:VINS-Mono}{4}{subsubsection.2.1.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces 总体架构图}}{5}{figure.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}路径规划算法描述}{6}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.1}总体概述}{6}{subsubsection.2.2.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2.4}{\ignorespaces 导航总体架构图}}{6}{figure.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.2}代价地图的建立}{6}{subsubsection.2.2.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2.5}{\ignorespaces 代价地图表示形式}}{6}{figure.5}\protected@file@percent }
 \citation{6942562}
 \citation{8784487}
 \citation{6942562}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces 代价地图原理}}{8}{figure.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3}代价地图的更新}{8}{subsubsection.3.2.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces 代价地图生成过程}}{8}{figure.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.4}全局路径规划：Dijskra}{8}{subsubsection.3.2.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.5}全局路径规划：RRT*的改进方法}{9}{subsubsection.3.2.5}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces RRT-EXTEND的效果图}}{9}{figure.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}AGV姿态控制算法描述}{9}{subsection.3.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1}AGV姿态控制}{9}{subsubsection.3.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2.6}{\ignorespaces 代价地图原理}}{7}{figure.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.3}代价地图的更新}{7}{subsubsection.2.2.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2.7}{\ignorespaces 代价地图生成过程}}{7}{figure.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.4}全局路径规划：Dijskra}{7}{subsubsection.2.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.5}全局路径规划：RRT*的改进方法}{8}{subsubsection.2.2.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2.8}{\ignorespaces RRT-EXTEND的效果图}}{8}{figure.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {第3章}控制部分}{8}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.0.1}AGV姿态控制}{8}{subsubsection.3.0.1}\protected@file@percent }
 \citation{杨远航基于模糊控制的}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2}AGV的运动学分析}{10}{subsubsection.3.3.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.9}{\ignorespaces AGV运动学模型}}{10}{figure.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.0.2}AGV的运动学分析}{9}{subsubsection.3.0.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces AGV运动学模型}}{9}{figure.1}\protected@file@percent }
 \citation{8623691}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.3}AGV姿态控制算法}{11}{subsubsection.3.3.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.10}{\ignorespaces PID控制原理图}}{11}{figure.10}\protected@file@percent }
 \bibstyle{ieeetr}
 \bibdata{conference_101719}
-\bibcite{1570477}{1}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}基于RGBD的物体识别与定位算法描述}{12}{subsection.3.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}基于Web和MySQL的控制终端描述}{12}{subsection.3.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.1}机器人与服务器的通信}{12}{subsubsection.3.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.2}网页与服务器通信}{12}{subsubsection.3.5.2}\protected@file@percent }
-\bibcite{murORB2}{2}
-\bibcite{8421746}{3}
-\bibcite{8576618}{4}
-\bibcite{8630025}{5}
-\bibcite{6942562}{6}
-\bibcite{8784487}{7}
-\bibcite{杨远航基于模糊控制的}{8}
-\bibcite{8623691}{9}
-\@writefile{toc}{\contentsline {section}{\numberline {第4章}实验部分}{13}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}GUI控制程序演示}{13}{subsection.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}仿真模型构建}{13}{subsection.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}流程图}{13}{subsection.4.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}运行情况}{13}{subsection.4.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{参考文献}{13}{subsection.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.0.3}AGV姿态控制算法}{10}{subsubsection.3.0.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces PID控制原理图}}{10}{figure.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {第4章}实验部分}{11}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}GUI控制程序演示}{11}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}仿真模型构建}{11}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}流程图}{11}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}运行情况}{11}{subsection.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{参考文献}{11}{subsection.4.4}\protected@file@percent }

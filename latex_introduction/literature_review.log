@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/W32TeX) (preloaded format=xelatex 2020.1.10)  30 MAR 2020 18:05
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/W32TeX) (preloaded format=xelatex 2020.1.10)  31 MAR 2020 18:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1539,19 +1539,16 @@ We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
 [2] [1]
-File: figure/wheel.png Graphic file (type bmp)
-<figure/wheel.png>
- [2]
-File: figure/summary.png Graphic file (type bmp)
-<figure/summary.png>
-
 
 LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <10.53937> not available
-(Font)              size <10.95> substituted on input line 234.
+(Font)              size <10.95> substituted on input line 207.
 
-[3]
+
+LaTeX Warning: Citation `1570477' on page 2 undefined on input line 212.
+
 File: figure/gmapping-1.png Graphic file (type bmp)
 <figure/gmapping-1.png>
+[2]
 
 Package fontspec Info: Could not resolve font "FangSong/BI" (it probably
 (fontspec)             doesn't exist).
@@ -1575,57 +1572,80 @@ Package fontspec Info: Font family 'FangSong(0)' created for font 'FangSong'
 (fontspec)             <->"FangSong/OT:script=hani;language=DFLT;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
- [4]
+
+
+LaTeX Warning: Citation `murORB2' on page 3 undefined on input line 230.
+
 File: figure/orb.png Graphic file (type bmp)
 <figure/orb.png>
- [5]
+[3]
+
+LaTeX Warning: Citation `8421746' on page 4 undefined on input line 257.
+
+
+LaTeX Warning: Citation `8576618' on page 4 undefined on input line 258.
+
+
+LaTeX Warning: Citation `8630025' on page 4 undefined on input line 258.
+
+[4]
 File: figure/vins2.png Graphic file (type bmp)
 <figure/vins2.png>
 File: figure/navigation.png Graphic file (type bmp)
 <figure/navigation.png>
- [6]
+ [5]
 File: figure/costmap.png Graphic file (type bmp)
 <figure/costmap.png>
 File: figure/occupy.png Graphic file (type bmp)
 <figure/occupy.png>
- [7]
+ [6]
+
+LaTeX Warning: Citation `6942562' on page 7 undefined on input line 316.
+
 File: figure/occupy1.png Graphic file (type bmp)
 <figure/occupy1.png>
- [8]
+
+LaTeX Warning: Citation `8784487' on page 7 undefined on input line 324.
+
+
+LaTeX Warning: Citation `6942562' on page 7 undefined on input line 332.
+
+[7]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 374.
+(amsmath)                 on input line 347.
 
 File: figure/rrt-extend.png Graphic file (type bmp)
 <figure/rrt-extend.png>
-[9]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 356.
+
+[8]
+
+LaTeX Warning: Citation `杨远航基于模糊控制的' on page 9 undefined on input line 359.
+
 File: figure/AGVkinematics.jpg Graphic file (type bmp)
 <figure/AGVkinematics.jpg>
- [10]
+[9]
 Missing character: There is no ω in font [lmroman10-regular]:mapping=tex-text;!
+
+
+LaTeX Warning: Citation `8623691' on page 10 undefined on input line 418.
+
 File: figure/PIDcontroller.jpg Graphic file (type bmp)
 <figure/PIDcontroller.jpg>
-
-Overfull \hbox (2.67204pt too wide) in paragraph at lines 471--472
-[]\TU/SimSun(0)/m/n/10.53937 为 了 实 现 上 位 机 与 多 机 器 人 间 的 通 信，|  系 统 使 用 了 基 于 \TU/lmr/m/n/10.53937 TCP/IP \TU/SimSun(0)/m/n/10.53937 协 议 簇 的 \TU/lmr/m/n/10.53937 Browser/ 
- []
-
-[11] (./literature_review.bbl [12]) [13]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 489.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 489.
+No file literature_review.bbl.
+[10] [11]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 452.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 452.
  (./literature_review.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 489.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 489.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 452.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 452.
+Package rerunfilecheck Info: File `literature_review.out' has not changed.
+(rerunfilecheck)             Checksum: F35DF5526CCAECA9BB14B27FBA52AD9F.
 
-
-Package rerunfilecheck Warning: File `literature_review.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `literature_review.out':
-(rerunfilecheck)             Before: D86F5F22343970D79853BAA94B779795
-(rerunfilecheck)             After:  2A036DBEF65EE63EA93A0E0F6AEA4386.
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.41063pt have occurred.
@@ -1633,14 +1653,17 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: There were undefined references.
+
  ) 
 Here is how much of TeX's memory you used:
- 44158 strings out of 492922
- 908449 string characters out of 6136751
- 1089010 words of memory out of 5000000
- 47421 multiletter control sequences out of 15000+600000
- 547246 words of font info for 136 fonts, out of 8000000 for 9000
+ 44162 strings out of 492922
+ 909403 string characters out of 6136751
+ 1088026 words of memory out of 5000000
+ 47431 multiletter control sequences out of 15000+600000
+ 547238 words of font info for 135 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  62i,16n,97p,915b,568s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on literature_review.pdf (15 pages).
+Output written on literature_review.pdf (13 pages).

@@ -296,7 +296,7 @@
   </joint>
 
   <!-- Kinect depth camera -->
-  <!-- <gazebo reference="camera_front_link">
+  <gazebo reference="camera_front_link">
     <sensor name="camera_link_front" type="depth">
       <update_rate>20</update_rate>
       <camera>
@@ -337,7 +337,7 @@
         <hackBaseline>0</hackBaseline>
       </plugin>
     </sensor>
-  </gazebo> -->
+  </gazebo>
 
   <gazebo reference="camera_right_link">
     <sensor name="camera_link_right" type="depth">

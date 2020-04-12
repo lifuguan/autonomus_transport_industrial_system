@@ -19,7 +19,7 @@
         <remap from="tf" to="gazebo_tf"/>
     </include>
 
-    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model my_robot -x 0 -y -8 -z 0.1 -param robot_description" />
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model my_robot -x 0 -y -8 -z 0.1  -param robot_description" />
 
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find autonomus_transport_industrial_system)/rviz/rviz_rm.rviz"/>
 

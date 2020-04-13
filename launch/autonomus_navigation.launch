@@ -1,0 +1,8 @@
+<launch>
+  <!-- AMCL -->
+  <include file="$(find autonomus_transport_industrial_system)/launch/amcl.launch"/>
+
+  <!-- move_base -->
+  <!-- <include file="$(find autonomus_transport_industrial_system)/launch/move_base.launch"/> -->
+
+</launch>

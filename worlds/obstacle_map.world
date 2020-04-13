@@ -523,10 +523,10 @@
       </link>
     </model>
     <state world_name='default'>
-      <sim_time>1027 570000000</sim_time>
-      <real_time>920 903548686</real_time>
-      <wall_time>1586685655 416930534</wall_time>
-      <iterations>663262</iterations>
+      <sim_time>1074 173000000</sim_time>
+      <real_time>46 827671968</real_time>
+      <wall_time>1586774897 947337060</wall_time>
+      <iterations>46603</iterations>
       <model name='BlueButton'>
         <pose frame=''>7.65973 -0.474781 0.049995 0 -0 4.2e-05</pose>
         <scale>1 1 1</scale>
@@ -558,10 +558,10 @@
         </link>
       </model>
       <model name='box_target_green'>
-        <pose frame=''>-6.98276 0 -0.99 0 0 -3.14</pose>
+        <pose frame=''>-6.98276 0 -0.9999 0 0 -3.14</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>-6.98276 0 -0.99 0 0 -3.14</pose>
+          <pose frame=''>-6.98276 0 -0.9999 0 0 -3.14</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -578,13 +578,13 @@
         </link>
       </model>
       <model name='cardboard_box_clone_6_clone_1_clone'>
-        <pose frame=''>0.414953 0.696176 0.149 -0 -0 -1.56712</pose>
+        <pose frame=''>0.414953 0.696176 0.149 0 0 -1.56712</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>0.414953 0.696176 0.149 -0 -0 -1.56712</pose>
+          <pose frame=''>0.414953 0.696176 0.149 0 0 -1.56712</pose>
           <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>-1.9e-05 -0 0 2e-06 -0.000173 -0</acceleration>
-          <wrench>-3.8e-05 -1e-06 1e-06 0 -0 0</wrench>
+          <acceleration>-1.9e-05 0 0 -1e-06 -0.000173 0</acceleration>
+          <wrench>-3.8e-05 0 1e-06 0 -0 0</wrench>
         </link>
       </model>
       <model name='cardboard_box_clone_6_clone_1_clone_0'>
@@ -593,8 +593,8 @@
         <link name='link'>
           <pose frame=''>2.56922 0.616772 0.149 0 0 -1.57</pose>
           <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>1.9e-05 -0 -0 1e-06 0.000173 0</acceleration>
-          <wrench>3.8e-05 -0 -1e-06 0 -0 0</wrench>
+          <acceleration>-1.9e-05 0 0 -1e-06 -0.000173 0</acceleration>
+          <wrench>-3.8e-05 0 1e-06 0 -0 0</wrench>
         </link>
       </model>
       <model name='cardboard_box_clone_6_clone_1_clone_1'>
@@ -613,8 +613,8 @@
         <link name='link'>
           <pose frame=''>4.79382 -3.44001 0.149 0 0 -1.57</pose>
           <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>1.9e-05 -0 -0 1e-06 0.000173 0</acceleration>
-          <wrench>3.8e-05 -0 -1e-06 0 -0 0</wrench>
+          <acceleration>-1.9e-05 0 0 -1e-06 -0.000173 0</acceleration>
+          <wrench>-3.8e-05 0 1e-06 0 -0 0</wrench>
         </link>
       </model>
       <model name='cardboard_box_clone_6_clone_1_clone_11'>
@@ -643,8 +643,8 @@
         <link name='link'>
           <pose frame=''>1.9681 4.39884 0.149 0 0 -1.57</pose>
           <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>1.9e-05 -0 -0 1e-06 0.000173 0</acceleration>
-          <wrench>3.8e-05 -0 -1e-06 0 -0 0</wrench>
+          <acceleration>-1.9e-05 0 0 -1e-06 -0.000173 0</acceleration>
+          <wrench>-3.8e-05 0 1e-06 0 -0 0</wrench>
         </link>
       </model>
       <model name='cardboard_box_clone_6_clone_1_clone_14'>
@@ -663,8 +663,8 @@
         <link name='link'>
           <pose frame=''>0.421805 5.59332 0.149 0 0 -1.57</pose>
           <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>1.9e-05 -0 -0 1e-06 0.000173 0</acceleration>
-          <wrench>3.8e-05 -0 -1e-06 0 -0 0</wrench>
+          <acceleration>-1.9e-05 0 0 -1e-06 -0.000173 0</acceleration>
+          <wrench>-3.8e-05 0 1e-06 0 -0 0</wrench>
         </link>
       </model>
       <model name='cardboard_box_clone_6_clone_1_clone_16'>
@@ -683,8 +683,8 @@
         <link name='link'>
           <pose frame=''>4.39849 5.54648 0.149 0 0 -1.57</pose>
           <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>1.9e-05 -0 -0 1e-06 0.000173 0</acceleration>
-          <wrench>3.8e-05 -0 -1e-06 0 -0 0</wrench>
+          <acceleration>-1.9e-05 0 0 -1e-06 -0.000173 0</acceleration>
+          <wrench>-3.8e-05 0 1e-06 0 -0 0</wrench>
         </link>
       </model>
       <model name='cardboard_box_clone_6_clone_1_clone_18'>
@@ -703,8 +703,8 @@
         <link name='link'>
           <pose frame=''>7.02759 5.72354 0.149 0 0 -1.57</pose>
           <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>1.9e-05 -0 -0 1e-06 0.000173 0</acceleration>
-          <wrench>3.8e-05 -0 -1e-06 0 -0 0</wrench>
+          <acceleration>-1.9e-05 0 0 -1e-06 -0.000173 0</acceleration>
+          <wrench>-3.8e-05 0 1e-06 0 -0 0</wrench>
         </link>
       </model>
       <model name='cardboard_box_clone_6_clone_1_clone_2'>
@@ -713,8 +713,8 @@
         <link name='link'>
           <pose frame=''>5.72238 0.559862 0.149 0 0 -1.57</pose>
           <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>1.9e-05 -0 -0 1e-06 0.000173 0</acceleration>
-          <wrench>3.8e-05 -0 -1e-06 0 -0 0</wrench>
+          <acceleration>-1.9e-05 0 0 -1e-06 -0.000173 0</acceleration>
+          <wrench>-3.8e-05 0 1e-06 0 -0 0</wrench>
         </link>
       </model>
       <model name='cardboard_box_clone_6_clone_1_clone_20'>
@@ -733,8 +733,8 @@
         <link name='link'>
           <pose frame=''>6.99003 4.67666 0.149 0 0 -1.57</pose>
           <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>1.9e-05 -0 -0 1e-06 0.000173 0</acceleration>
-          <wrench>3.8e-05 -0 -1e-06 0 -0 0</wrench>
+          <acceleration>-1.9e-05 0 0 -1e-06 -0.000173 0</acceleration>
+          <wrench>-3.8e-05 0 1e-06 0 -0 0</wrench>
         </link>
       </model>
       <model name='cardboard_box_clone_6_clone_1_clone_22'>
@@ -753,8 +753,8 @@
         <link name='link'>
           <pose frame=''>6.69793 3.61737 0.149 0 0 -1.57</pose>
           <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>1.9e-05 -0 -0 1e-06 0.000173 0</acceleration>
-          <wrench>3.8e-05 -0 -1e-06 0 -0 0</wrench>
+          <acceleration>-1.9e-05 0 0 -1e-06 -0.000173 0</acceleration>
+          <wrench>-3.8e-05 0 1e-06 0 -0 0</wrench>
         </link>
       </model>
       <model name='cardboard_box_clone_6_clone_1_clone_3'>
@@ -768,13 +768,13 @@
         </link>
       </model>
       <model name='cardboard_box_clone_6_clone_1_clone_4'>
-        <pose frame=''>0.754896 -1.44853 0.149 0 0 -1.57848</pose>
+        <pose frame=''>0.754896 -1.44853 0.149 -0 -0 -1.57848</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>0.754896 -1.44853 0.149 0 0 -1.57848</pose>
+          <pose frame=''>0.754896 -1.44853 0.149 -0 -0 -1.57848</pose>
           <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>-7e-06 -0.000496 0.000726 0.002226 -0.000128 1.6e-05</acceleration>
-          <wrench>-1.5e-05 -0.000992 0.001452 0 -0 0</wrench>
+          <acceleration>-0 -0 0 0 -0 0</acceleration>
+          <wrench>-0 -0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='cardboard_box_clone_6_clone_1_clone_5'>
@@ -793,15 +793,15 @@
         <link name='link'>
           <pose frame=''>5.24939 -0.591102 0.149 0 0 -1.57</pose>
           <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>1.9e-05 -0 -0 1e-06 0.000173 0</acceleration>
-          <wrench>3.8e-05 -0 -1e-06 0 -0 0</wrench>
+          <acceleration>-1.9e-05 0 0 -1e-06 -0.000173 0</acceleration>
+          <wrench>-3.8e-05 0 1e-06 0 -0 0</wrench>
         </link>
       </model>
       <model name='cardboard_box_clone_6_clone_1_clone_7'>
-        <pose frame=''>6.68328 -1.50425 0.148999 0 0 -1.57829</pose>
+        <pose frame=''>6.68328 -1.50425 0.149 0 0 -1.57829</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>6.68328 -1.50425 0.148999 0 0 -1.57829</pose>
+          <pose frame=''>6.68328 -1.50425 0.149 0 0 -1.57829</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>-0 0 0 0 -0 0</acceleration>
           <wrench>-0 0 0 0 -0 0</wrench>
@@ -813,8 +813,8 @@
         <link name='link'>
           <pose frame=''>0.561721 -3.40874 0.149 0 0 -1.57</pose>
           <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>1.9e-05 -0 -0 1e-06 0.000173 0</acceleration>
-          <wrench>3.8e-05 -0 -1e-06 0 -0 0</wrench>
+          <acceleration>-1.9e-05 0 0 -1e-06 -0.000173 0</acceleration>
+          <wrench>-3.8e-05 0 1e-06 0 -0 0</wrench>
         </link>
       </model>
       <model name='cardboard_box_clone_6_clone_1_clone_9'>
@@ -1138,13 +1138,13 @@
         </link>
       </model>
       <model name='textured_shapes'>
-        <pose frame=''>-0.032493 3.03434 0.100004 1.57079 -4.2e-05 -1.60286</pose>
+        <pose frame=''>-0.032494 3.03434 0.100002 1.5708 -2.5e-05 -1.60286</pose>
         <scale>1 1 1</scale>
         <link name='box'>
-          <pose frame=''>-0.032493 3.03434 0.100004 1.57079 -4.2e-05 -1.60286</pose>
+          <pose frame=''>-0.032494 3.03434 0.100002 1.5708 -2.5e-05 -1.60286</pose>
           <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>-0.027071 -0.095198 -0.102015 0.951959 -0.270703 0</acceleration>
-          <wrench>-0.027071 -0.095198 -0.102015 0 -0 0</wrench>
+          <acceleration>0.020914 -0.096737 -0.102018 0.967369 0.20914 0</acceleration>
+          <wrench>0.020914 -0.096737 -0.102018 0 -0 0</wrench>
         </link>
       </model>
       <light name='sun'>
@@ -1153,7 +1153,7 @@
     </state>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose frame=''>-14.3972 -1.22123 12.0458 0 0.870799 -0.068025</pose>
+        <pose frame=''>-13.9292 -0.673039 12.4077 0 0.870799 -0.068025</pose>
         <view_controller>orbit</view_controller>
         <projection_type>perspective</projection_type>
       </camera>

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-10 08:57:47
- * @LastEditTime: 2020-04-13 12:55:12
+ * @LastEditTime: 2020-04-15 13:06:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/src/test.cpp
@@ -25,20 +25,16 @@
 #include "../include/utility.h"
 #include "../include/PoseDrawer.h"
 #include "../include/PointCloud.h"
-
+#include "../include/NavigationGoal.h"
 int main(int argc, char **argv)
 {
     ros::init(argc, argv, "test");
     ros::NodeHandle nh;
 
-    AutonomusTransportIndustrialSystem::PointCloudFusion pc(nh);
-    ros::Rate rate(20);
-    while (nh.ok())
-    {
-        //pc.pointCloudListener();
+    AutonomusTransportIndustrialSystem::NavigationGoal ng(nh);
 
-        ros::spinOnce();
-    }
+    ng.pubNavigationGoal(4,1,0,0,0,0,1);
+
     
     // AutonomusTransportIndustrialSystem::PoseDrawer pd(nh);
     // pd.PoseListener("pose_a", "B");

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-12 22:22:42
- * @LastEditTime: 2020-04-13 16:53:02
+ * @LastEditTime: 2020-04-15 11:42:59
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/include/PointCloud.h
@@ -60,7 +60,6 @@ namespace AutonomusTransportIndustrialSystem
             {
                 ROS_ERROR("UNKNOWN SUBSCRIBE!");
             }         
-            pc_data_sub += pc_data[0];
         }
     };
 

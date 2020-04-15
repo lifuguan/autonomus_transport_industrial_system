@@ -1,5 +1,5 @@
 <launch>
-    <param name="robot_description" command="cat '$(find autonomus_transport_industrial_system)/urdf/car.urdf'"/>
+    <param name="robot_description" command="cat '$(find autonomus_transport_industrial_system)/urdf/car_.urdf'"/>
 
     <!-- send fake joint values -->
     <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">

@@ -4,7 +4,7 @@
   <arg name="initial_pose_x" default="-6.0"/>
   <arg name="initial_pose_y" default="0.0"/>
   <arg name="initial_pose_a" default="0.0"/>
-
+  <arg name="map_file" default="$(find autonomus_transport_industrial_system)/map/autonomus_map.yaml"/>
   <!-- AMCL -->
   <node pkg="amcl" type="amcl" name="amcl">
 

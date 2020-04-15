@@ -276,20 +276,55 @@
   </transmission>
   <!-- SENSORS -->
   <!-- camera -->
-  <link name="camera_link">
+    <!-- SENSORS -->
+  <!-- camera -->
+  <link name="camera_front_link">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <box size="0.05 0.05 0.05"/>
+        <box size="0.02 0.02 0.02"/>
       </geometry>
       <material name="Blue"/>
     </visual>
   </link>
-  <joint name="camera_joint" type="fixed">
-    <origin rpy="0 0 -1.57" xyz="0 0 0.1"/>
-    <parent link="base_link"/>
-    <child link="camera_link"/>
+  <joint name="camera_front_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0.08"/>
+    <parent link="hokuyo_link"/>
+    <child link="camera_front_link"/>
   </joint>
+
+
+  <link name="camera_left_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.02 0.02 0.02"/>
+      </geometry>
+      <material name="Blue"/>
+    </visual>
+  </link>
+  <joint name="camera_left_joint" type="fixed">
+    <origin rpy="0 0 1.57" xyz="0.08 0.08 0.08"/>
+    <parent link="base_link"/>
+    <child link="camera_left_link"/>
+  </joint>
+
+
+  <link name="camera_right_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.02 0.02 0.02"/>
+      </geometry>
+      <material name="Blue"/>
+    </visual>
+  </link>
+  <joint name="camera_right_joint" type="fixed">
+    <origin rpy="0 0 -1.57" xyz="0.08 -0.08 0.08"/>
+    <parent link="base_link"/>
+    <child link="camera_right_link"/>
+  </joint>
+  
   <link name="imu_link_">
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -366,6 +401,136 @@
     </sensor>
   </gazebo>
 
+  <!-- Kinect depth camera -->
+  <gazebo reference="camera_front_link">
+    <sensor name="camera_link_front" type="depth">
+      <update_rate>20</update_rate>
+      <camera>
+        <horizontal_fov>1.047198</horizontal_fov>
+        <image>
+          <width>480</width>
+          <height>480</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>300</far>
+        </clip>
+      </camera>
+      <plugin name="camera_link_controller" filename="libgazebo_ros_openni_kinect.so">
+        <baseline>0.2</baseline>
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+
+        <cameraName>kinect_alpha</cameraName>
+        <imageTopicName>kinect/rgb/image_raw </imageTopicName>
+        <cameraInfoTopicName>kinect/rgb/camera_info</cameraInfoTopicName>
+        <depthImageTopicName>kinect/depth/image_raw</depthImageTopicName>
+        <depthImageInfoTopicName>kinect/depth/camera_info</depthImageInfoTopicName>
+        <pointCloudTopicName>kinect/depth/points</pointCloudTopicName>
+        <frameName>camera_front</frameName>
+        <pointCloudCutoff>0.5</pointCloudCutoff>
+        <pointCloudCutoffMax>3.0</pointCloudCutoffMax>
+        <distortionK1>0.00000001</distortionK1>
+        <distortionK2>0.00000001</distortionK2>
+        <distortionK3>0.00000001</distortionK3>
+        <distortionT1>0.00000001</distortionT1>
+        <distortionT2>0.00000001</distortionT2>
+        <CxPrime>0</CxPrime>
+        <Cx>0</Cx>
+        <Cy>0</Cy>
+        <focalLength>0</focalLength>
+        <hackBaseline>0</hackBaseline>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <gazebo reference="camera_right_link">
+    <sensor name="camera_link_right" type="depth">
+      <update_rate>20</update_rate>
+      <camera>
+        <horizontal_fov>1.047198</horizontal_fov>
+        <image>
+          <width>480</width>
+          <height>480</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>300</far>
+        </clip>
+      </camera>
+      <plugin name="camera_link_controller" filename="libgazebo_ros_openni_kinect.so">
+        <baseline>0.2</baseline>
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+
+        <cameraName>kinect_right</cameraName>
+        <imageTopicName>kinect_right/rgb/image_raw</imageTopicName>
+        <cameraInfoTopicName>kinect_right/rgb/camera_info</cameraInfoTopicName>
+        <depthImageTopicName>kinect_right/depth/image_raw</depthImageTopicName>
+        <depthImageInfoTopicName>kinect_right/depth/camera_info</depthImageInfoTopicName>
+        <pointCloudTopicName>kinect_right/depth/points</pointCloudTopicName>
+        <frameName>camera_right</frameName>
+        <pointCloudCutoff>0.5</pointCloudCutoff>
+        <pointCloudCutoffMax>3.0</pointCloudCutoffMax>
+        <distortionK1>0.00000001</distortionK1>
+        <distortionK2>0.00000001</distortionK2>
+        <distortionK3>0.00000001</distortionK3>
+        <distortionT1>0.00000001</distortionT1>
+        <distortionT2>0.00000001</distortionT2>
+        <CxPrime>0</CxPrime>
+        <Cx>0</Cx>
+        <Cy>0</Cy>
+        <focalLength>0</focalLength>
+        <hackBaseline>0</hackBaseline>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <gazebo reference="camera_left_link">
+    <sensor name="camera_link_left" type="depth">
+      <update_rate>20</update_rate>
+      <camera>
+        <horizontal_fov>1.047198</horizontal_fov>
+        <image>
+          <width>480</width>
+          <height>480</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>300</far>
+        </clip>
+      </camera>
+      <plugin name="camera_link_controller" filename="libgazebo_ros_openni_kinect.so">
+        <baseline>0.2</baseline>
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+
+        <cameraName>kinect_left</cameraName>
+        <imageTopicName>kinect_left/rgb/image_raw </imageTopicName>
+        <cameraInfoTopicName>kinect_left/rgb/camera_info</cameraInfoTopicName>
+        <depthImageTopicName>kinect_left/depth/image_raw</depthImageTopicName>
+        <depthImageInfoTopicName>kinect_left/depth/camera_info</depthImageInfoTopicName>
+        <pointCloudTopicName>kinect_left/depth/points</pointCloudTopicName>
+        <frameName>camera_left</frameName>
+        <pointCloudCutoff>0.5</pointCloudCutoff>
+        <pointCloudCutoffMax>3.0</pointCloudCutoffMax>
+        <distortionK1>0.00000001</distortionK1>
+        <distortionK2>0.00000001</distortionK2>
+        <distortionK3>0.00000001</distortionK3>
+        <distortionT1>0.00000001</distortionT1>
+        <distortionT2>0.00000001</distortionT2>
+        <CxPrime>0</CxPrime>
+        <Cx>0</Cx>
+        <Cy>0</Cy>
+        <focalLength>0</focalLength>
+        <hackBaseline>0</hackBaseline>
+      </plugin>
+    </sensor>
+  </gazebo>
+
   <!-- hokuyo laser sensor-->
   <gazebo reference="hokuyo_link">
     <sensor type="gpu_ray" name="head_hokuyo_sensor">
@@ -403,31 +568,6 @@
     </sensor>
   </gazebo>
 
-
-  <!-- Differential drive controller  -->
-  <!-- <gazebo>
-    <plugin filename="libgazebo_ros_diff_drive.so" name="differential_drive_controller_front">
-      <rosDebugLevel>Debug</rosDebugLevel>
-      <publishWheelTF>True</publishWheelTF>
-      <publishTf>1</publishTf>
-      <publishWheelJointState>true</publishWheelJointState>
-      <alwaysOn>true</alwaysOn>
-      <updateRate>100.0</updateRate>
-      <leftJoint>front_left_wheel_joint</leftJoint>
-      <rightJoint>front_right_wheel_joint</rightJoint>
-      <wheelSeparation>0.3</wheelSeparation>
-      <wheelDiameter>0.05</wheelDiameter>
-      <broadcastTF>1</broadcastTF>
-      <wheelTorque>30</wheelTorque>
-      <wheelAcceleration>1.8</wheelAcceleration>
-      <commandTopic>cmd_vel</commandTopic>
-      <odometrySource>odom</odometrySource>    
-      <publishTf>1</publishTf>
-      <odometryFrame>odom</odometryFrame>
-      <odometryTopic>odom</odometryTopic>
-      <robotBaseFrame>base_link</robotBaseFrame>
-    </plugin>
-  </gazebo> -->
   <gazebo>
     <plugin name="object_controller" filename="libgazebo_ros_planar_move.so">
       <commandTopic>cmd_vel</commandTopic>

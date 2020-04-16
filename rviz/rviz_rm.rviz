@@ -12,6 +12,7 @@ Panels:
         - /Map2
         - /Path1
         - /Path2
+        - /Pose1
       Splitter Ratio: 0.3529411852359772
     Tree Height: 755
   - Class: rviz/Selection
@@ -64,6 +65,10 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: false
+        back_left_wheel:
+          Value: true
+        back_right_wheel:
+          Value: true
         base_link:
           Value: true
         camera_front:
@@ -78,17 +83,13 @@ Visualization Manager:
           Value: true
         camera_right_link:
           Value: true
-        caster_back_link:
-          Value: false
-        caster_front_link:
-          Value: false
         front_left_wheel:
           Value: false
         front_right_wheel:
           Value: false
         hokuyo_link:
           Value: false
-        map:
+        imu_link_:
           Value: true
         odom:
           Value: true
@@ -99,16 +100,16 @@ Visualization Manager:
       Show Names: true
       Tree:
         base_link:
+          back_left_wheel:
+            {}
+          back_right_wheel:
+            {}
           camera_left_link:
             camera_left:
               {}
           camera_right_link:
             camera_right:
               {}
-          caster_back_link:
-            {}
-          caster_front_link:
-            {}
           front_left_wheel:
             {}
           front_right_wheel:
@@ -117,8 +118,8 @@ Visualization Manager:
             camera_front_link:
               camera_front:
                 {}
-        map:
-          {}
+          imu_link_:
+            {}
         odom:
           {}
       Update Interval: 0
@@ -133,6 +134,16 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
+        back_left_wheel:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        back_right_wheel:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         base_link:
           Alpha: 1
           Show Axes: false
@@ -153,16 +164,6 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        caster_back_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        caster_front_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         front_left_wheel:
           Alpha: 1
           Show Axes: false
@@ -174,6 +175,11 @@ Visualization Manager:
           Show Trail: false
           Value: true
         hokuyo_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        imu_link_:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -368,6 +374,21 @@ Visualization Manager:
       Shaft Diameter: 0.10000000149011612
       Shaft Length: 0.10000000149011612
       Topic: /move_base/DWAPlannerROS/local_plan
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Axes Length: 1
+      Axes Radius: 0.10000000149011612
+      Class: rviz/Pose
+      Color: 255; 25; 0
+      Enabled: true
+      Head Length: 0.30000001192092896
+      Head Radius: 0.10000000149011612
+      Name: Pose
+      Shaft Length: 1
+      Shaft Radius: 0.05000000074505806
+      Shape: Arrow
+      Topic: /move_base/goal
       Unreliable: false
       Value: true
   Enabled: true

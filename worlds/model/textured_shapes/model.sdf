@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="textured_shapes">
+    <pose>0 0 0.1 0 0 0</pose>
+    <link name="box">
+      <pose>0 0 0 0 0 0</pose>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>.2 .2 .05</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>.2 .2 .05 </size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://textured_shapes/materials/scripts</uri>
+            <uri>model://textured_shapes/materials/textures</uri>
+            <name>TexturedShape/Squares</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+    
+  </model>
+</sdf>

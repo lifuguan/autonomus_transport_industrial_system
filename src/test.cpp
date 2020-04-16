@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-10 08:57:47
- * @LastEditTime: 2020-04-15 13:06:32
+ * @LastEditTime: 2020-04-16 21:20:21
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/src/test.cpp
@@ -33,7 +33,7 @@ int main(int argc, char **argv)
 
     AutonomusTransportIndustrialSystem::NavigationGoal ng(nh);
 
-    ng.pubNavigationGoal(4,1,0,0,0,0,1);
+    ng.pubNavigationGoal(3,-1,0,0,0,0,1);
 
     
     // AutonomusTransportIndustrialSystem::PoseDrawer pd(nh);

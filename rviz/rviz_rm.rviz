@@ -6,13 +6,13 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /Grid1
         - /TF1
         - /TF1/Frames1
         - /PointCloud23
         - /Map2
         - /Path1
         - /Path2
-        - /Pose1
       Splitter Ratio: 0.3529411852359772
     Tree Height: 755
   - Class: rviz/Selection
@@ -57,8 +57,8 @@ Visualization Manager:
         Y: 0
         Z: 0
       Plane: XY
-      Plane Cell Count: 10
-      Reference Frame: <Fixed Frame>
+      Plane Cell Count: 20
+      Reference Frame: map
       Value: true
     - Class: rviz/TF
       Enabled: true
@@ -91,6 +91,8 @@ Visualization Manager:
           Value: false
         imu_link_:
           Value: true
+        map:
+          Value: true
         odom:
           Value: true
       Marker Scale: 1
@@ -120,6 +122,8 @@ Visualization Manager:
                 {}
           imu_link_:
             {}
+        map:
+          {}
         odom:
           {}
       Update Interval: 0
@@ -376,21 +380,6 @@ Visualization Manager:
       Topic: /move_base/DWAPlannerROS/local_plan
       Unreliable: false
       Value: true
-    - Alpha: 1
-      Axes Length: 1
-      Axes Radius: 0.10000000149011612
-      Class: rviz/Pose
-      Color: 255; 25; 0
-      Enabled: true
-      Head Length: 0.30000001192092896
-      Head Radius: 0.10000000149011612
-      Name: Pose
-      Shaft Length: 1
-      Shaft Radius: 0.05000000074505806
-      Shape: Arrow
-      Topic: /move_base/goal
-      Unreliable: false
-      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -419,7 +408,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 14.556556701660156
+      Distance: 8.215152740478516
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -434,10 +423,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.7847972512245178
+      Pitch: 0.5797973871231079
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 3.965045928955078
+      Yaw: 3.2100400924682617
     Saved: ~
 Window Geometry:
   Displays:

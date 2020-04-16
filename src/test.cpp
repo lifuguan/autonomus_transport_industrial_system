@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-10 08:57:47
- * @LastEditTime: 2020-04-16 21:20:21
+ * @LastEditTime: 2020-04-17 00:47:06
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/src/test.cpp
@@ -32,8 +32,34 @@ int main(int argc, char **argv)
     ros::NodeHandle nh;
 
     AutonomusTransportIndustrialSystem::NavigationGoal ng(nh);
+    AutonomusTransportIndustrialSystem::PoseDrawer pd(nh);
 
-    ng.pubNavigationGoal(3,-1,0,0,0,0,1);
+    geometry_msgs::PoseStamped goal_map, goal_base_link;
+    goal_map.header.frame_id = "/map";
+    goal_map.header.stamp = ros::Time::now();
+    goal_map.pose.position.x = 6;
+    goal_map.pose.position.y = -1;
+    goal_map.pose.position.z = 0;
+    goal_map.pose.orientation.x = 0;
+    goal_map.pose.orientation.y = 0;
+    goal_map.pose.orientation.z = 0;
+    goal_map.pose.orientation.w = 1;
+
+
+    ros::Publisher pose_publisher_a = nh.advertise<geometry_msgs::PoseStamped>("goal_map", 1);
+    pd.PoseListener("goal_map", "base_link");
+
+    ros::Rate rate(20);
+    while (nh.ok())
+    {
+        pose_publisher_a.publish(goal_map);
+        // 败笔
+        ng.pubNavigationGoal(pd.pose_out);
+        ros::spinOnce();
+    }
+    
+    
+
 
     
     // AutonomusTransportIndustrialSystem::PoseDrawer pd(nh);

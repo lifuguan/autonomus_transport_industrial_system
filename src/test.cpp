@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-10 08:57:47
- * @LastEditTime: 2020-04-17 00:47:06
+ * @LastEditTime: 2020-04-17 21:15:44
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/src/test.cpp
@@ -19,46 +19,64 @@
 #include <tf/transform_broadcaster.h>
 #include <tf/transform_listener.h>
 #include <tf/message_filter.h>
+#include <visualization_msgs/MarkerArray.h>
 
-#include <message_filters/subscriber.h>
 
 #include "../include/utility.h"
 #include "../include/PoseDrawer.h"
 #include "../include/PointCloud.h"
 #include "../include/NavigationGoal.h"
+
+/**
+ * @description: 生成货物提取点
+ * @param extraction_array 
+ * @return: extraction_array
+ */
+void extractionGenerator(visualization_msgs::MarkerArray &extraction_array);
+
 int main(int argc, char **argv)
 {
     ros::init(argc, argv, "test");
     ros::NodeHandle nh;
 
-    AutonomusTransportIndustrialSystem::NavigationGoal ng(nh);
-    AutonomusTransportIndustrialSystem::PoseDrawer pd(nh);
-
-    geometry_msgs::PoseStamped goal_map, goal_base_link;
-    goal_map.header.frame_id = "/map";
-    goal_map.header.stamp = ros::Time::now();
-    goal_map.pose.position.x = 6;
-    goal_map.pose.position.y = -1;
-    goal_map.pose.position.z = 0;
-    goal_map.pose.orientation.x = 0;
-    goal_map.pose.orientation.y = 0;
-    goal_map.pose.orientation.z = 0;
-    goal_map.pose.orientation.w = 1;
-
-
-    ros::Publisher pose_publisher_a = nh.advertise<geometry_msgs::PoseStamped>("goal_map", 1);
-    pd.PoseListener("goal_map", "base_link");
+    ros::Publisher extraction_pub = nh.advertise<visualization_msgs::MarkerArray>("extraction_array", 10);
+    // 货柜地点
+    visualization_msgs::MarkerArray extraction_array;
+    extraction_array.markers.resize(4);
+    extractionGenerator(extraction_array);
 
     ros::Rate rate(20);
     while (nh.ok())
     {
-        pose_publisher_a.publish(goal_map);
-        // 败笔
-        ng.pubNavigationGoal(pd.pose_out);
+        extraction_pub.publish(extraction_array);
         ros::spinOnce();
     }
     
-    
+
+
+    // AutonomusTransportIndustrialSystem::NavigationGoal ng(nh);
+    // AutonomusTransportIndustrialSystem::PoseDrawer pd(nh);
+
+    // geometry_msgs::PoseStamped goal_odom, goal_base_link;
+    // goal_odom.header.frame_id = "/odom";
+    // goal_odom.header.stamp = ros::Time(0);
+    // goal_odom.pose.position.x = 6;
+    // goal_odom.pose.position.y = -1;
+    // goal_odom.pose.position.z = 0;
+    // goal_odom.pose.orientation.x = 0;
+    // goal_odom.pose.orientation.y = 0;
+    // goal_odom.pose.orientation.z = 0;
+    // goal_odom.pose.orientation.w = 1;
+
+
+    // ros::Publisher pose_publisher_a = nh.advertise<geometry_msgs::PoseStamped>("goal_odom", 1);
+    // pd.PoseListener("goal_odom", "base_link");
+
+    // pose_publisher_a.publish(goal_odom);
+
+    // // 败笔
+    // ng.pubNavigationGoal(pd.pose_out);
+
 
 
     
@@ -91,4 +109,52 @@ int main(int argc, char **argv)
     // }
     
     return 0;
+}
+
+
+void extractionGenerator(visualization_msgs::MarkerArray &extraction_array)
+{
+    // 生成相同部分
+    for (int i = 0; i < 4; i++)
+    {
+        extraction_array.markers[i].header.frame_id = "map";
+        extraction_array.markers[i].header.stamp = ros::Time::now();
+        extraction_array.markers[i].ns = "red";
+        extraction_array.markers[i].id = i;
+        extraction_array.markers[i].action = visualization_msgs::Marker::ADD;
+        extraction_array.markers[i].type = visualization_msgs::Marker::TEXT_VIEW_FACING;
+
+        extraction_array.markers[i].text = std::to_string(i);
+        extraction_array.markers[i].scale.z = 0.4;
+        extraction_array.markers[i].color.a = 1.0;
+        extraction_array.markers[i].color.r = 1.0;
+        extraction_array.markers[i].color.g = 0.0;
+        extraction_array.markers[i].color.b = 0.0;
+    }
+
+    // 左边红色圆柱体
+    extraction_array.markers[0].pose.position.x = 3.15;
+    extraction_array.markers[0].pose.position.y = 3.35;
+    extraction_array.markers[0].pose.position.z = 0.0;
+    extraction_array.markers[0].pose.orientation.x = 0.0;
+    extraction_array.markers[0].pose.orientation.y = 0.0;
+    extraction_array.markers[0].pose.orientation.z = 0.0;
+    extraction_array.markers[0].pose.orientation.w = 1.0;
+    // 中间绿色圆柱体
+    extraction_array.markers[1].pose.position.x = 6.21;
+    extraction_array.markers[1].pose.position.y = 2.60;
+    extraction_array.markers[1].pose.position.z = 0.0;
+    extraction_array.markers[1].pose.orientation.x = 0.0;
+    extraction_array.markers[1].pose.orientation.y = 0.0;
+    extraction_array.markers[1].pose.orientation.z = 0.0;
+    extraction_array.markers[1].pose.orientation.w = 1.0;
+    // 右边蓝色圆柱体
+    extraction_array.markers[2].pose.position.x = 7.65;
+    extraction_array.markers[2].pose.position.y = -0.47;
+    extraction_array.markers[2].pose.position.z = 0.1;
+    extraction_array.markers[2].pose.orientation.x = 0.0;
+    extraction_array.markers[2].pose.orientation.y = 0.0;
+    extraction_array.markers[2].pose.orientation.z = 0.0;
+    extraction_array.markers[2].pose.orientation.w = 1.0;
+    
 }

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-02-27 15:10:30
- * @LastEditTime: 2020-04-17 00:49:47
+ * @LastEditTime: 2020-04-17 21:18:49
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/include/PoseDrawer.h
@@ -14,6 +14,7 @@
 #include <tf/transform_listener.h>
 #include <geometry_msgs/PoseStamped.h>
 #include <geometry_msgs/Quaternion.h>
+#include <message_filters/subscriber.h>
 
 namespace AutonomusTransportIndustrialSystem
 {
@@ -125,7 +126,7 @@ void AutonomusTransportIndustrialSystem::PoseDrawer::poseCallback(const boost::s
         pose_in = *pose_ptr;
         // 其余操作
         // 败笔
-        TransformPose();
+        pose_out = TransformPose("base_link", pose_in);
     }
     catch (tf::TransformException &ex)
     {

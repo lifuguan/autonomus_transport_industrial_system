@@ -122,7 +122,8 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+  include
+  /usr/include/
   ${catkin_INCLUDE_DIRS}
 )
 
@@ -141,8 +142,9 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/autonomus_transport_industrial_system_node.cpp)
 add_executable(test src/test.cpp)
+link_directories(/usr/lib/)
 target_link_libraries(test ${catkin_LIBRARIES})
-
+# target_link_libraries(jsoncpp ${catkin_LIBRARIES})
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the

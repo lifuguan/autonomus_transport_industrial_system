@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-02-27 15:10:30
- * @LastEditTime: 2020-04-17 21:18:49
+ * @LastEditTime: 2020-05-02 16:09:53
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/include/PoseDrawer.h
@@ -99,7 +99,6 @@ private:
 void AutonomusTransportIndustrialSystem::PoseDrawer::PoseListener(std::string pose_sub_id, std::string target_frame)
 {
     target_frame_ = target_frame;
-
     pose_sub_.subscribe(n_, pose_sub_id, 10);
     // MessageFilter可以读取任何ros的信息并缓存起来知道可以被处理成目标帧
     tf_filter_ = new tf::MessageFilter<geometry_msgs::PoseStamped>(pose_sub_, tf_, target_frame, 10);
@@ -124,6 +123,7 @@ void AutonomusTransportIndustrialSystem::PoseDrawer::poseCallback(const boost::s
     {
         // 传递监听信息
         pose_in = *pose_ptr;
+        
         // 其余操作
         // 败笔
         pose_out = TransformPose("base_link", pose_in);

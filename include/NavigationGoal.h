@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-15 10:37:12
- * @LastEditTime: 2020-04-16 22:00:29
+ * @LastEditTime: 2020-05-02 17:04:56
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/include/NavigationGoal.h
@@ -58,7 +58,7 @@ namespace AutonomusTransportIndustrialSystem
         goal.target_pose.header.frame_id = "base_link";
         goal.target_pose.header.stamp = ros::Time::now();
         goal.target_pose.pose.position.x = p_x;
-        goal.target_pose.pose.position.y = p_y;
+        goal.target_pose.pose.position.y = p_y; 
         goal.target_pose.pose.position.z = p_z;
         goal.target_pose.pose.orientation.x = o_x;
         goal.target_pose.pose.orientation.y = o_y;

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-10 08:57:47
- * @LastEditTime: 2020-05-12 22:41:48
+ * @LastEditTime: 2020-05-12 23:59:21
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/src/test.cpp
@@ -47,7 +47,10 @@ int main(int argc, char **argv)
     ros::Rate rate(0.5);
     while (ros::ok())
     {
+        // 广播可视化提取点
+        extraction_pub.publish(extraction_array);
 
+        
         ros::spinOnce();
         rate.sleep();
     }

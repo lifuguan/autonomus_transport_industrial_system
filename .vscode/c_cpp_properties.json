@@ -6,6 +6,7 @@
                 "limitSymbolsToIncludedHeaders": true
             },
             "includePath": [
+                "/home/robomaster/catkin_ws/devel/include/",
                 "/home/robomaster/catkin_ws/devel/include",
                 "/opt/ros/melodic/include",
                 "/opt/ros/melodic/include/pcl_ros",

@@ -1,10 +1,10 @@
 /*
  * @Author: your name
  * @Date: 2020-05-02 16:24:16
- * @LastEditTime: 2020-05-11 23:50:54
+ * @LastEditTime: 2020-05-13 00:47:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /autonomus_transport_industrial_system/include/ServerCom.h
+ * @FilePath: /autonomus_transport_industrial_system/include/NetworkCom.h
  */
 
 
@@ -24,11 +24,13 @@
 #include <jsoncpp/json/json.h>
 #include <json/writer.h>
 
+#include "autonomus_transport_industrial_system/netComGoal.h"
+
 #define MAXLINE 4096
 
 namespace AutonomusTransportIndustrialSystem
 {
-    class ServerCom
+    class NetworkCom
     {
     private:
         int client_sockfd;
@@ -40,22 +42,38 @@ namespace AutonomusTransportIndustrialSystem
     public:
         enum code_type
         {
-            current_pos = 100,
-            goal_pos = 200
+            current_pos = 200,  // 同步位置
+            goal_pos = 100    // 送货位置
         };
 
-        ServerCom(std::string ipaddr, int port);
+        NetworkCom(std::string ipaddr, int port);
 
-        ~ServerCom() = default;
+        ~NetworkCom() = default;
 
         void sevComUpload(std::string send_string);
 
         std::string sevComRecv();
 
+
+        /**
+         * @description: 将机器人当前位姿转换成json的字符串
+         * @param code json广播代码
+         * @param p_x position X ray
+         * @param p_y position Y ray
+         * @param p_w raotation
+         * @return: 
+         */
         std::string jsonGenerator(int code, double p_x, double p_y, double p_w);
+
+        /**
+         * @description: 解析从TCP处得到的json字符串并通过service发布
+         * @param str 从TCP处得到的json字符串并
+         * @return: none
+         */
+        void recvJsonGoalToPub(std::string str);
     };
     
-    ServerCom::ServerCom(std::string ipaddr, int port)
+    NetworkCom::NetworkCom(std::string ipaddr, int port)
     {
         memset(&remote_addr,0,sizeof(remote_addr)); //数据初始化--清零
         remote_addr.sin_family=AF_INET; //设置为IP通信
@@ -75,7 +93,7 @@ namespace AutonomusTransportIndustrialSystem
         }
     }
     
-    void ServerCom::sevComUpload(std::string send_string)
+    void NetworkCom::sevComUpload(std::string send_string)
     {
         for (int i = 0; i < send_string.length(); i++)
         {
@@ -88,7 +106,7 @@ namespace AutonomusTransportIndustrialSystem
             return;
         }        
     }
-    std::string ServerCom::sevComRecv()
+    std::string NetworkCom::sevComRecv()
     {
         // 接收服务器返回内容
 
@@ -97,7 +115,7 @@ namespace AutonomusTransportIndustrialSystem
 		printf("received:%s\n",bufRecv);
         return bufRecv;
     }
-    std::string ServerCom::jsonGenerator(int code, double p_x, double p_y, double p_w)
+    std::string NetworkCom::jsonGenerator(int code, double p_x, double p_y, double p_w)
     {
         // 一定要分开写
         Json::Value root;
@@ -109,5 +127,18 @@ namespace AutonomusTransportIndustrialSystem
         return writer.write(root);
     }
 
+    void NetworkCom::recvJsonGoalToPub(std::string str)
+    {
+        Json::Reader reader;
+        Json::Value root;
+        reader.parse(str, root);
+        if (root["type"] == NetworkCom::goal_pos)
+        {
+            double p_x = root["goal"]["p_x"].asDouble();
+            double p_y = root["goal"]["p_y"].asDouble();
+            
+        }
+        
+    }
 }
 #endif

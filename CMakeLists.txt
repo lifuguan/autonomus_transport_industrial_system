@@ -17,6 +17,7 @@ image_transport
 cv_bridge
 pcl_conversions
 pcl_ros
+message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -60,11 +61,10 @@ pcl_ros
 # )
 
 ## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
-#   Service1.srv
-#   Service2.srv
-# )
+add_service_files(
+  FILES
+  netComGoal.srv
+)
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -74,10 +74,10 @@ pcl_ros
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs  # Or other packages containing msgs
-# )
+generate_messages(
+  DEPENDENCIES
+  std_msgs  # Or other packages containing msgs
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -111,7 +111,7 @@ pcl_ros
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES autonomus_transport_industrial_system
-#  CATKIN_DEPENDS roscpp rospy
+  CATKIN_DEPENDS message_runtime
 #  DEPENDS system_lib
 )
 

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-15 10:37:12
- * @LastEditTime: 2020-05-02 17:04:56
+ * @LastEditTime: 2020-05-12 23:32:56
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/include/NavigationGoal.h
@@ -28,14 +28,14 @@ namespace AutonomusTransportIndustrialSystem
         ~NavigationGoal() = default;
 
         /**
-         * @description: 接受目标位置并广播
+         * @description: 接受目标位置并广播（Overload 1）
          * @param pose.postion 目标位置
          * @return: none
          */
         void pubNavigationGoal(double p_x,double p_y,double p_z, double o_x, double o_y, double o_z, double o_w);
 
         /**
-         * @description: 接受目标位置并广播
+         * @description: 接受目标位置并广播（Overload 2）
          * @param pose 目标位置  
          * @return: none
          */

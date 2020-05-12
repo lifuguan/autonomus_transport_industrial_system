@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2019-11-05 21:41:24
- * @LastEditTime: 2020-05-12 22:50:03
+ * @LastEditTime: 2020-05-13 00:05:20
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/README.md
@@ -13,9 +13,8 @@
 |ROS|melodic
 |Compute platform| Intel Core I3-7100U|date 2019.11.3
 
-![Our car.](img/car.jpg)
-![Our car.](img/car2.jpg)
-![Our car.](img/car3.jpg)
+![MAP](figures/map.png)
+
 
 ## Execute file
 
@@ -36,6 +35,6 @@
 2. **PoseDrawer.h**
 - `PoseDrawer` 类用于收集关于PoseStamped的功能性函数  
 
-3. **ServerCom.h**
-- `ServerCom` 是一个基于面向对象的TCP/IP异步通信的类
+3. **NetworkCom.h**
+- `NetworkCom` 是一个基于面向对象的TCP/IP异步通信的类
 

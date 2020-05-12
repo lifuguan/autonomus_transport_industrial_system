@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-10 08:57:47
- * @LastEditTime: 2020-05-12 22:40:34
+ * @LastEditTime: 2020-05-13 00:00:50
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/src/test.cpp
@@ -19,20 +19,20 @@
 
 #include "../include/utility.h"
 
-#include "../include/ServerCom.h"
+#include "../include/NetworkCom.h"
 
 int main(int argc, char **argv)
 {
     ros::init(argc, argv, "test");
     ros::NodeHandle nh;
 
-    AutonomusTransportIndustrialSystem::ServerCom sevcom("106.13.162.250", 8003);
+    AutonomusTransportIndustrialSystem::NetworkCom sevcom("106.13.162.250", 8003);
 
     ros::Rate rate(0.5);
     int i = 0;
     while (ros::ok())
     {
-        std::string jsonStr = sevcom.jsonGenerator(200, 0.0+0.01*i, 0.1, 0);
+        std::string jsonStr = sevcom.jsonGenerator(sevcom.current_pos, 0.0+0.01*i, 0.1, 0);
         // ROS_INFO(jsonStr.c_str());
         sevcom.sevComUpload(jsonStr);
         i += 1;

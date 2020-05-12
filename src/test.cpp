@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-10 08:57:47
- * @LastEditTime: 2020-05-11 23:37:08
+ * @LastEditTime: 2020-05-12 22:41:48
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/src/test.cpp
@@ -26,7 +26,6 @@
 #include "../include/PoseDrawer.h"
 #include "../include/PointCloud.h"
 #include "../include/NavigationGoal.h"
-#include "../include/ServerCom.h"
 /**
  * @description: 生成货物提取点
  * @param extraction_array 
@@ -45,17 +44,10 @@ int main(int argc, char **argv)
     extraction_array.markers.resize(4);
     extractionGenerator(extraction_array);
 
-    AutonomusTransportIndustrialSystem::ServerCom sevcom("106.13.162.250", 8003);
-
     ros::Rate rate(0.5);
-    int i = 0;
     while (ros::ok())
     {
-        std::string jsonStr = sevcom.jsonGenerator(200, 0.0+0.01*i, 0.1, 0);
-        // ROS_INFO(jsonStr.c_str());
-        sevcom.sevComUpload(jsonStr);
-        extraction_pub.publish(extraction_array);
-        i += 1;
+
         ros::spinOnce();
         rate.sleep();
     }

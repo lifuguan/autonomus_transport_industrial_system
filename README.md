@@ -1,10 +1,10 @@
 <!--
  * @Author: your name
  * @Date: 2019-11-05 21:41:24
- * @LastEditTime: 2020-02-27 15:18:19
+ * @LastEditTime: 2020-05-12 22:50:03
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /gx2019_omni_simulations/README.md
+ * @FilePath: /autonomus_transport_industrial_system/README.md
  -->
 # autonomus transport industrial system
 
@@ -17,7 +17,15 @@
 ![Our car.](img/car2.jpg)
 ![Our car.](img/car3.jpg)
 
-## CONSTRUCT
+## Execute file
+
+1. **test**
+- `test` 是一个测试文件，目前为主程序（2020.5.12）
+  
+2. **netComModule**
+- `netComModule` 专门用于与控制系统进行TCP/IP通信，用于发送实时位置、接收目标位置
+
+## Head file
 
 1. **utility.h**
 
@@ -28,7 +36,6 @@
 2. **PoseDrawer.h**
 - `PoseDrawer` 类用于收集关于PoseStamped的功能性函数  
 
-
-## TODO
-**utility.h** 文件中的 `TransformPose()` 函数
+3. **ServerCom.h**
+- `ServerCom` 是一个基于面向对象的TCP/IP异步通信的类
 

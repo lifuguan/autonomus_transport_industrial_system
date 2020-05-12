@@ -141,8 +141,12 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/autonomus_transport_industrial_system_node.cpp)
-add_executable(test src/test.cpp)
+
+add_executable(netComModule src/netComModule.cpp)
 link_directories(/usr/lib/)
+target_link_libraries(netComModule ${catkin_LIBRARIES})
+
+add_executable(test src/test.cpp)
 target_link_libraries(test ${catkin_LIBRARIES})
 # target_link_libraries(jsoncpp ${catkin_LIBRARIES})
 

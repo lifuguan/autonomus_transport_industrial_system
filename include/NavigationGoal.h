@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-15 10:37:12
- * @LastEditTime: 2020-05-14 01:10:28
+ * @LastEditTime: 2020-05-14 01:13:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/include/NavigationGoal.h
@@ -61,6 +61,7 @@ namespace AutonomusTransportIndustrialSystem
     bool NavigationGoal::goalCallBack(autonomus_transport_industrial_system::netComGoal::Request &req, autonomus_transport_industrial_system::netComGoal::Response &res)
     {
         pubNavigationGoal(req.g_x, req.g_y, 0, 0, 0, 0, 0); //广播goal坐标到move_base中
+        res.status = true; // 返回真，证明收到
         return true;
     }
 

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-10 08:57:47
- * @LastEditTime: 2020-05-13 00:00:50
+ * @LastEditTime: 2020-05-13 23:56:05
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/src/test.cpp
@@ -26,7 +26,7 @@ int main(int argc, char **argv)
     ros::init(argc, argv, "test");
     ros::NodeHandle nh;
 
-    AutonomusTransportIndustrialSystem::NetworkCom sevcom("106.13.162.250", 8003);
+    AutonomusTransportIndustrialSystem::NetworkCom sevcom("106.13.162.250", 8003, nh);
 
     ros::Rate rate(0.5);
     int i = 0;

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-02 16:24:16
- * @LastEditTime: 2020-05-13 00:47:28
+ * @LastEditTime: 2020-05-14 00:33:16
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/include/NetworkCom.h
@@ -24,6 +24,7 @@
 #include <jsoncpp/json/json.h>
 #include <json/writer.h>
 
+#include <ros/ros.h>
 #include "autonomus_transport_industrial_system/netComGoal.h"
 
 #define MAXLINE 4096
@@ -39,6 +40,9 @@ namespace AutonomusTransportIndustrialSystem
         char bufSend[BUFSIZ];  //数据传送的缓冲区
         char bufRecv[BUFSIZ];  //数据接收的缓冲区
 
+        ros::NodeHandle nh;
+        ros::ServiceClient goalClient; //ros service广播goal
+        autonomus_transport_industrial_system::netComGoal goal;
     public:
         enum code_type
         {
@@ -46,7 +50,7 @@ namespace AutonomusTransportIndustrialSystem
             goal_pos = 100    // 送货位置
         };
 
-        NetworkCom(std::string ipaddr, int port);
+        NetworkCom(std::string ipaddr, int port, ros::NodeHandle given_nh);
 
         ~NetworkCom() = default;
 
@@ -73,8 +77,10 @@ namespace AutonomusTransportIndustrialSystem
         void recvJsonGoalToPub(std::string str);
     };
     
-    NetworkCom::NetworkCom(std::string ipaddr, int port)
+    NetworkCom::NetworkCom(std::string ipaddr, int port, ros::NodeHandle given_nh):nh(given_nh)
     {
+        goalClient = nh.serviceClient<autonomus_transport_industrial_system::netComGoal>("netComGoal");
+        
         memset(&remote_addr,0,sizeof(remote_addr)); //数据初始化--清零
         remote_addr.sin_family=AF_INET; //设置为IP通信
         remote_addr.sin_addr.s_addr=inet_addr(ipaddr.c_str());//服务器IP地址
@@ -134,8 +140,13 @@ namespace AutonomusTransportIndustrialSystem
         reader.parse(str, root);
         if (root["type"] == NetworkCom::goal_pos)
         {
-            double p_x = root["goal"]["p_x"].asDouble();
-            double p_y = root["goal"]["p_y"].asDouble();
+            goal.request.g_x = root["goal"]["p_x"].asDouble();
+            goal.request.g_y = root["goal"]["p_y"].asDouble();
+            // 尝试建立通信并上传信息
+            if (goalClient.call(goal))
+            {
+                ROS_INFO_STREAM("STATUS:"<<goal.response.status); // 如果成功的话，接收返回信息
+            }
             
         }
         

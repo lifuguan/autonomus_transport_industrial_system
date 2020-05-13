@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-15 10:37:12
- * @LastEditTime: 2020-05-12 23:32:56
+ * @LastEditTime: 2020-05-14 01:10:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/include/NavigationGoal.h
@@ -14,6 +14,7 @@
 #include <move_base_msgs/MoveBaseAction.h>
 #include <actionlib/client/simple_action_client.h>
 #include <geometry_msgs/PoseStamped.h>
+#include "autonomus_transport_industrial_system/netComGoal.h"
 
 namespace AutonomusTransportIndustrialSystem
 {
@@ -23,9 +24,18 @@ namespace AutonomusTransportIndustrialSystem
         ros::NodeHandle nh_;
         typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> move_base_client;
         move_base_msgs::MoveBaseGoal goal;
+
+        ros::ServiceServer goalServer;
     public:
         NavigationGoal(ros::NodeHandle given_nh);
         ~NavigationGoal() = default;
+        /**
+         * @description: 回调函数，接收从netWorkCom处得到的goal信息
+         * @param req 接收的信息
+         * @param res 要返回的信息
+         * @return: none
+         */
+        bool goalCallBack(autonomus_transport_industrial_system::netComGoal::Request &req, autonomus_transport_industrial_system::netComGoal::Response &res);
 
         /**
          * @description: 接受目标位置并广播（Overload 1）
@@ -44,8 +54,17 @@ namespace AutonomusTransportIndustrialSystem
     
     NavigationGoal::NavigationGoal(ros::NodeHandle given_nh):nh_(given_nh)
     {
-        
+        goalServer = nh_.advertiseService("netComGoal", &NavigationGoal::goalCallBack, this);
+        ros::spin();
     }
+
+    bool NavigationGoal::goalCallBack(autonomus_transport_industrial_system::netComGoal::Request &req, autonomus_transport_industrial_system::netComGoal::Response &res)
+    {
+        pubNavigationGoal(req.g_x, req.g_y, 0, 0, 0, 0, 0); //广播goal坐标到move_base中
+        return true;
+    }
+
+
     void NavigationGoal::pubNavigationGoal(double p_x,double p_y,double p_z, 
     double o_x, double o_y, double o_z, double o_w)
     {

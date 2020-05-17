@@ -8,8 +8,12 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <sys/shm.h>
-
-#define MYPORT  25565
+#include <string>
+#include <sstream>
+#include <iostream> 
+#include <omp.h>
+#include "../include/NetworkCom.h"
+#define MYPORT  8003
 #define BUFFER_SIZE 1024
 int main()
 {
@@ -25,7 +29,7 @@ int main()
     memset(&servaddr, 0, sizeof(servaddr));
     servaddr.sin_family = AF_INET;
     servaddr.sin_port = htons(MYPORT);  ///服务器端口
-    servaddr.sin_addr.s_addr = inet_addr("127.0.0.1");  ///服务器ip
+    servaddr.sin_addr.s_addr = inet_addr("106.13.162.250");  ///服务器ip
 
     //连接服务器，成功返回0，错误返回-1
     while (connect(sock_cli, (struct sockaddr *)&servaddr, sizeof(servaddr)) < 0)
@@ -50,33 +54,40 @@ int main()
         tv.tv_usec = 0;
         /*等待聊天*/
         retval = select(maxfd+1, &rfds, NULL, NULL, &tv);
-        if(retval == 0)
+        #pragma omp parallel
+        #pragma omp sections
         {
-            printf("客户端没有任何输入信息，并且服务器也没有信息到来，waiting...\n");
-            continue;
-        }
-        else
-        {
-            /*服务器发来了消息*/
-            if(FD_ISSET(sock_cli,&rfds))
+            #pragma omp section
             {
-                char recvbuf[BUFFER_SIZE];
-                memset(recvbuf, 0, sizeof(recvbuf));
-                int len;
-                len = recv(sock_cli, recvbuf, sizeof(recvbuf),0);
-                printf("%s", recvbuf);                
+                /*服务器发来了消息*/
+                if(FD_ISSET(sock_cli,&rfds))
+                {
+                    char recvbuf[BUFFER_SIZE];
+                    memset(recvbuf, 0, sizeof(recvbuf));
+                    int len;
+                    len = recv(sock_cli, recvbuf, sizeof(recvbuf),0);
+                    printf("%s", recvbuf);                
+                }
             }
-            /*用户输入信息了,开始处理信息并发送*/
-            if(FD_ISSET(0, &rfds))
+            #pragma omp section
             {
-                char sendbuf[BUFFER_SIZE];
-                fgets(sendbuf, sizeof(sendbuf), stdin);
-                send(sock_cli, sendbuf, strlen(sendbuf),0); //发送
-                memset(sendbuf, 0, sizeof(sendbuf));
+                while(1)
+                {
+                    /*用户输入信息了,开始处理信息并发送*/
+                    if(FD_ISSET(0, &rfds))
+                    {
+                        char sendbuf[BUFFER_SIZE];
+                        //fgets(sendbuf, sizeof(sendbuf), stdin);
+                        std::string jsonStr = jsonGenerator(200, 0.0+0.01*i, 0.1, 0);
+                        sendbuf = jsonStr.toCharArray();
+                        send(sock_cli, sendbuf, strlen(sendbuf),0); //发送
+                        memset(sendbuf, 0, sizeof(sendbuf));
+                    }
+                    usleep(500);
+                }
             }
         }
     }
-
     close(sock_cli);
     return 0;
 }

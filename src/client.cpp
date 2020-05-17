@@ -59,14 +59,17 @@ int main()
         {
             #pragma omp section
             {
-                /*服务器发来了消息*/
-                if(FD_ISSET(sock_cli,&rfds))
+                while(1)
                 {
-                    char recvbuf[BUFFER_SIZE];
-                    memset(recvbuf, 0, sizeof(recvbuf));
-                    int len;
-                    len = recv(sock_cli, recvbuf, sizeof(recvbuf),0);
-                    printf("%s", recvbuf);                
+                    /*服务器发来了消息*/
+                    if(FD_ISSET(sock_cli,&rfds))
+                    {
+                        char recvbuf[BUFFER_SIZE];
+                        memset(recvbuf, 0, sizeof(recvbuf));
+                        int len;
+                        len = recv(sock_cli, recvbuf, sizeof(recvbuf),0);
+                        printf("%s", recvbuf);                
+                    }
                 }
             }
             #pragma omp section
@@ -74,15 +77,12 @@ int main()
                 while(1)
                 {
                     /*用户输入信息了,开始处理信息并发送*/
-                    if(FD_ISSET(0, &rfds))
-                    {
-                        char sendbuf[BUFFER_SIZE];
-                        //fgets(sendbuf, sizeof(sendbuf), stdin);
-                        std::string jsonStr = jsonGenerator(200, 0.0+0.01*i, 0.1, 0);
-                        sendbuf = jsonStr.toCharArray();
-                        send(sock_cli, sendbuf, strlen(sendbuf),0); //发送
-                        memset(sendbuf, 0, sizeof(sendbuf));
-                    }
+                    char sendbuf[BUFFER_SIZE];
+                    //fgets(sendbuf, sizeof(sendbuf), stdin);
+                    std::string jsonStr = jsonGenerator(200, 0.0+0.01*i, 0.1, 0);
+                    sendbuf = jsonStr.toCharArray();
+                    send(sock_cli, sendbuf, strlen(sendbuf),0); //发送
+                    memset(sendbuf, 0, sizeof(sendbuf));
                     usleep(500);
                 }
             }

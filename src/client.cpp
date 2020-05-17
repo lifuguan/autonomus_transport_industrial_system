@@ -12,12 +12,17 @@
 #include <sstream>
 #include <iostream> 
 #include <omp.h>
-#include "../include/NetworkCom.h"
+#include <time.h>
+
+using namespace std;
+//#include "../include/NetworkCom.h"
 #define MYPORT  8003
 #define BUFFER_SIZE 1024
 int main()
 {
     int sock_cli;
+    clock_t ti0;
+    double ti,ti2;
     fd_set rfds;
     struct timeval tv;
     int retval, maxfd;
@@ -35,7 +40,16 @@ int main()
     while (connect(sock_cli, (struct sockaddr *)&servaddr, sizeof(servaddr)) < 0)
     {
         perror("connect");
-        exit(1);
+        exit(1);                /*用户输入信息了,开始处理信息并发送*/
+                char sendbuf[BUFFER_SIZE];
+                //fgmeets(sendbuf, sizeof(sendbuf), stdin);
+                //std::string jsonStr = jsonGenerator(200, 0.0+0.01*i, 0.1, 0);
+                //sendbuf = jsonStr.toCharArray();
+                string str ("{\"type\":200,\"date\":{\"x\":0.5,\"y\":0.5}}");
+                strcpy(sendbuf,str.c_str());
+                send(sock_cli, sendbuf, strlen(sendbuf),0); //发送
+                memset(sendbuf, 0, sizeof(sendbuf));
+                
     }
     while(1)
     {
@@ -49,14 +63,29 @@ int main()
         /*找出文件描述符集合中最大的文件描述符*/
         if(maxfd < sock_cli)
             maxfd = sock_cli;
-        /*设置超时时间*/
-        tv.tv_sec = 5;
-        tv.tv_usec = 0;
-        /*等待聊天*/
-        retval = select(maxfd+1, &rfds, NULL, NULL, &tv);
-        #pragma omp parallel
-        #pragma omp sections
+        #pragma omp parallelaa
+        #pragma omp parallel sections
         {
+            #pragma omp section
+            {
+                while(1)
+                {
+                    double ti = omp_get_wtime();
+                    if(ti-ti2>=0.5)
+                    {
+                        ti2 = ti;
+                        /*用户输入信息了,开始处理信息并发送*/
+                        char sendbuf[BUFFER_SIZE];
+                        //fgets(sendbuf, sizeof(sendbuf), stdin);
+                        //std::string jsonStr = jsonGenerator(200, 0.0+0.01*i, 0.1, 0);
+                        //sendbuf = jsonStr.toCharArray();
+                        string str ("{\"type\":200,\"date\":{\"x\":0.5,\"y\":0.5}}\n");
+                        strcpy(sendbuf,str.c_str());
+                        send(sock_cli, sendbuf, strlen(sendbuf),0); //发送
+                        memset(sendbuf, 0, sizeof(sendbuf));
+                    }
+                }
+            }
             #pragma omp section
             {
                 while(1)
@@ -71,21 +100,9 @@ int main()
                         printf("%s", recvbuf);                
                     }
                 }
+                
             }
-            #pragma omp section
-            {
-                while(1)
-                {
-                    /*用户输入信息了,开始处理信息并发送*/
-                    char sendbuf[BUFFER_SIZE];
-                    //fgets(sendbuf, sizeof(sendbuf), stdin);
-                    std::string jsonStr = jsonGenerator(200, 0.0+0.01*i, 0.1, 0);
-                    sendbuf = jsonStr.toCharArray();
-                    send(sock_cli, sendbuf, strlen(sendbuf),0); //发送
-                    memset(sendbuf, 0, sizeof(sendbuf));
-                    usleep(500);
-                }
-            }
+
         }
     }
     close(sock_cli);

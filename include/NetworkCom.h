@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-02 16:24:16
- * @LastEditTime: 2020-05-14 00:33:16
+ * @LastEditTime: 2020-05-21 17:37:25
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/include/NetworkCom.h
@@ -27,6 +27,8 @@
 #include <ros/ros.h>
 #include "autonomus_transport_industrial_system/netComGoal.h"
 
+#include <omp.h>
+
 #define MAXLINE 4096
 
 namespace AutonomusTransportIndustrialSystem
@@ -37,8 +39,8 @@ namespace AutonomusTransportIndustrialSystem
         int client_sockfd;
         int len;
         struct sockaddr_in remote_addr;
-        char bufSend[BUFSIZ];  //数据传送的缓冲区
-        char bufRecv[BUFSIZ];  //数据接收的缓冲区
+        char buf_send[BUFSIZ];  //数据传送的缓冲区
+        char buf_recv[BUFSIZ];  //数据接收的缓冲区
 
         ros::NodeHandle nh;
         ros::ServiceClient goalClient; //ros service广播goal
@@ -103,23 +105,29 @@ namespace AutonomusTransportIndustrialSystem
     {
         for (int i = 0; i < send_string.length(); i++)
         {
-            bufSend[i] = send_string[i];
+            buf_send[i] = send_string[i];
         }
-        len=send(client_sockfd, bufSend, strlen(bufSend), 0);
+        len=send(client_sockfd, buf_send, strlen(buf_send), 0);
         if (len == 0)
         {
             ROS_ERROR("Failed to send.");
             return;
-        }        
+        }  
+        else
+        {
+            ROS_INFO("Succeed to send.");
+            memset(buf_send, 0, sizeof(buf_send));
+        }
+              
     }
     std::string NetworkCom::sevComRecv()
     {
         // 接收服务器返回内容
 
-		len=recv(client_sockfd, bufRecv, BUFSIZ, 0);
-		bufRecv[len]='/0';
-		printf("received:%s\n",bufRecv);
-        return bufRecv;
+		len=recv(client_sockfd, buf_recv, BUFSIZ, 0);
+		buf_recv[len]='/0';
+		printf("received:%s\n",buf_recv);
+        return buf_recv;
     }
     std::string NetworkCom::jsonGenerator(int code, double p_x, double p_y, double p_w)
     {
@@ -147,9 +155,7 @@ namespace AutonomusTransportIndustrialSystem
             {
                 ROS_INFO_STREAM("STATUS:"<<goal.response.status); // 如果成功的话，接收返回信息
             }
-            
-        }
-        
+        }        
     }
 }
 #endif

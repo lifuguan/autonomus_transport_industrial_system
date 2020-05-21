@@ -20,6 +20,13 @@ pcl_ros
 message_generation
 )
 
+find_package(OpenMP REQUIRED)
+if(OPENMP_FOUND)
+  message(STATUS "OPENMP FOUND")
+  set(OpenMP_FLAGS ${OpenMP_CXX_FLAGS})  # or if you use C: ${OpenMP_C_FLAGS}
+  set(OpenMP_LIBS gomp)
+endif()
+
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
@@ -112,7 +119,7 @@ catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES autonomus_transport_industrial_system
   CATKIN_DEPENDS message_runtime
-#  DEPENDS system_lib
+  DEPENDS OpenMP
 )
 
 ###########
@@ -144,7 +151,9 @@ include_directories(
 
 add_executable(netComModule src/netComModule.cpp)
 link_directories(/usr/lib/)
-target_link_libraries(netComModule ${catkin_LIBRARIES})
+target_compile_options(netComModule PRIVATE ${OpenMP_FLAGS})
+add_dependencies(netComModule ${catkin_EXPORTED_TARGETS})
+target_link_libraries(netComModule ${catkin_LIBRARIES} ${OpenMP_LIBS})
 
 add_executable(test src/test.cpp)
 target_link_libraries(test ${catkin_LIBRARIES})

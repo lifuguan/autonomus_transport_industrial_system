@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-02-27 15:10:30
- * @LastEditTime: 2020-05-02 16:09:53
+ * @LastEditTime: 2020-05-14 23:52:14
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/include/PoseDrawer.h
@@ -31,6 +31,15 @@ public:
     }
 
     /**
+     * @description: 监听两个tf之间的变换
+     * @param target_frame 目标tf
+     * @param source_frame 当前tf
+     * @return: StampedTransform
+     */
+    tf::StampedTransform TfListener(std::string target_frame, std::string source_frame);
+
+
+    /**
      * @description: pose监听函数，调用poseCallBack回调函数
      * @param pose_sub_id 要监听的pose的id 
      * @param target_frame 要转换的目标tf的id 
@@ -48,12 +57,12 @@ public:
 
     /**
      * @description: TODO (copy from robomaster 2020)
-     * @param transform
+     * @param transform_
      * @param input_pose
      * @param output_pose
      * @return: 
      */
-    void TransformPose(const tf::StampedTransform transform, const geometry_msgs::PoseStamped &input_pose, geometry_msgs::PoseStamped &output_pose);
+    void TransformPose(const tf::StampedTransform transform_, const geometry_msgs::PoseStamped &input_pose, geometry_msgs::PoseStamped &output_pose);
 
     /**
      * @description: 公有的pose广播函数
@@ -68,6 +77,9 @@ public:
 private:
     ros::NodeHandle n_;
     tf::TransformListener tf_;
+
+    tf::StampedTransform transform_;
+
     std::string target_frame_;
 
     
@@ -94,6 +106,22 @@ private:
      */
     void poseCallback(const boost::shared_ptr<const geometry_msgs::PoseStamped> &pose_ptr);
 };
+
+/* tips: As long as you have the static keyword in the header file, the compiler knows it's a static class method. */
+tf::StampedTransform AutonomusTransportIndustrialSystem::PoseDrawer::TfListener(std::string target_frame, std::string source_frame)
+{
+    try
+    {
+        tf_.waitForTransform(target_frame, source_frame, ros::Time(0), ros::Duration(10.0));
+        tf_.lookupTransform(target_frame, source_frame, ros::Time(0), transform_);
+    }
+    catch(tf::TransformException ex)
+    {
+        std::cerr << ex.what() << '\n';
+        transform_.frame_id_ = "ERROR";
+    }
+    return transform_;
+}
 
 
 void AutonomusTransportIndustrialSystem::PoseDrawer::PoseListener(std::string pose_sub_id, std::string target_frame)
@@ -179,14 +207,14 @@ geometry_msgs::PoseStamped AutonomusTransportIndustrialSystem::PoseDrawer::Trans
 }
 
 void AutonomusTransportIndustrialSystem::PoseDrawer::TransformPose(
-    const tf::StampedTransform transform, const geometry_msgs::PoseStamped &input_pose, geometry_msgs::PoseStamped &output_pose)
+    const tf::StampedTransform transform_, const geometry_msgs::PoseStamped &input_pose, geometry_msgs::PoseStamped &output_pose)
 {
 
     tf::Stamped<tf::Pose> input_pose_tf;
     tf::poseStampedMsgToTF(input_pose, input_pose_tf);
-    input_pose_tf.setData(transform * input_pose_tf);
-    input_pose_tf.stamp_ = transform.stamp_;
-    input_pose_tf.frame_id_ = transform.frame_id_;
+    input_pose_tf.setData(transform_ * input_pose_tf);
+    input_pose_tf.stamp_ = transform_.stamp_;
+    input_pose_tf.frame_id_ = transform_.frame_id_;
     tf::poseStampedTFToMsg(input_pose_tf, output_pose);
 }
 

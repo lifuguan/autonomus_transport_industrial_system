@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-15 10:37:12
- * @LastEditTime: 2020-05-14 01:13:51
+ * @LastEditTime: 2020-05-21 22:07:55
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/include/NavigationGoal.h
@@ -35,18 +35,24 @@ namespace AutonomusTransportIndustrialSystem
          * @param res 要返回的信息
          * @return: none
          */
-        bool goalCallBack(autonomus_transport_industrial_system::netComGoal::Request &req, autonomus_transport_industrial_system::netComGoal::Response &res);
-
+        bool goalServiceCallBack(autonomus_transport_industrial_system::netComGoal::Request &req, autonomus_transport_industrial_system::netComGoal::Response &res);
+        
+        /**
+         * @description: 接受回调函数得到的位置并广播（Overload 1）
+         * @param none
+         * @return: 
+         */
+        void pubNavigationGoal();
         /**
          * @description: 接受目标位置并广播（Overload 1）
-         * @param pose.postion 目标位置
+         * @param pose postion 目标位置
          * @return: none
          */
         void pubNavigationGoal(double p_x,double p_y,double p_z, double o_x, double o_y, double o_z, double o_w);
 
         /**
          * @description: 接受目标位置并广播（Overload 2）
-         * @param pose 目标位置  
+         * @param stamp 目标位置  
          * @return: none
          */
         void pubNavigationGoal(geometry_msgs::PoseStamped stamp);
@@ -54,17 +60,47 @@ namespace AutonomusTransportIndustrialSystem
     
     NavigationGoal::NavigationGoal(ros::NodeHandle given_nh):nh_(given_nh)
     {
-        goalServer = nh_.advertiseService("netComGoal", &NavigationGoal::goalCallBack, this);
+        goalServer = nh_.advertiseService("netComGoal", &NavigationGoal::goalServiceCallBack, this);
         ros::spin();
     }
 
-    bool NavigationGoal::goalCallBack(autonomus_transport_industrial_system::netComGoal::Request &req, autonomus_transport_industrial_system::netComGoal::Response &res)
+    bool NavigationGoal::goalServiceCallBack(autonomus_transport_industrial_system::netComGoal::Request &req, autonomus_transport_industrial_system::netComGoal::Response &res)
     {
-        pubNavigationGoal(req.g_x, req.g_y, 0, 0, 0, 0, 0); //广播goal坐标到move_base中
-        res.status = true; // 返回真，证明收到
+        ROS_INFO("x = %d, y = %d", req.g_x, req.g_y);
+        goal.target_pose.header.frame_id = "base_link";
+        goal.target_pose.header.stamp = ros::Time::now();
+        goal.target_pose.pose.position.x = req.g_x;
+        goal.target_pose.pose.position.y = req.g_y; 
+        goal.target_pose.pose.position.z = 0;
+        goal.target_pose.pose.orientation.x = 0;
+        goal.target_pose.pose.orientation.y = 0;
+        goal.target_pose.pose.orientation.z = 0;
+        goal.target_pose.pose.orientation.w = 1;
+
+        res.status = true;
         return true;
     }
 
+    void NavigationGoal::pubNavigationGoal()
+    {
+        move_base_client ac("move_base", true);
+        // 等待move_base服务器响应
+        while (!ac.waitForServer(ros::Duration(5.0)))
+        {
+            ROS_INFO("Wait for the move base server to come up");
+        }
+        
+        ROS_INFO("Sending goal...");
+        ac.sendGoal(goal);
+
+        ac.waitForResult();
+
+        if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+            ROS_INFO("Hooray, the base moved 1 meter forward");
+        else
+            ROS_INFO("The base failed to move forward 1 meter for some reason");
+    }
+    
 
     void NavigationGoal::pubNavigationGoal(double p_x,double p_y,double p_z, 
     double o_x, double o_y, double o_z, double o_w)
@@ -115,8 +151,7 @@ namespace AutonomusTransportIndustrialSystem
             ROS_INFO("Hooray, the base moved 1 meter forward");
         else
             ROS_INFO("The base failed to move forward 1 meter for some reason");
-    }
-    
+    }    
 }
 
 

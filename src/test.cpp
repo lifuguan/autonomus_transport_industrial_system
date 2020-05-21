@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-10 08:57:47
- * @LastEditTime: 2020-05-21 00:25:45
+ * @LastEditTime: 2020-05-21 21:55:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/src/test.cpp
@@ -33,7 +33,7 @@ int main(int argc, char **argv)
 
     AutonomusTransportIndustrialSystem::ExtractionDisplay exd(nh);
     AutonomusTransportIndustrialSystem::PoseDrawer pd(nh);
-    
+    AutonomusTransportIndustrialSystem::NavigationGoal ng(nh);
     ros::Rate rate(0.5);
     while (ros::ok())
     {
@@ -52,13 +52,10 @@ int main(int argc, char **argv)
             // 若odom和map的欧拉距离小于阈值，则继续发布导航指令
             if (hypot(transform.getOrigin().getX(), transform.getOrigin().getY()) < 5)
             {
-                // pubNavigationGoal(req.g_x, req.g_y, 0, 0, 0, 0, 0); //广播goal坐标到move_base中
-                // res.status = true; // 返回真，证明收到
-                return true;
+                ng.pubNavigationGoal(); //广播goal坐标到move_base中
             }   
             else
             {
-                
                 ROS_ERROR("map and odom frame have a massive error!");
                 return false;
             }

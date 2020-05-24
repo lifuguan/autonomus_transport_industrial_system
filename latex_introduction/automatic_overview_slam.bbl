@@ -1,0 +1,41 @@
+\begin{thebibliography}{1}
+
+\bibitem{5670227}
+O.~{Wongwirat} and C.~{Chaiyarat}, ``A position tracking experiment of mobile
+  robot with inertial measurement unit (imu),'' in {\em ICCAS 2010},
+  pp.~304--308, 2010.
+
+\bibitem{4380919}
+S.~{Krishnan}, P.~{Sharma}, Z.~{Guoping}, and O.~H. {Woon}, ``A uwb based
+  localization system for indoor robot navigation,'' in {\em 2007 IEEE
+  International Conference on Ultra-Wideband}, pp.~77--82, 2007.
+
+\bibitem{7916260}
+S.~{Ma}, Y.~{Zhang}, Y.~{Xu}, B.~{Wang}, J.~{Cheng}, and Q.~{Zhao}, ``Indoor
+  robot navigation by coupling imu, uwb, and encode,'' in {\em 2016 10th
+  International Conference on Software, Knowledge, Information Management
+  Applications (SKIMA)}, pp.~429--432, 2016.
+
+\bibitem{murORB2}
+R.~Mur-Artal and J.~D. Tard\'os, ``{ORB-SLAM2}: an open-source {SLAM} system
+  for monocular, stereo and {RGB-D} cameras,'' {\em IEEE Transactions on
+  Robotics}, vol.~33, no.~5, pp.~1255--1262, 2017.
+
+\bibitem{8421746}
+T.~{Qin}, P.~{Li}, and S.~{Shen}, ``Vins-mono: A robust and versatile monocular
+  visual-inertial state estimator,'' {\em IEEE Transactions on Robotics},
+  vol.~34, no.~4, pp.~1004--1020, 2018.
+
+\bibitem{8576618}
+S.~{Tsao} and S.~{Jan}, ``Observability analysis and performance evaluation of
+  ekf-based visual-inertial odometry with online intrinsic camera parameter
+  calibration,'' {\em IEEE Sensors Journal}, vol.~19, no.~7, pp.~2695--2703,
+  2019.
+
+\bibitem{8630025}
+J.~{Jackson}, K.~{Brink}, B.~{Forsgren}, D.~{Wheeler}, and T.~{McLain},
+  ``Direct relative edge optimization, a robust alternative for pose graph
+  optimization,'' {\em IEEE Robotics and Automation Letters}, vol.~4, no.~2,
+  pp.~1932--1939, 2019.
+
+\end{thebibliography}

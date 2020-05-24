@@ -181,27 +181,40 @@ numbers=none,
 \pagestyle{fancy}
 \pagenumbering{arabic}
 
-\abstract
-AGV系统是集光、机、电、计算机于一体的高新技术。为了能够适应不同的使用要求和缩短新产品的开发周期，AGV的设计
-研究趋向于模块化，将AGV的各功能模块设计成不同的系列，再根据具体的使用要求进行组合。
-本文从AGV系统的软件部分出发，主要介绍AGV系统的两大模块的工作原理：AGV系统的导航（包括现有的定位与建图算法、栅格地图、现有的全局路径规划算法），
-AGV系统的转向控制系统和姿态控制算法。
+
 
 %===第一章===
-\section{简介}
+\section{自动化大类各专业之间的相互关系}
+其实吧，说专业差距大，其实也没那么大。举图像识别做例子：大家都做图像识别，可能在研究生阶段区别比较大，但是
+对于本科来说差别真的几乎没有。
+如果一定要做区分的话
+\begin{itemize}
+        \item 自动化：偏向系统集成，控制算法，感知算法
+        \item 测控：就我们学校，MEMS无疑
+        \item 通信：各种雷达信号处理
+\end{itemize}
+
+%===第二章===
+\section{学习的总结，体会和感受}
+\subsection{学习的总结}
+自动化学科是一门多学科交叉的高技术学科。研究内容广，几乎无所不包。但是，控制、信息、系统是其核心。自动化学科知识
+体系中的核心知识是：控制与智能、对象和建模、系统和工程等三个知识领域，也是自动化学科与其他学科的最重大区别。
+\subsection{学习的体会}
+选自动化就对了！选自动化就对了！选自动化就对了！千万不要搞过程控制！千万不要搞过程控制！千万不要搞过程控制！
+更加坚定了自己选择自动化和进行移动机器人以及机器人感知相关方向研究的意志。
+\subsection{学习的感受}
+与其说选择专业，我觉得更应该选择研究方向后再决定专业，因为每个专业的研究方向都有很大的重叠部分。
+
+%===第三章===
+\section{相关专业方向：同步定位与地图构建(SLAM)}
 \subsection{AGV的导航（Navigation）}
 导航技术是AGV技术的研究核心，没有导航功能的AGV系统是很难想象的。举个例子，如果AGV系统想要在工厂等工作场所运输货物，
 它必须要在不触碰到任何障碍物的情况下运动到不同的地点。
 随着信息化技术的提升，CPU算力的提升和传感器的升级，AGV的柔性路径导航吸引了越来越多的研究者进行研究，产业化应用越来越广。
 柔性路径导航技术应用较多的是视觉与激光导航、惯性(IMU)导航\cite{5670227}、基于WIFI/UWB等无线信号定位\cite{4380919}的导航技术等。
 机器人实现其自主导航的前提是机器人自身位姿的确定，出于对定位精度的要求以及现实环境的复杂化，
-目前大多数导航系统都是由上述两种或者多种导航方式的结合组合导航技术\cite{7916260,}。
+目前大多数导航系统都是由上述两种或者多种导航方式的结合组合导航技术\cite{7916260}。
 
-
-\subsection{AGV的姿态控制（Steering control）}
-
-%===第二章===
-\section{同步定位与地图构建(SLAM)}
 \subsection{SLAM定义}
 同步定位与地图构建（SLAM或Simultaneous localization and mapping）是一种概念：希望机器人从未知环境的未知地点出发，在运动过程中通过重复观测到的地图特征（比如，墙角，柱子等）定位自身位置和姿态，再根据自身位置增量式的构建地图，从而达到同时定位和地图构建的目的。
 
@@ -274,98 +287,6 @@ AGV系统的转向控制系统和姿态控制算法。
 \url{https://github.com/HKUST-Aerial-Robotics/VINS-Mono}
 
 
-
-\section{路径规划}
-\subsection{路径规划所使用的地图的建立}
-\subsubsection{代价地图的建立}
-代价地图（COSTMAP）是一种机器人收集传感器信息建立和更新的二维或三维地图。
-在ROS中，红色部分代表costmap中的障碍物，蓝色部分表示通过机器人内切圆半径膨胀出的障碍，红色多边形是footprint(机器人轮廓的垂直投影)。
-红色部分代表costmap中的障碍物，蓝色部分表示通过机器人内切圆半径膨胀出的障碍，红色多边形是footprint(机器人轮廓的垂直投影)。可以从下图简要了解。
-\begin{figure}[H]
-        \centering
-        \includegraphics[width=0.5\textwidth]{figure/costmap.png}
-        \caption{代价地图表示形式}
-\end{figure}
-ROS的代价地图（costmap）采用网格（grid）形式，每个网格的值（cell cost）从0~255。分成三种状态：被占用（有障碍）、自由区域（无障碍）、未知区域。
-其原理也可以由下图得出。
-\begin{figure}[H]
-        \centering
-        \includegraphics[width=0.7\textwidth]{figure/occupy.png}
-        \caption{代价地图原理}
-\end{figure}
-\subsubsection{代价地图的更新}
-通过不断地接受激光雷达扫描的数据（laserScan），不断更新代价地图（costmap）。由下图\cite{6942562}可以看到代价地图的生成流程。
-\begin{figure}[H]
-        \centering
-        \includegraphics[width=0.7\textwidth]{figure/occupy1.png}
-        \caption{代价地图生成过程}
-\end{figure}
-
-\subsection{全局路径规划：Dijskra}
-该算法\cite{8784487}由经典最短路径算法Dijskra在2D占据地图上的应用得到。
-是一种静态路网中求解最短路径最有效的直接搜索方法，也是解决许多搜索问题的有效算法。算法中的距离估算值与实际值越接近，最终搜索速度越快。 公式表示为：
-\begin{align}
-        f(n)=g(n)+h(n)
-\end{align}
-其中$f(n)$是从初始状态经由状态n到目标状态的代价估计，$g(n)$是在状态空间中从初始状态到状态n的实际代价，$h(n)$是从状态n到目标状态的最佳路径的估计代价。对于路径搜索问题，状态就是图中的节点，代价就是距离。
-
-\subsection{全局路径规划：混合A*算法(Hybrid A*)}
-\subsubsection{提出背景}
-对于传统的Dijiskra\cite{8784487}/A*\cite{4082128}等路径规划算法都是以最短路径为唯一目标，
-这导致路径的生成取决于地图网格的分辨率而不考虑车辆的实际模型。所以，这种路径生成方式对于机器人的机械结构以及操控系统都是极大的挑战和负担。
-于是，在2007年斯坦福大学首次提出了Hybrid A*算法\cite{article}，通过考虑机器人、自动驾驶汽车的非整体约束，Hybrid A*产生的路径更加平滑
-、实践性更强。
-\subsubsection{混合A*算法与传统A*算法的对比}
-以下表格展示了传统A*算法\cite{4082128}和Hybrid A*算法\cite{article}的区别：
-\begin{table}[H]
-        \caption{对比}
-        \centering
-        \begin{tabular}{l|ll}
-        \toprule
-        性质   &Hybrid A* & A*\\
-        \midrule[2pt]
-        维数 & \((x,y,\theta, R)\)    & \((x,y)\)\\
-        H(n) & Max(Rends\_Shepp, A*)   & Manhattan,Euclidean  \\
-        节点 & 车辆的运动学模型为节点（2）  &  二维平面坐标点（1）\\
-        节点与节点连接处 &  交点可以不是栅格顶点（4）  & 交点是栅格顶点（3）\\
-        缺点 & 	不具有完备性 & 不满足车辆运动学特性\\
-         \\
-        \bottomrule
-        \end{tabular}
-\end{table}
-\begin{figure}[H]
-        \centering
-        \includegraphics[width=0.7\textwidth]{figure/hybrid-a-star.png}
-\end{figure}
-\subsubsection{最终展示结果}
-\begin{figure}[H]
-        \centering
-        \includegraphics[width=0.7\textwidth]{figure/hybrid-a-star-res.png}
-\end{figure}
-
-\subsection{全局路径规划：RRT*的改进方法}
-该算法\cite{6942562}由RRT改进而来，同时对轨迹进行了平滑处理。该算法方法通常能用更小的树在更短的时间内产生更平滑的路径。对于 RRT*，该方法还生成最短路径，并在给定更多规划时间时实现成本最低的解决方案。
-
-\subsubsection{RRT / RRT* 的特点}
-
-通过抽样来在已知的地图上建立无向图，进而通过搜索方法寻找相对最优的路径。不同点在于，PRM算法在一开始就通过抽样在地图上构建出完整的无向图，再进行图搜索；而RRT算法则是从某个点出发一边搜索，一边抽样并建图。
-
-\subsubsection{RRT / RRT* 的缺点}
-
-RRT算法是概率完备的：只要路径存在，且规划的时间足够长，就一定能确保找到一条路径解。注意“且规划的时间足够长”这一前提条件，说明了如果规划器的参数设置不合理（如搜索次数限制太少、采样点过少等），就可能找不到解。
-
-\subsubsection{改进方法：POSQ}
-
-由于RRT产生了很多点，所以根据原来的反馈方程，目标会在每个点处停下来。本方法通过修改反馈方程，使得在多次扩展中的恒定正向速度有所需的最大值。即以下闭环模型：
-\begin{align}
-        &\dot{\rho}=-K_{\rho}\cos\alpha\tanh(K_{v}\rho), \cr &\dot{\alpha}=K_{\rho}{\sin\alpha\over \rho}\tanh(K_{v}\rho)-K_{\alpha}\alpha-K_{\phi}\phi, \cr &\dot{\phi}=-K_{\alpha}\alpha-K_{\phi}\phi.
-\end{align}
-由此得到如图所示效果：
-\begin{figure}[H]
-        \centering
-        \includegraphics[width=0.7\textwidth]{figure/rrt-extend.png}
-        \caption{RRT-EXTEND的效果图}
-\end{figure}
 %===参考文献===
 \addcontentsline{toc}{section}{参考文献}
 \bibliographystyle{ieeetr}     %论文引用格式:缩写

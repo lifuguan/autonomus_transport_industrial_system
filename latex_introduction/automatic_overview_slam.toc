@@ -1,0 +1,12 @@
+\contentsline {section}{\numberline {第1章}自动化大类各专业之间的相互关系}{1}{section.1}% 
+\contentsline {section}{\numberline {第2章}学习的总结，体会和感受}{1}{section.2}% 
+\contentsline {subsection}{\numberline {2.1}学习的总结}{1}{subsection.2.1}% 
+\contentsline {subsection}{\numberline {2.2}学习的体会}{1}{subsection.2.2}% 
+\contentsline {subsection}{\numberline {2.3}学习的感受}{1}{subsection.2.3}% 
+\contentsline {section}{\numberline {第3章}相关专业方向：同步定位与地图构建(SLAM)}{1}{section.3}% 
+\contentsline {subsection}{\numberline {3.1}AGV的导航（Navigation）}{1}{subsection.3.1}% 
+\contentsline {subsection}{\numberline {3.2}SLAM定义}{2}{subsection.3.2}% 
+\contentsline {subsection}{\numberline {3.3}经典V-SLAM方法}{2}{subsection.3.3}% 
+\contentsline {subsubsection}{\numberline {3.3.1}稀疏法:ORB-SLAM2}{2}{subsubsection.3.3.1}% 
+\contentsline {subsubsection}{\numberline {3.3.2}多传感器融合:VINS-Mono}{3}{subsubsection.3.3.2}% 
+\contentsline {section}{参考文献}{5}{figure.2}% 

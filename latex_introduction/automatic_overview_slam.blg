@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2019/W32TeX)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: automatic_overview_slam.aux
+The style file: ieeetr.bst
+Database file #1: conference_101719.bib
+Warning--I didn't find a database entry for ""
+You've used 7 entries,
+            1876 wiz_defined-function locations,
+            522 strings with 4828 characters,
+and the built_in function-call counts, 2572 in all, are:
+= -- 257
+> -- 86
+< -- 0
++ -- 31
+- -- 24
+* -- 178
+:= -- 339
+add.period$ -- 7
+call.type$ -- 7
+change.case$ -- 7
+chr.to.int$ -- 0
+cite$ -- 7
+duplicate$ -- 137
+empty$ -- 241
+format.name$ -- 24
+if$ -- 647
+int.to.chr$ -- 0
+int.to.str$ -- 7
+missing$ -- 7
+newline$ -- 24
+num.names$ -- 7
+pop$ -- 25
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 113
+stack$ -- 0
+substring$ -- 224
+swap$ -- 69
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 22
+width$ -- 8
+write$ -- 73
+(There was 1 warning)

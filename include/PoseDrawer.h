@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-02-27 15:10:30
- * @LastEditTime: 2020-05-14 23:52:14
+ * @LastEditTime: 2020-05-25 22:59:54
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/include/PoseDrawer.h
@@ -45,7 +45,7 @@ public:
      * @param target_frame 要转换的目标tf的id 
      * @return: 在回调函数里
      */
-    void PoseListener(std::string pose_sub_id, std::string target_frame);
+    // void PoseListener(std::string pose_sub_id, std::string target_frame);
 
     /**
      * @description: 公有的pose坐标转换
@@ -84,7 +84,7 @@ private:
 
     
     message_filters::Subscriber<geometry_msgs::PoseStamped> pose_sub_;
-    tf::MessageFilter<geometry_msgs::PoseStamped> *tf_filter_;
+    // tf::MessageFilter<geometry_msgs::PoseStamped> *tf_filter_;
     ros::Publisher pose_publisher;
     
     /**
@@ -124,14 +124,14 @@ tf::StampedTransform AutonomusTransportIndustrialSystem::PoseDrawer::TfListener(
 }
 
 
-void AutonomusTransportIndustrialSystem::PoseDrawer::PoseListener(std::string pose_sub_id, std::string target_frame)
-{
-    target_frame_ = target_frame;
-    pose_sub_.subscribe(n_, pose_sub_id, 10);
-    // MessageFilter可以读取任何ros的信息并缓存起来知道可以被处理成目标帧
-    tf_filter_ = new tf::MessageFilter<geometry_msgs::PoseStamped>(pose_sub_, tf_, target_frame, 10);
-    tf_filter_->registerCallback(boost::bind(&PoseDrawer::poseCallback, this, _1));
-}
+// void AutonomusTransportIndustrialSystem::PoseDrawer::PoseListener(std::string pose_sub_id, std::string target_frame)
+// {
+//     target_frame_ = target_frame;
+//     pose_sub_.subscribe(n_, pose_sub_id, 10);
+//     // MessageFilter可以读取任何ros的信息并缓存起来知道可以被处理成目标帧
+//     tf_filter_ = new tf::MessageFilter<geometry_msgs::PoseStamped>(pose_sub_, tf_, target_frame, 10);
+//     tf_filter_->registerCallback(boost::bind(&PoseDrawer::poseCallback, this, _1));
+// }
 
 void AutonomusTransportIndustrialSystem::PoseDrawer::PoseBroadcaster(std::string pose_brocaster_id)
 {
@@ -194,7 +194,6 @@ geometry_msgs::PoseStamped AutonomusTransportIndustrialSystem::PoseDrawer::Trans
                                 pose_in.header.frame_id, ros::Duration(0.5) );
         // 在tf环境下进行坐标转换
         tf_.transformPose(target_frame, input_pose_tf, output_pose_tf);
-        ROS_INFO_STREAM(pose_out);
     }
     catch(tf::TransformException &ex)
     {
@@ -203,6 +202,7 @@ geometry_msgs::PoseStamped AutonomusTransportIndustrialSystem::PoseDrawer::Trans
 
     // 将tf转换成pose
     tf::poseStampedTFToMsg(output_pose_tf, pose_out);
+    ROS_INFO_STREAM(pose_out);
     return pose_out;
 }
 

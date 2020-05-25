@@ -1,7 +1,7 @@
 /*
  * @Author: lifuguan
  * @Date: 2019-11-27 16:24:05
- * @LastEditTime: 2020-05-21 21:57:40
+ * @LastEditTime: 2020-05-25 23:29:09
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/src/test.cpp
@@ -10,6 +10,7 @@
 #include "../include/utility.h"
 
 #include "../include/NetworkCom.h"
+#include "../include/PoseDrawer.h"
 
 int main(int argc, char **argv)
 {
@@ -17,7 +18,8 @@ int main(int argc, char **argv)
     ros::NodeHandle nh;
 
     AutonomusTransportIndustrialSystem::NetworkCom sevcom("106.13.162.250", 8003, nh);
-
+    AutonomusTransportIndustrialSystem::PoseDrawer pd(nh);
+    tf::StampedTransform location;
     ros::Rate rate(0.5);
     int i = 0;
 
@@ -28,7 +30,9 @@ int main(int argc, char **argv)
         {
             while (ros::ok())
             {
-                std::string json_str = sevcom.jsonGenerator(sevcom.current_pos, 0.0+0.01*i, 0.1, 0);
+                location = pd.TfListener("map", "base_link");
+                std::cout << "location : "<<location.getOrigin().getX()<<","<< location.getOrigin().getY()<<std::endl;
+                std::string json_str = sevcom.jsonGenerator(sevcom.current_pos, location.getOrigin().getX(), location.getOrigin().getY(), 0);
                 // ROS_INFO(json_str.c_str());
                 sevcom.sevComUpload(json_str);
                 i += 1;
@@ -43,7 +47,7 @@ int main(int argc, char **argv)
                 std::string str_recv = sevcom.sevComRecv();
                 // 解析并发送
                 sevcom.recvJsonGoalToPub(str_recv);
-                rate.sleep();
+
             }
         }
     }

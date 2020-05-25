@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-15 10:37:12
- * @LastEditTime: 2020-05-21 22:07:55
+ * @LastEditTime: 2020-05-25 22:29:44
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/include/NavigationGoal.h
@@ -18,7 +18,7 @@
 
 namespace AutonomusTransportIndustrialSystem
 {
-    class NavigationGoal
+    class NavigationGoal:public PoseDrawer
     {
     private:
         ros::NodeHandle nh_;
@@ -27,6 +27,8 @@ namespace AutonomusTransportIndustrialSystem
 
         ros::ServiceServer goalServer;
     public:
+        geometry_msgs::PoseStamped target_pose;
+
         NavigationGoal(ros::NodeHandle given_nh);
         ~NavigationGoal() = default;
         /**
@@ -58,24 +60,46 @@ namespace AutonomusTransportIndustrialSystem
         void pubNavigationGoal(geometry_msgs::PoseStamped stamp);
     };
     
-    NavigationGoal::NavigationGoal(ros::NodeHandle given_nh):nh_(given_nh)
+    NavigationGoal::NavigationGoal(ros::NodeHandle given_nh):nh_(given_nh),PoseDrawer(given_nh) 
     {
         goalServer = nh_.advertiseService("netComGoal", &NavigationGoal::goalServiceCallBack, this);
-        ros::spin();
     }
 
     bool NavigationGoal::goalServiceCallBack(autonomus_transport_industrial_system::netComGoal::Request &req, autonomus_transport_industrial_system::netComGoal::Response &res)
     {
-        ROS_INFO("x = %d, y = %d", req.g_x, req.g_y);
-        goal.target_pose.header.frame_id = "base_link";
-        goal.target_pose.header.stamp = ros::Time::now();
-        goal.target_pose.pose.position.x = req.g_x;
-        goal.target_pose.pose.position.y = req.g_y; 
-        goal.target_pose.pose.position.z = 0;
-        goal.target_pose.pose.orientation.x = 0;
-        goal.target_pose.pose.orientation.y = 0;
-        goal.target_pose.pose.orientation.z = 0;
-        goal.target_pose.pose.orientation.w = 1;
+        ROS_INFO("req.x = %f, req.y = %f", req.g_x, req.g_y);
+        target_pose.header.frame_id = "map";
+        target_pose.header.stamp = ros::Time::now();
+        target_pose.pose.position.x = req.g_x;
+        target_pose.pose.position.y = req.g_y; 
+        target_pose.pose.position.z = 0;
+        target_pose.pose.orientation.x = 0;
+        target_pose.pose.orientation.y = 0;
+        target_pose.pose.orientation.z = 0;
+        target_pose.pose.orientation.w = 1;
+
+        goal.target_pose = TransformPose("base_link", target_pose);
+        ROS_ERROR("taget pose:%d,%d",goal.target_pose.pose.position.x, goal.target_pose.pose.position.y);
+
+        tf::StampedTransform tolerence_tf =TfListener("map", "odom");
+        ROS_INFO("Passing loop.");
+        // 若tf对象不为空，则继续运算
+        if (tolerence_tf.frame_id_ != "ERROR")
+        {         
+            ROS_INFO("Passing tolerence_tf.");
+            // 若odom和map的欧拉距离小于阈值，则继续发布导航指令
+            if (hypot(tolerence_tf.getOrigin().getX(), tolerence_tf.getOrigin().getY()) < 5)
+            {
+                ROS_INFO("Passing hypot.");
+    
+                pubNavigationGoal(); //广播goal坐标到move_base中
+            }   
+            else
+            {
+                ROS_ERROR("map and odom frame have a massive error!");
+            }
+        }
+
 
         res.status = true;
         return true;

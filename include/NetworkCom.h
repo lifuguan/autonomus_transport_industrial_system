@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-02 16:24:16
- * @LastEditTime: 2020-05-25 21:54:30
+ * @LastEditTime: 2020-05-25 23:52:49
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/include/NetworkCom.h

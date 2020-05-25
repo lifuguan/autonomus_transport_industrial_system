@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{5670227}
 O.~{Wongwirat} and C.~{Chaiyarat}, ``A position tracking experiment of mobile
@@ -16,9 +16,18 @@ S.~{Ma}, Y.~{Zhang}, Y.~{Xu}, B.~{Wang}, J.~{Cheng}, and Q.~{Zhao}, ``Indoor
   International Conference on Software, Knowledge, Information Management
   Applications (SKIMA)}, pp.~429--432, 2016.
 
+\bibitem{1315094}
+D.~{Nister}, O.~{Naroditsky}, and J.~{Bergen}, ``Visual odometry,'' in {\em
+  Proceedings of the 2004 IEEE Computer Society Conference on Computer Vision
+  and Pattern Recognition, 2004. CVPR 2004.}, vol.~1, pp.~I--I, 2004.
+
+\bibitem{9787121311048}
+高翔, {\em 视觉SLAM十四讲}.
+\newblock 05 2020.
+
 \bibitem{murORB2}
-R.~Mur-Artal and J.~D. Tard\'os, ``{ORB-SLAM2}: an open-source {SLAM} system
-  for monocular, stereo and {RGB-D} cameras,'' {\em IEEE Transactions on
+Mur-Artal, Ra\'ul, Tard\'os, and J.~D., ``{ORB-SLAM2}: an open-source {SLAM}
+  system for monocular, stereo and {RGB-D} cameras,'' {\em IEEE Transactions on
   Robotics}, vol.~33, no.~5, pp.~1255--1262, 2017.
 
 \bibitem{8421746}
@@ -37,5 +46,47 @@ J.~{Jackson}, K.~{Brink}, B.~{Forsgren}, D.~{Wheeler}, and T.~{McLain},
   ``Direct relative edge optimization, a robust alternative for pose graph
   optimization,'' {\em IEEE Robotics and Automation Letters}, vol.~4, no.~2,
   pp.~1932--1939, 2019.
+
+\bibitem{ZHAOYang:889}
+Z.~Yang, L.~Guoliang, T.~Guohui, L.~Yong, W.~Ziren, Z.~Wei, and L.~Junwei, ``A
+  survey of visual slam based on deep learning,'' {\em ROBOT}, vol.~39, no.~6,
+  p.~889, 2017.
+
+\bibitem{9781921987243}
+Russo, Ludovico, Rosa, Stefano, Bona, Basilio, Matteucci, and Matteo, ``A ros
+  implementation of the mono-slam algorithm,'' vol.~4, pp.~339--351, 01 2014.
+
+\bibitem{10.1007/978-3-319-10605-2_54}
+J.~Engel, T.~Sch{\"o}ps, and D.~Cremers, ``Lsd-slam: Large-scale direct
+  monocular slam,'' in {\em Computer Vision -- ECCV 2014} (D.~Fleet, T.~Pajdla,
+  B.~Schiele, and T.~Tuytelaars, eds.), (Cham), pp.~834--849, Springer
+  International Publishing, 2014.
+
+\bibitem{murAcceptedTRO2015}
+Mur-Artal, Ra\'ul, Montiel, J.~M. M., Tard\'os, and J.~D., ``{ORB-SLAM}: a
+  versatile and accurate monocular {SLAM} system,'' {\em IEEE Transactions on
+  Robotics}, vol.~31, no.~5, pp.~1147--1163, 2015.
+
+\bibitem{6906584}
+C.~{Forster}, M.~{Pizzoli}, and D.~{Scaramuzza}, ``Svo: Fast semi-direct
+  monocular visual odometry,'' in {\em 2014 IEEE International Conference on
+  Robotics and Automation (ICRA)}, pp.~15--22, 2014.
+
+\bibitem{pire2015sptam}
+T.~Pire, T.~Fischer, J.~Civera, P.~De~Crist{\'o}foris, and J.~Jacobo~berlles,
+  ``{Stereo Parallel Tracking and Mapping for robot localization},'' in {\em
+  Proc. of the International Conference on Intelligent Robots and Systems
+  (IROS)}, pp.~1373--1378, September 2015.
+
+\bibitem{6594910}
+F.~{Endres}, J.~{Hess}, J.~{Sturm}, D.~{Cremers}, and W.~{Burgard}, ``3-d
+  mapping with an rgb-d camera,'' {\em IEEE Transactions on Robotics}, vol.~30,
+  no.~1, pp.~177--187, 2014.
+
+\bibitem{doi:10.1002/rob.21831}
+M.~Labbé and F.~Michaud, ``Rtab-map as an open-source lidar and visual
+  simultaneous localization and mapping library for large-scale and long-term
+  online operation,'' {\em Journal of Field Robotics}, vol.~36, no.~2,
+  pp.~416--446, 2019.
 
 \end{thebibliography}

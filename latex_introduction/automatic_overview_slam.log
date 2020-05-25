@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/W32TeX) (preloaded format=xelatex 2020.1.10)  24 MAY 2020 23:01
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/W32TeX) (preloaded format=xelatex 2020.1.10)  25 MAY 2020 14:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1502,13 +1502,12 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 LaTeX Font Info:    Try loading font information for U+rsfs on input line 3.
  (c:/texlive/2019/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
-))
+) [1
+
+])
 \tf@toc=\write5
 \openout5 = `automatic_overview_slam.toc'.
 
- [1
-
-]
 
 Package fontspec Info: Could not resolve font "KaiTi/BI" (it probably doesn't
 (fontspec)             exist).
@@ -1540,9 +1539,12 @@ We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
 [2] [1]
+File: figure/framework.png Graphic file (type bmp)
+<figure/framework.png>
+ [2]
 File: figure/orb.png Graphic file (type bmp)
 <figure/orb.png>
- [2]
+ [3]
 
 Package fontspec Info: Could not resolve font "FangSong/BI" (it probably
 (fontspec)             doesn't exist).
@@ -1566,35 +1568,39 @@ Package fontspec Info: Font family 'FangSong(0)' created for font 'FangSong'
 (fontspec)             <->"FangSong/OT:script=hani;language=DFLT;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
- [3]
+ [4]
 File: figure/vins2.png Graphic file (type bmp)
 <figure/vins2.png>
- (./automatic_overview_slam.bbl [4]) [5]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 294.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 294.
+
+Overfull \hbox (21.96921pt too wide) in paragraph at lines 323--334
+ [][] 
+ []
+
+[5]
+Underfull \hbox (badness 10000) in alignment at lines 352--352
+[][][][][] 
+ []
+
+(./automatic_overview_slam.bbl [6] [7]) [8]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 365.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 365.
  (./automatic_overview_slam.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 294.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 294.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 365.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 365.
+Package rerunfilecheck Info: File `automatic_overview_slam.out' has not changed.
+(rerunfilecheck)             Checksum: D13856725A73BE7D60184E43A445E18F.
 
-
-Package rerunfilecheck Warning: File `automatic_overview_slam.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `automatic_overview_slam.out':
-(rerunfilecheck)             Before: CE0A87AE75BC2796E8B8A6C3A4595A8F
-(rerunfilecheck)             After:  FF9C407BE78B02E2A7B8B01099AF64E1.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 43961 strings out of 492922
- 900039 string characters out of 6136751
- 1085044 words of memory out of 5000000
- 47254 multiletter control sequences out of 15000+600000
- 541107 words of font info for 106 fonts, out of 8000000 for 9000
+ 44032 strings out of 492922
+ 901928 string characters out of 6136751
+ 1088044 words of memory out of 5000000
+ 47306 multiletter control sequences out of 15000+600000
+ 545503 words of font info for 128 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  62i,16n,97p,921b,568s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on automatic_overview_slam.pdf (7 pages).
+Output written on automatic_overview_slam.pdf (10 pages).

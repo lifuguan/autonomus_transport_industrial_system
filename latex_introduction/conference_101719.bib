@@ -1,6 +1,6 @@
 @article{murORB2,
   title={{ORB-SLAM2}: an Open-Source {SLAM} System for Monocular, Stereo and {RGB-D} Cameras},
-  author={Mur-Artal, Ra\'ul and Tard\'os, Juan D.},
+  author={Mur-Artal and Ra\'ul and Tard\'os and Juan D.},
   journal={IEEE Transactions on Robotics},
   volume={33},
   number={5},
@@ -8,6 +8,17 @@
   doi = {10.1109/TRO.2017.2705103},
   year={2017}
  }
+ @article{murAcceptedTRO2015,
+  title={{ORB-SLAM}: a Versatile and Accurate Monocular {SLAM} System},
+  author={Mur-Artal and Ra\'ul and Montiel and J. M. M. and Tard\'os and Juan D.},
+  journal={IEEE Transactions on Robotics},
+  volume={31},
+  number={5},
+  pages={1147--1163},
+  doi = {10.1109/TRO.2015.2463671},
+  year={2015}
+ }
+
 
  @InProceedings{ sturm12iros,
 	author = {J. Sturm and N. Engelhard and F. Endres and W. Burgard and D. Cremers},
@@ -171,3 +182,114 @@ journal = {AAAI Workshop - Technical Report}
   number={2},
   pages={100-107},
 }
+
+@book{9787121311048,
+    title = {视觉SLAM十四讲},
+    author = {高翔},
+    year = {2020},
+    month = {05},
+    day = {24},
+    pagecount = {399},
+    isbn = {9787121311048}
+}
+
+@INPROCEEDINGS{1315094,
+  author={D. {Nister} and O. {Naroditsky} and J. {Bergen}},
+  booktitle={Proceedings of the 2004 IEEE Computer Society Conference on Computer Vision and Pattern Recognition, 2004. CVPR 2004.}, 
+  title={Visual odometry}, 
+  year={2004},
+  volume={1},
+  number={},
+  pages={I-I},
+}
+
+@article{ZHAOYang:889,
+  author = {ZHAO Yang and LIU Guoliang and TIAN Guohui and LUO Yong and WANG Ziren and ZHANG Wei and LI Junwei},
+  title = {A Survey of Visual SLAM Based on Deep Learning},
+  publisher = {ROBOT},
+  year = {2017},
+  journal = {ROBOT},
+  volume = {39},
+  number = {6},
+  eid = {889},
+  numpages = {7},
+  pages = {889},
+  keywords = {deep learning;visual SLAM (simultaneous localization and mapping);inter-frame motion estimation;visual odometry;loop closure detection;semantic SLAM},
+  url = {http://robot.sia.cn/EN/abstract/article_15957.shtml},
+  doi = {10.13973/j.cnki.robot.2017.0889}
+}    
+
+@inproceedings{pire2015sptam,
+          title={{Stereo Parallel Tracking and Mapping for robot localization}},
+          author={Pire, Taih{\'u} and Fischer, Thomas and Civera, Javier and De Crist{\'o}foris, Pablo and Jacobo berlles, Julio},
+          booktitle={Proc. of the International Conference on Intelligent Robots and Systems (IROS)},
+          pages = {1373--1378},
+          year={2015},
+          month = {September},
+          doi = {10.1109/IROS.2015.7353546}
+}
+
+@inproceedings{9781921987243,
+author = {Russo and Ludovico and Rosa and Stefano and Bona and Basilio and Matteucci and Matteo},
+year = {2014},
+month = {01},
+pages = {339-351},
+title = {A ROS Implementation of the Mono-Slam Algorithm},
+volume = {4},
+isbn = {9781921987243},
+journal = {Computer Science & Information Technology},
+doi = {10.5121/csit.2014.4131}
+}
+
+@InProceedings{10.1007/978-3-319-10605-2_54,
+author="Engel, Jakob
+and Sch{\"o}ps, Thomas
+and Cremers, Daniel",
+editor="Fleet, David
+and Pajdla, Tomas
+and Schiele, Bernt
+and Tuytelaars, Tinne",
+title="LSD-SLAM: Large-Scale Direct Monocular SLAM",
+booktitle="Computer Vision -- ECCV 2014",
+year="2014",
+publisher="Springer International Publishing",
+address="Cham",
+pages="834--849",
+abstract="We propose a direct (feature-less) monocular SLAM algorithm which, in contrast to current state-of-the-art regarding direct methods, allows to build large-scale, consistent maps of the environment. Along with highly accurate pose estimation based on direct image alignment, the 3D environment is reconstructed in real-time as pose-graph of keyframes with associated semi-dense depth maps. These are obtained by filtering over a large number of pixelwise small-baseline stereo comparisons. The explicitly scale-drift aware formulation allows the approach to operate on challenging sequences including large variations in scene scale. Major enablers are two key novelties: (1) a novel direct tracking method which operates on {\$}{\backslash}mathfrak{\{}sim{\}}(3){\$}, thereby explicitly detecting scale-drift, and (2) an elegant probabilistic solution to include the effect of noisy depth values into tracking. The resulting direct monocular SLAM system runs in real-time on a CPU.",
+isbn="978-3-319-10605-2"
+}
+
+@INPROCEEDINGS{6906584,
+  author={C. {Forster} and M. {Pizzoli} and D. {Scaramuzza}},
+  booktitle={2014 IEEE International Conference on Robotics and Automation (ICRA)}, 
+  title={SVO: Fast semi-direct monocular visual odometry}, 
+  year={2014},
+  volume={},
+  number={},
+  pages={15-22},
+  }
+
+@ARTICLE{6594910,
+  author={F. {Endres} and J. {Hess} and J. {Sturm} and D. {Cremers} and W. {Burgard}},
+  journal={IEEE Transactions on Robotics}, 
+  title={3-D Mapping With an RGB-D Camera}, 
+  year={2014},
+  volume={30},
+  number={1},
+  pages={177-187},
+  }
+
+@article{doi:10.1002/rob.21831,
+author = {Labbé, Mathieu and Michaud, François},
+title = {RTAB-Map as an open-source lidar and visual simultaneous localization and mapping library for large-scale and long-term online operation},
+journal = {Journal of Field Robotics},
+volume = {36},
+number = {2},
+pages = {416-446},
+keywords = {perception, position estimation, SLAM},
+doi = {10.1002/rob.21831},
+url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/rob.21831},
+eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1002/rob.21831},
+year = {2019}
+}
+

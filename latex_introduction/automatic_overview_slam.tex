@@ -226,6 +226,22 @@ numbers=none,
     p\left(x_{1: t}, m | z_{1: t}, u_{1: t-1}\right)
 \end{align}
 
+\subsection{V-SLAM的框架与分类}
+视觉SLAM由前端（视觉里程计）、后端（位姿优化）、回环检测、建图4个部分组成。
+\begin{itemize}
+        \item  视觉里程计 (Visual Odometry)：仅有视觉输入的姿态估计\cite{1315094}
+        \item 后端优化 (Optimization): 后端接受不同时刻视觉里程计测量的相机位姿，以及闭环检测的信息，对它们进行优化，得到全局一致的轨迹和地图\cite{9787121311048}
+        \item 闭环检测 (Loop Closing): 指机器人在地图构建过程中, 通过视觉等传感器信息检测是否发生了轨迹闭环, 即判断自身是否进入历史同一地点\cite{9787121311048}
+        \item  建图 (Mapping): 根据估计的轨迹，建立与任务要求对应的地图\cite{9787121311048}
+\end{itemize}
+流程如下图所示：
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{figure/framework.png}
+        \caption{VSLAM流程图\cite{9787121311048}}
+    \end{figure}
+    
 \subsection{经典V-SLAM方法}
 
 \subsubsection{稀疏法:ORB-SLAM2}
@@ -238,10 +254,10 @@ numbers=none,
 \end{enumerate}
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{figure/orb.png}
-    \caption{ORB-SLAM主要分为三个线程进行，也就是如图所示的，分别是Tracking、LocalMapping和LoopClosing}
-\end{figure}
+        \centering
+        \includegraphics[width=0.6\textwidth]{figure/orb.png}
+        \caption{ORB-SLAM主要分为三个线程进行，也就是如图所示的，分别是Tracking、LocalMapping和LoopClosing\cite{murORB2}}
+    \end{figure}
 
 \begin{enumerate}
         \item 跟踪（Tracking）\\ 这一部分主要工作是从图像中提取ORB特征，根据上一帧进行姿态估计，或者进行通过全局重定位初始化位姿，然后跟踪已经重建的局部地图，优化位姿，再根据一些规则确定新的关键帧。
@@ -285,6 +301,61 @@ numbers=none,
 
 \textbf{开源代码链接：}
 \url{https://github.com/HKUST-Aerial-Robotics/VINS-Mono}
+
+\subsubsection{blablabla}
+\begin{table}[H]
+        \centering
+        \begin{tabular}{l|ll}
+        \toprule
+        比较项目   &视觉里程计 & IMU里程计\\
+        \midrule[2pt]
+        更新频率 & 低    & 高\\
+        长时间稳定性 & 高   & 低\\
+        场景依赖度 & 高  &  低\\
+        重定位能力 &  高  & 低\\
+        CPU功耗 &  高 & 低\\
+        \bottomrule
+        \end{tabular}
+        \caption{视觉里程计和IMU的特性对比}
+\end{table}
+\begin{table}[H]
+        \centering
+        \begin{tabular}{l|ll}
+        \toprule
+        比较项目   &传统SLAM算法 & 基于深度视觉的SLAM算法\\
+        \midrule[2pt]
+        模型参数调整难易程度 & 数据少，调参周期短    & 数据多，调参周期长\\
+        魔性物理含义 & 直观意义明确   & 缺少直观意义\\
+        模型泛化能力 & 信息利用不充分，泛化能力弱  &  信息利用充分，泛化能力强\\
+        适应能力 &  迁移能力弱  & 迁移能力强\\
+        设计流程 &  特征设计与分类训练分离 & 同步完成特征设计和分类器训练\\
+        \bottomrule
+        \end{tabular}
+        \caption{传统 SLAM 算法与基于深度学习的 SLAM 算法对比\cite{ZHAOYang:889}}
+\end{table}
+
+\begin{table}[H]
+        \centering
+        {\footnotesize\centerline{\tabcolsep=18pt\begin{tabular*}{\textwidth}{ccccc}
+                \toprule
+                相关文献            &方法         & 所用传感器 & 算法名称 & 发表年份  \\
+                \midrule[2pt]
+                \cite{9781921987243}       &稀疏法(特征点)&       单目SLAM     &       MonoSLAM       &    2014   \\
+                \cite{10.1007/978-3-319-10605-2_54}     &半稠密法     &       单目SLAM     &       LSD-SLAM       & 2014\\
+                \cite{murAcceptedTRO2015}&稀疏法(特征点)&       单目SLAM     &       ORB-SLAM       &   2015  \\
+                \cite{6906584}            &半稠密法     &       单目SLAM     &       SVO        &      2014  \\
+                \cite{murORB2}     &稀疏法(特征点)&       双目SLAM     &       ORB-SLAM2      &       2017  \\
+                \cite{pire2015sptam}&稀疏法(特征点)&       双目SLAM     &       S-PTAM       &     2015\\
+                \cite{6594910}      &稠密法       &       RGBD-SLAM     &       RGBD-SLAMv2       &   2014 \\
+                \cite{doi:10.1002/rob.21831}      &稠密法       &       RGBD-SLAM     &       RTAB-SLAM       &   2019 \\
+                \bottomrule
+                \end{tabular*}}}
+        \caption{传统 SLAM 算法的总结}
+\end{table}
+
+
+\subsection{基于深度学习的V-SLAM方法}
+
 
 
 %===参考文献===

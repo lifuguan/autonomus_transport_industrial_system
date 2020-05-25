@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-02 16:24:16
- * @LastEditTime: 2020-05-21 22:05:57
+ * @LastEditTime: 2020-05-25 21:54:30
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/include/NetworkCom.h
@@ -137,7 +137,6 @@ namespace AutonomusTransportIndustrialSystem
         std::cout << "Waiting to receive..." << std::endl;
 		len=recv(client_sockfd, buf_recv, BUFSIZ, 0);
 		buf_recv[len]='/0';
-		std::cout << "buf_recv: " << buf_recv << std::endl;
         return buf_recv;
     }
     std::string NetworkCom::jsonGenerator(int code, double p_x, double p_y, double p_w)
@@ -159,8 +158,9 @@ namespace AutonomusTransportIndustrialSystem
         reader.parse(str, root);
         if (root["type"] == NetworkCom::goal_pos)
         {
-            goal.request.g_x = root["goal"]["p_x"].asDouble();
-            goal.request.g_y = root["goal"]["p_y"].asDouble();
+            goal.request.g_x = root["data"]["x"].asDouble();
+            goal.request.g_y = root["data"]["y"].asDouble();
+            std::cout <<"x:" << goal.request.g_x << ", y:" << goal.request.g_y << std::endl;
             // 尝试建立通信并上传信息
             if (goal_client.call(goal))
             {

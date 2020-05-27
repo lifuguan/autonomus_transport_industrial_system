@@ -242,34 +242,98 @@ numbers=none,
         \caption{VSLAM流程图\cite{9787121311048}}
     \end{figure}
     
-\subsection{经典V-SLAM方法}
+\subsection{基于单个视觉传感器的V-SLAM方法}
+视觉SLAM算法可根据利用图像信息的不同分为特征法（稀疏法）和直接法（半稠密法、稠密法）。
+\subsubsection{特征法}
+早期的单目视觉SLAM的实现是借助于滤波器而实现的\cite{9781921987243,0000001}。MonoSLAM\cite{9781921987243}是第一个实时的单目视觉SLAM系统。
+MonoSLAM利用扩展卡尔曼滤波（extended Kalman filter, EKF）来实现同时定位和地图创建。但也正由于EKF的引入，
+导致SLAM算法会有计算复杂度的上升以及线性化带来的不确定问题。该方法的缺点是：场景窄、路标数有限、稀疏特征点易丢失等。
+\begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\textwidth]{figure/monoslam.png}
+        \caption{MonoSLAM效果图}
+\end{figure}
 
-\subsubsection{稀疏法:ORB-SLAM2}
-该算法\cite{murORB2}是基于特征点的实时单目SLAM系统，在大规模的、小规模的、室内室外的环境都可以运行。它主要有以下贡献：
-\begin{enumerate}[1)]
-        \item 这是首个基于单目，双目和RGB-D相机的开源SLAM方案，这个方案包括，回环检测，地图重用和重定位。
-        \item 结果说明，BA优化比ICP或者光度和深度误差最小方法的更加精确。
-        \item 通过匹配远处和近处的双目匹配的点和单目观测，双目的结果比直接使用双目系统更加精确。
-        \item 针对无法建图的情况，提出了一个轻量级的定位模式 ，能够更加有效的重用地图。
-\end{enumerate}
+随后，基于关键帧的单目视觉SLAM发展起来。PTAM（parallel tracking and mapping\cite{0000002}是其中最具代表性的一个，
+其首次提出了关键帧（keyframe）的概念，在保持准确度的同时，不用精细地处理每一帧，显著提高了SLAM的实时性。
+同时，PTAM首次实现了跟踪和建图的并行化，区分出前后端（跟踪需要实时响应图像数据，地图优化放在后端进行），为后续的SLAM方法奠定了基本模型。
+\begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\textwidth]{figure/ptam.png}
+        \caption{PTAM效果图}
+\end{figure}
+
+
+ORB-SLAM2算法\cite{murAcceptedTRO2015,murORB2}是首个基于单目，双目和RGB-D相机的开源SLAM方案，在大规模的、小规模的、室内室外的环境都可以运行。
+其利用ORB而非SURF\cite{SURF}或者SIFT\cite{sift}特征进行运算，因此可以提高效率。同时，ORB-SLAM2又创新性地使用三个线程
+完成V-SLAM（将整个流程分成定位、创建地图、闭环三个部分），得益于AMD推动了多核心CPU的发展\cite{wiki:Multi-core_processor,core_0001,core_0002}，
+ORB-SLAM2的三线程可以更好地发挥CPU的性能从而提高V-SLAM的实时性。
+
 
 \begin{figure}[H]
         \centering
-        \includegraphics[width=0.6\textwidth]{figure/orb.png}
+        \includegraphics[width=0.5\textwidth]{figure/orb.png}
         \caption{ORB-SLAM主要分为三个线程进行，也就是如图所示的，分别是Tracking、LocalMapping和LoopClosing\cite{murORB2}}
-    \end{figure}
+\end{figure}
+\subsubsection{直接法（稠密、半稠密）}
+SVO（semi-direct monocular visual odometry）算法\cite{6906584}主要面向无人机航拍场合，它将特征点法与直接法结合，
+跟踪关键点，不计算描述子，根据关键点周围的小图像块的信息估计相机的运动。主要分运动估计线程和地图构建线程两个线程。
+综上所述，由于SVO的目标是无人机平台，所以其没有闭环、没有重定位、也没有建图功能，但这也使得它的实时性非常强（可以达到100FPS）。
 
-\begin{enumerate}
-        \item 跟踪（Tracking）\\ 这一部分主要工作是从图像中提取ORB特征，根据上一帧进行姿态估计，或者进行通过全局重定位初始化位姿，然后跟踪已经重建的局部地图，优化位姿，再根据一些规则确定新的关键帧。
-        \item 建图（LocalMapping）\\ 这一部分主要完成局部地图构建。包括对关键帧的插入，验证最近生成的地图点并进行筛选，然后生成新的地图点，使用局部捆集调整（Local BA），最后再对插入的关键帧进行筛选，去除多余的关键帧。
-        \begin{align}
-                \{\mathbf{R}, \mathbf{t}\}=\underset{\mathbf{R}, \mathbf{t}}{\operatorname{argmin}} \sum_{i \in \mathcal{X}} \rho\left(\left\|\mathbf{x}_{(\cdot)}^{i}-\pi_{(\cdot)}\left(\mathbf{R} \mathbf{X}^{i}+\mathbf{t}\right)\right\|_{\Sigma}^{2}\right)
-        \end{align}
-        \item 闭环检测（LoopClosing）\\ 这一部分主要分为两个过程，分别是闭环探测和闭环校正。闭环检测先使用WOB进行探测，然后通过Sim3算法计算相似变换。闭环校正，主要是闭环融合和Essential Graph的图优化。
-\end{enumerate}
+RGBD（RGB-depth map）能够同时获得图像信息和深度信息，这大大地简化了三维重建和SLAM的过程。
+随着微软公司Kinect深度相机的普及化，越来越多厂商（Intel，ZED，ASUS）也开始研制低成本、高精度的深度摄像头
+这导致深度摄像头的价格开始直线下降，于是越来越多的SLAM算法开始利用深度摄像头进行研究。
 
-\textbf{开源代码链接：}
-\url{https://github.com/raulmur/ORB_SLAM2}
+RTAB-MAP开源库\cite{doi:10.1002/rob.21831}在2013年建立，直至2019年已经发展成一个跨平台的独立C++库和一个ROS包
+，这说明了RTAB-MAP本质上更偏向工程应用。其通过内存管理方法来实现回环检测，同时限制了地图的大小以保证建图的实时性。
+同时，通过图\ref{octo}我们可以看到RTAB-MAP开放了接口允许其他里程计数据（包括第三方视觉里程计）的接入，同时也可以选择输出：OctoMap（3D栅格地图）\cite{octomap}；稠密点云地图\cite{pointcloud}；
+2D栅格地图\cite{6942636}，对第三方VSLAM的算法评判提供了量化评判基础。
+\begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\textwidth]{figure/rtab.png}
+        \caption{RTAB-Map框架}
+        \label{octo}
+\end{figure}
+\subsubsection{经典VSLAM方法总结}
+由于篇幅所限，我们无法一一列举所有VSLAM经典方法。于是我们对大部分的知名VSLAM算法概要汇总整理至表\ref{overview}。
+\begin{table}[H]
+        \centering
+        {\footnotesize\centerline{\tabcolsep=18pt\begin{tabular*}{\textwidth}{ccccc}
+                \toprule
+                相关文献            &方法         & 所用传感器 & 算法名称 & 发表年份  \\
+                \midrule[2pt]
+                \cite{9781921987243}       &稀疏法(特征点)&       单目SLAM     &       MonoSLAM       &    2007   \\
+                \cite{0000002}             &稀疏法(特征点)&       单目SLAM     &       PTAM       &    2007   \\
+                \cite{10.1007/978-3-319-10605-2_54}     &半稠密法     &       单目SLAM     &       LSD-SLAM       & 2014\\
+                \cite{murAcceptedTRO2015}&稀疏法(特征点)&       单目SLAM     &       ORB-SLAM       &   2015  \\
+                \cite{6906584}            &半稠密法     &       单目SLAM     &       SVO        &      2014  \\
+                \cite{murORB2}     &稀疏法(特征点)&       双目SLAM     &       ORB-SLAM2      &       2017  \\
+                \cite{pire2015sptam}&稀疏法(特征点)&       双目SLAM     &       S-PTAM       &     2015\\
+                \cite{6594910}      &稠密法       &       RGBD-SLAM     &       RGBD-SLAMv2       &   2014 \\
+                \cite{doi:10.1002/rob.21831}      &稠密法       &       RGBD-SLAM     &       RTAB-SLAM       &   2019 \\
+                \bottomrule
+                \end{tabular*}}}
+        \caption{传统 SLAM 算法的总结}
+        \label{overview}
+\end{table}
+
+\subsection{多传感器融合的V-SLAM方法}
+
+\begin{table}[H]
+        \centering
+        \begin{tabular}{l|ll}
+        \toprule
+        比较项目   &视觉里程计 & IMU里程计\\
+        \midrule[2pt]
+        更新频率 & 低    & 高\\
+        长时间稳定性 & 高   & 低\\
+        场景依赖度 & 高  &  低\\
+        重定位能力 &  高  & 低\\
+        CPU功耗 &  高 & 低\\
+        \bottomrule
+        \end{tabular}
+        \caption{视觉里程计和IMU的特性对比}
+\end{table}
 
 \subsubsection{多传感器融合:VINS-Mono}
 该算法\cite{8421746}是一种鲁棒且通用的单目视觉惯性状态估计器。采用一种基于紧耦合、非线性优化的方法，通过融合预积分后的IMU测量值和特征观测值，获得高精度的视觉惯性里程计。结合紧耦合方法，回环检测模块能够以最小的计算代价实现重定位。
@@ -302,22 +366,12 @@ numbers=none,
 \textbf{开源代码链接：}
 \url{https://github.com/HKUST-Aerial-Robotics/VINS-Mono}
 
-\subsubsection{blablabla}
-\begin{table}[H]
-        \centering
-        \begin{tabular}{l|ll}
-        \toprule
-        比较项目   &视觉里程计 & IMU里程计\\
-        \midrule[2pt]
-        更新频率 & 低    & 高\\
-        长时间稳定性 & 高   & 低\\
-        场景依赖度 & 高  &  低\\
-        重定位能力 &  高  & 低\\
-        CPU功耗 &  高 & 低\\
-        \bottomrule
-        \end{tabular}
-        \caption{视觉里程计和IMU的特性对比}
-\end{table}
+
+
+
+
+\subsection{基于深度学习的V-SLAM方法}
+
 \begin{table}[H]
         \centering
         \begin{tabular}{l|ll}
@@ -333,29 +387,6 @@ numbers=none,
         \end{tabular}
         \caption{传统 SLAM 算法与基于深度学习的 SLAM 算法对比\cite{ZHAOYang:889}}
 \end{table}
-
-\begin{table}[H]
-        \centering
-        {\footnotesize\centerline{\tabcolsep=18pt\begin{tabular*}{\textwidth}{ccccc}
-                \toprule
-                相关文献            &方法         & 所用传感器 & 算法名称 & 发表年份  \\
-                \midrule[2pt]
-                \cite{9781921987243}       &稀疏法(特征点)&       单目SLAM     &       MonoSLAM       &    2014   \\
-                \cite{10.1007/978-3-319-10605-2_54}     &半稠密法     &       单目SLAM     &       LSD-SLAM       & 2014\\
-                \cite{murAcceptedTRO2015}&稀疏法(特征点)&       单目SLAM     &       ORB-SLAM       &   2015  \\
-                \cite{6906584}            &半稠密法     &       单目SLAM     &       SVO        &      2014  \\
-                \cite{murORB2}     &稀疏法(特征点)&       双目SLAM     &       ORB-SLAM2      &       2017  \\
-                \cite{pire2015sptam}&稀疏法(特征点)&       双目SLAM     &       S-PTAM       &     2015\\
-                \cite{6594910}      &稠密法       &       RGBD-SLAM     &       RGBD-SLAMv2       &   2014 \\
-                \cite{doi:10.1002/rob.21831}      &稠密法       &       RGBD-SLAM     &       RTAB-SLAM       &   2019 \\
-                \bottomrule
-                \end{tabular*}}}
-        \caption{传统 SLAM 算法的总结}
-\end{table}
-
-
-\subsection{基于深度学习的V-SLAM方法}
-
 
 
 %===参考文献===

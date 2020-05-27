@@ -25,10 +25,96 @@ D.~{Nister}, O.~{Naroditsky}, and J.~{Bergen}, ``Visual odometry,'' in {\em
 高翔, {\em 视觉SLAM十四讲}.
 \newblock 05 2020.
 
+\bibitem{9781921987243}
+Russo, Ludovico, Rosa, Stefano, Bona, Basilio, Matteucci, and Matteo, ``A ros
+  implementation of the mono-slam algorithm,'' vol.~4, pp.~339--351, 01 2014.
+
+\bibitem{0000001}
+A.~J. Davison, ``Slam with a single camera,'' {\em SLAM/CML Workshop at ICRA
+  2002}, 2002.
+
+\bibitem{0000002}
+Klein, Georg, and D.~Murray, ``Parallel tracking and mapping for small ar
+  workspaces.,'' {\em Mixed and Augmented Reality}, 2007.
+
+\bibitem{murAcceptedTRO2015}
+Mur-Artal, Ra\'ul, Montiel, J.~M. M., Tard\'os, and J.~D., ``{ORB-SLAM}: a
+  versatile and accurate monocular {SLAM} system,'' {\em IEEE Transactions on
+  Robotics}, vol.~31, no.~5, pp.~1147--1163, 2015.
+
 \bibitem{murORB2}
 Mur-Artal, Ra\'ul, Tard\'os, and J.~D., ``{ORB-SLAM2}: an open-source {SLAM}
   system for monocular, stereo and {RGB-D} cameras,'' {\em IEEE Transactions on
   Robotics}, vol.~33, no.~5, pp.~1255--1262, 2017.
+
+\bibitem{SURF}
+H.~Bay, A.~Ess, T.~Tuytelaars, and L.~V. Gool], ``Speeded-up robust features
+  (surf),'' {\em Computer Vision and Image Understanding}, vol.~110, no.~3,
+  pp.~346 -- 359, 2008.
+\newblock Similarity Matching in Computer Vision and Multimedia.
+
+\bibitem{sift}
+Lowe and D.G., ``Distinctive image features from scale-invariant keypoints,''
+  {\em International Journal of Computer Vision}, 2004.
+
+\bibitem{wiki:Multi-core_processor}
+Wikipedia, ``{Multi-core processor} --- {W}ikipedia{,} the free encyclopedia.''
+  \url{http://en.wikipedia.org/w/index.php?title=Multi-core\%20processor&oldid=958877109},
+  2020.
+\newblock [Online; accessed 26-May-2020].
+
+\bibitem{core_0001}
+K.~Hasan, J.~Antonio, and S.~Radhakrishnan, ``A new composite cpu/memory model
+  for predicting efficiency of multi-core processing,'' 02 2014.
+
+\bibitem{core_0002}
+B.~Schauer, ``Multicore processors - a necessity,'' {\em ProQuest Discovery
+  Guides}, 01 2008.
+
+\bibitem{6906584}
+C.~{Forster}, M.~{Pizzoli}, and D.~{Scaramuzza}, ``Svo: Fast semi-direct
+  monocular visual odometry,'' in {\em 2014 IEEE International Conference on
+  Robotics and Automation (ICRA)}, pp.~15--22, 2014.
+
+\bibitem{doi:10.1002/rob.21831}
+M.~Labbé and F.~Michaud, ``Rtab-map as an open-source lidar and visual
+  simultaneous localization and mapping library for large-scale and long-term
+  online operation,'' {\em Journal of Field Robotics}, vol.~36, no.~2,
+  pp.~416--446, 2019.
+
+\bibitem{octomap}
+A.~Hornung, K.~M. Wurm, M.~Bennewitz, C.~Stachniss, and W.~Burgard,
+  ``{OctoMap}: An efficient probabilistic {3D} mapping framework based on
+  octrees,'' {\em Autonomous Robots}, 2013.
+\newblock Software available at \url{http://octomap.github.com}.
+
+\bibitem{pointcloud}
+Wikipedia, ``{Plagiarism} --- {W}ikipedia{,} the free encyclopedia.''
+  \url{http://en.wikipedia.org/w/index.php?title=Plagiarism&oldid=957645059},
+  2020.
+\newblock [Online; accessed 27-May-2020].
+
+\bibitem{6942636}
+D.~V. {Lu}, D.~{Hershberger}, and W.~D. {Smart}, ``Layered costmaps for
+  context-sensitive navigation,'' in {\em 2014 IEEE/RSJ International
+  Conference on Intelligent Robots and Systems}, pp.~709--715, 2014.
+
+\bibitem{10.1007/978-3-319-10605-2_54}
+J.~Engel, T.~Sch{\"o}ps, and D.~Cremers, ``Lsd-slam: Large-scale direct
+  monocular slam,'' in {\em Computer Vision -- ECCV 2014} (D.~Fleet, T.~Pajdla,
+  B.~Schiele, and T.~Tuytelaars, eds.), (Cham), pp.~834--849, Springer
+  International Publishing, 2014.
+
+\bibitem{pire2015sptam}
+T.~Pire, T.~Fischer, J.~Civera, P.~De~Crist{\'o}foris, and J.~Jacobo~berlles,
+  ``{Stereo Parallel Tracking and Mapping for robot localization},'' in {\em
+  Proc. of the International Conference on Intelligent Robots and Systems
+  (IROS)}, pp.~1373--1378, September 2015.
+
+\bibitem{6594910}
+F.~{Endres}, J.~{Hess}, J.~{Sturm}, D.~{Cremers}, and W.~{Burgard}, ``3-d
+  mapping with an rgb-d camera,'' {\em IEEE Transactions on Robotics}, vol.~30,
+  no.~1, pp.~177--187, 2014.
 
 \bibitem{8421746}
 T.~{Qin}, P.~{Li}, and S.~{Shen}, ``Vins-mono: A robust and versatile monocular
@@ -51,42 +137,5 @@ J.~{Jackson}, K.~{Brink}, B.~{Forsgren}, D.~{Wheeler}, and T.~{McLain},
 Z.~Yang, L.~Guoliang, T.~Guohui, L.~Yong, W.~Ziren, Z.~Wei, and L.~Junwei, ``A
   survey of visual slam based on deep learning,'' {\em ROBOT}, vol.~39, no.~6,
   p.~889, 2017.
-
-\bibitem{9781921987243}
-Russo, Ludovico, Rosa, Stefano, Bona, Basilio, Matteucci, and Matteo, ``A ros
-  implementation of the mono-slam algorithm,'' vol.~4, pp.~339--351, 01 2014.
-
-\bibitem{10.1007/978-3-319-10605-2_54}
-J.~Engel, T.~Sch{\"o}ps, and D.~Cremers, ``Lsd-slam: Large-scale direct
-  monocular slam,'' in {\em Computer Vision -- ECCV 2014} (D.~Fleet, T.~Pajdla,
-  B.~Schiele, and T.~Tuytelaars, eds.), (Cham), pp.~834--849, Springer
-  International Publishing, 2014.
-
-\bibitem{murAcceptedTRO2015}
-Mur-Artal, Ra\'ul, Montiel, J.~M. M., Tard\'os, and J.~D., ``{ORB-SLAM}: a
-  versatile and accurate monocular {SLAM} system,'' {\em IEEE Transactions on
-  Robotics}, vol.~31, no.~5, pp.~1147--1163, 2015.
-
-\bibitem{6906584}
-C.~{Forster}, M.~{Pizzoli}, and D.~{Scaramuzza}, ``Svo: Fast semi-direct
-  monocular visual odometry,'' in {\em 2014 IEEE International Conference on
-  Robotics and Automation (ICRA)}, pp.~15--22, 2014.
-
-\bibitem{pire2015sptam}
-T.~Pire, T.~Fischer, J.~Civera, P.~De~Crist{\'o}foris, and J.~Jacobo~berlles,
-  ``{Stereo Parallel Tracking and Mapping for robot localization},'' in {\em
-  Proc. of the International Conference on Intelligent Robots and Systems
-  (IROS)}, pp.~1373--1378, September 2015.
-
-\bibitem{6594910}
-F.~{Endres}, J.~{Hess}, J.~{Sturm}, D.~{Cremers}, and W.~{Burgard}, ``3-d
-  mapping with an rgb-d camera,'' {\em IEEE Transactions on Robotics}, vol.~30,
-  no.~1, pp.~177--187, 2014.
-
-\bibitem{doi:10.1002/rob.21831}
-M.~Labbé and F.~Michaud, ``Rtab-map as an open-source lidar and visual
-  simultaneous localization and mapping library for large-scale and long-term
-  online operation,'' {\em Journal of Field Robotics}, vol.~36, no.~2,
-  pp.~416--446, 2019.
 
 \end{thebibliography}

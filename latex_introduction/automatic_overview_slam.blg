@@ -5,45 +5,46 @@ The style file: ieeetr.bst
 Database file #1: conference_101719.bib
 Warning--empty publisher in 9787121311048
 Warning--empty booktitle in 9781921987243
-You've used 17 entries,
+Warning--empty booktitle in core_0001
+You've used 27 entries,
             1876 wiz_defined-function locations,
-            585 strings with 6709 characters,
-and the built_in function-call counts, 6012 in all, are:
-= -- 572
-> -- 254
+            636 strings with 8316 characters,
+and the built_in function-call counts, 7978 in all, are:
+= -- 748
+> -- 342
 < -- 0
-+ -- 90
-- -- 73
-* -- 446
-:= -- 817
-add.period$ -- 18
-call.type$ -- 17
-change.case$ -- 16
++ -- 124
+- -- 97
+* -- 574
+:= -- 1113
+add.period$ -- 32
+call.type$ -- 27
+change.case$ -- 26
 chr.to.int$ -- 0
-cite$ -- 19
-duplicate$ -- 312
-empty$ -- 552
-format.name$ -- 73
-if$ -- 1486
+cite$ -- 30
+duplicate$ -- 416
+empty$ -- 763
+format.name$ -- 97
+if$ -- 1963
 int.to.chr$ -- 0
-int.to.str$ -- 17
-missing$ -- 18
-newline$ -- 55
-num.names$ -- 19
-pop$ -- 69
+int.to.str$ -- 27
+missing$ -- 26
+newline$ -- 89
+num.names$ -- 29
+pop$ -- 115
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 237
+skip$ -- 283
 stack$ -- 0
-substring$ -- 458
-swap$ -- 146
+substring$ -- 522
+swap$ -- 171
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 2
-while$ -- 53
-width$ -- 19
-write$ -- 173
-(There were 2 warnings)
+warning$ -- 3
+while$ -- 67
+width$ -- 29
+write$ -- 264
+(There were 3 warnings)

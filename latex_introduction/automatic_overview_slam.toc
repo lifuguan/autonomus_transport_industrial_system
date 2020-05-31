@@ -3,10 +3,10 @@
 \contentsline {subsection}{\numberline {2.1}学习的总结}{1}{subsection.2.1}% 
 \contentsline {subsection}{\numberline {2.2}学习的体会}{1}{subsection.2.2}% 
 \contentsline {subsection}{\numberline {2.3}学习的感受}{1}{subsection.2.3}% 
-\contentsline {section}{\numberline {第3章}相关专业方向：同步定位与地图构建(SLAM)}{1}{section.3}% 
+\contentsline {section}{\numberline {第3章}视觉VSLAM综述}{1}{section.3}% 
 \contentsline {subsection}{\numberline {3.1}AGV的导航（Navigation）}{1}{subsection.3.1}% 
 \contentsline {subsection}{\numberline {3.2}SLAM定义}{2}{subsection.3.2}% 
-\contentsline {subsection}{\numberline {3.3}V-SLAM的框架与分类}{2}{subsection.3.3}% 
+\contentsline {subsection}{\numberline {3.3}V-SLAM的框架}{2}{subsection.3.3}% 
 \contentsline {subsection}{\numberline {3.4}基于单个视觉传感器的V-SLAM方法}{3}{subsection.3.4}% 
 \contentsline {subsubsection}{\numberline {3.4.1}特征法}{3}{subsubsection.3.4.1}% 
 \contentsline {subsubsection}{\numberline {3.4.2}直接法（稠密、半稠密）}{4}{subsubsection.3.4.2}% 

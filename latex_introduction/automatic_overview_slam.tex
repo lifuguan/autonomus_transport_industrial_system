@@ -206,7 +206,7 @@ numbers=none,
 与其说选择专业，我觉得更应该选择研究方向后再决定专业，因为每个专业的研究方向都有很大的重叠部分。
 
 %===第三章===
-\section{相关专业方向：同步定位与地图构建(SLAM)}
+\section{视觉VSLAM综述}
 \subsection{AGV的导航（Navigation）}
 导航技术是AGV技术的研究核心，没有导航功能的AGV系统是很难想象的。举个例子，如果AGV系统想要在工厂等工作场所运输货物，
 它必须要在不触碰到任何障碍物的情况下运动到不同的地点。
@@ -226,7 +226,7 @@ numbers=none,
     p\left(x_{1: t}, m | z_{1: t}, u_{1: t-1}\right)
 \end{align}
 
-\subsection{V-SLAM的框架与分类}
+\subsection{V-SLAM的框架}
 视觉SLAM由前端（视觉里程计）、后端（位姿优化）、回环检测、建图4个部分组成。
 \begin{itemize}
         \item  视觉里程计 (Visual Odometry)：仅有视觉输入的姿态估计\cite{1315094}
@@ -318,7 +318,14 @@ RTAB-MAP开源库\cite{doi:10.1002/rob.21831}在2013年建立，直至2019年已
 \end{table}
 
 \subsection{多传感器融合的V-SLAM方法}
-
+传统的V-SLAM方法的重大挑战是要同时实现高帧率和低延迟跟踪，这需要极大的计算成本（也意味着计算和耗电量的不足）。
+同时，如果相机帧率过高，那么曝光时间就越短，入射光线越少。于是，一个更好的工程方法被提出来：利用高速IMU来取代
+V-SLAM中VIO流程中的“I”，下表很好地总结了VSLAM和IMU如何相互补充。
+\begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\textwidth]{figure/imu.png}
+        \caption{集成了IMU模块的深度摄像头}
+\end{figure}
 \begin{table}[H]
         \centering
         \begin{tabular}{l|ll}
@@ -339,39 +346,20 @@ RTAB-MAP开源库\cite{doi:10.1002/rob.21831}在2013年建立，直至2019年已
 该算法\cite{8421746}是一种鲁棒且通用的单目视觉惯性状态估计器。采用一种基于紧耦合、非线性优化的方法，通过融合预积分后的IMU测量值和特征观测值，获得高精度的视觉惯性里程计。结合紧耦合方法，回环检测模块能够以最小的计算代价实现重定位。
 处理视觉和惯性测量的最简单的方法是松耦合的传感器融合\cite{8576618,8630025}，其中IMU被视为一个独立的模块，用于辅助运动的视觉结构(sfm)获得的纯视觉位姿估计。融合通常由扩展卡尔曼滤波(EKF)完成，其中IMU用于状态传播，而视觉位姿用于更新。
   
-\textbf{IMU预积分（pre-integration）}
-
-在实践中，IMU通常以比摄像机更高的速率获取数据。不同的方法被提出来处理高速率的IMU测量值。最简单的方法是在基于EKF的方法中使用IMU进行状态传播[11][13]。在图优化公式中，为了避免重复的IMU重复积分，提出了一种有效的方法，即IMU预积分(IMU pre-integration)。
-通过一系列计算，得到下面的预积分估计值：
-\begin{align} 
-\hat{\boldsymbol{\alpha }}^{b_k}_{i+1} &= \hat{\boldsymbol{\alpha }}^{b_k}_i + \hat{\boldsymbol{\beta }}^{b_k}_i\delta t + \frac{1}{2} \mathbf {R}(\hat{\boldsymbol{\gamma }}^{b_k}_i)(\hat{\mathbf {a}}_i - \mathbf {b}_{a_i}) \delta t^2 \nonumber\\ \hat{\boldsymbol{\beta }}^{b_k}_{i+1} &= \hat{\boldsymbol{\beta }}^{b_k}_{i} + \mathbf {R}(\hat{\boldsymbol{\gamma }}^{b_k}_i)(\hat{\mathbf {a}}_i - \mathbf {b}_{a_i})\delta t\nonumber\\ \hat{\boldsymbol{\gamma }}^{b_k}_{i+1} &= \hat{\boldsymbol{\gamma }}^{b_k}_i \otimes {\left[\begin{array}{c}1\\ \frac{1}{2} (\hat{\boldsymbol{\omega }}_i- \mathbf {b}_{w_i})\delta t \end{array}\right]}
-\end{align}
-通过计算可以写下IMU测量模型所其对应的协方差${\mathbf {P}^{b_k}_{b_{k+1}}}$：
-\begin{equation} 
-{\left[\begin{array}{c}\hat{\boldsymbol{\alpha }}^{b_k}_{b_{k+1}}\\ \hat{\boldsymbol{\beta }}^{b_k}_{b_{k+1}}\\ \hat{\boldsymbol{\gamma }}^{b_k}_{b_{k+1}}\\ \mathbf {0}\\ \mathbf {0}\\ \end{array}\right]} = {\left[\begin{array}{c}\mathbf {R}^{b_k}_{w}(\mathbf {p}^{w}_{b_{k+1}} - \mathbf {p}^{w}_{b_k} + \frac{1}{2}\mathbf {g}^{w} \Delta t_k^2 - \mathbf {v}^{w}_{b_k} \Delta t_k) \\ \mathbf {R}^{b_k}_{w}(\mathbf {v}^{w}_{b_{k+1}} + \mathbf {g}^{w} \Delta t_k- \mathbf {v}^{w}_{b_k}) \\ \mathbf {q}^{w^{-1}}_{b_{k}} \otimes \mathbf {q}^{w}_{b_{k+1}}\\ {\mathbf {b}_a}_{b_{k+1}} - {\mathbf {b}_a}_{b_k}\\ {\mathbf {b}_w}_{b_{k+1}} -{\mathbf {b}_w}_{b_k}\\ \end{array}\right]}.
-\end{equation}
-
-\textbf{估计器初始化}
-
-单目紧耦合VIO是一个高度非线性的系统。由于单目相机无法直接观测到尺度，因此，如果没有良好的初始值，很难直接将这两种测量结果融合在一起。
-当IMU测量结果被大偏置破坏时，情况就变得更加复杂了。事实上，初始化通常是单目VINS最脆弱的步骤。需要一个鲁棒的初始化过程以确保系统的适用性。
-通过对齐IMU预积分与纯视觉SfM结果，我们可以粗略地恢复尺度、重力、速度，甚至偏置。这足以引导非线性单目VINS估计器。
-
 \begin{figure}[H]
         \centering
-        \includegraphics[width=0.6\textwidth]{figure/vins2.png}
-        \caption{总体架构图}
+        \includegraphics[width=0.9\textwidth]{figure/vins2.png}
+        \caption{VINS-Mono总体架构图}
 \end{figure}
-
-\textbf{开源代码链接：}
-\url{https://github.com/HKUST-Aerial-Robotics/VINS-Mono}
 
 
 
 
 
 \subsection{基于深度学习的V-SLAM方法}
-
+对于经典V-SLAM，人工设计的稀疏图像特征当前有很多局限性，一方面如何设计稀疏图像特征最优地表示图像信息依然是计算机视
+觉领域未解决的重要问题\cite{0000003}，另外一方面系数图像特征在应对环境变化（光照变化，动态目标运动，相机参数改变，
+稀疏纹理等）方面依然有许多挑战。而基于深度学习的VSLAM方法拥有更高的准确率和一致性。下图给出了对比关系：
 \begin{table}[H]
         \centering
         \begin{tabular}{l|ll}

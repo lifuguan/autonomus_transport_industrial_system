@@ -6,45 +6,45 @@ Database file #1: conference_101719.bib
 Warning--empty publisher in 9787121311048
 Warning--empty booktitle in 9781921987243
 Warning--empty booktitle in core_0001
-You've used 27 entries,
+You've used 28 entries,
             1876 wiz_defined-function locations,
-            636 strings with 8316 characters,
-and the built_in function-call counts, 7978 in all, are:
-= -- 748
-> -- 342
+            640 strings with 8467 characters,
+and the built_in function-call counts, 8140 in all, are:
+= -- 760
+> -- 353
 < -- 0
-+ -- 124
-- -- 97
-* -- 574
-:= -- 1113
-add.period$ -- 32
-call.type$ -- 27
-change.case$ -- 26
++ -- 128
+- -- 100
+* -- 586
+:= -- 1141
+add.period$ -- 33
+call.type$ -- 28
+change.case$ -- 27
 chr.to.int$ -- 0
-cite$ -- 30
-duplicate$ -- 416
-empty$ -- 763
-format.name$ -- 97
-if$ -- 1963
+cite$ -- 31
+duplicate$ -- 425
+empty$ -- 780
+format.name$ -- 100
+if$ -- 2000
 int.to.chr$ -- 0
-int.to.str$ -- 27
-missing$ -- 26
-newline$ -- 89
-num.names$ -- 29
-pop$ -- 115
+int.to.str$ -- 28
+missing$ -- 27
+newline$ -- 92
+num.names$ -- 30
+pop$ -- 119
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 283
+skip$ -- 284
 stack$ -- 0
 substring$ -- 522
-swap$ -- 171
+swap$ -- 172
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 3
-while$ -- 67
-width$ -- 29
-write$ -- 264
+while$ -- 68
+width$ -- 30
+write$ -- 272
 (There were 3 warnings)

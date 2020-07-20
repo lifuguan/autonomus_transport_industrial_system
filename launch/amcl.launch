@@ -1,4 +1,4 @@
-<launch>
+<launch>  
   <!-- Arguments -->
   <arg name="scan_topic" default="my_robot/laser/scan"/>
   <arg name="initial_pose_x" default="-6.0"/>

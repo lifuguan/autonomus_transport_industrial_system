@@ -1,0 +1,531 @@
+<?xml version="1.0"?>
+<robot name="robot">
+	<link name="base_link">
+
+		<visual>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<geometry>
+				<cylinder length="0.005" radius="0.13"/>
+			</geometry>
+			<material name="white">
+				<color rgba="1 1 1 1"/>
+			</material>
+		</visual>
+
+		<collision>
+		    <origin rpy="0 0 0" xyz="0 0 0"/>
+			<geometry>
+				<cylinder length="0.005" radius="0.13"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<link name="left_motor">
+		<visual>
+			<origin rpy="1.5707 0 0" xyz="0 0 0"/>
+			<geometry>
+				<cylinder length="0.06" radius="0.02"/>
+			</geometry>
+			<material name="gray">
+				<color rgba="0.75 0.75 0.75 1"/>
+			</material>
+		</visual>
+	</link>
+
+	<joint name="base_link_to_left_motor" type="fixed">
+		<origin xyz="0 0.055 -0.035" rpy="0 0 0"/>
+		<parent link="base_link"/>
+		<child link="left_motor"/>
+	</joint>
+
+	<link name="left_wheel">
+		<visual>
+			<origin rpy="1.5707 0 0" xyz="0 0 0"/>
+			<geometry>
+				<cylinder length="0.03" radius="0.03"/>
+			</geometry>
+			<material name="gray">
+				<color rgba="0.75 0.75 0.75 1"/>
+			</material>
+		</visual>
+	</link>
+
+	<joint name="left_motor_to_left_wheel" type="continuous">
+		<origin xyz="0 0.045 0" rpy="0 0 0"/>
+		<parent link="left_motor"/>
+		<child link="left_wheel"/>
+		<axis xyz="0 1 0"/>
+	</joint>
+	<transmission name="simple_trans_left">
+		<type>transmission_interface/SimpleTransmission</type>
+
+		<joint name="left_motor_to_left_wheel" />
+
+		<acturtor name="foo_motor">
+			<mechanicalReduction>50</mechanicalReduction>
+			<hardwareInterface>VelocityJointInterface</hardwareInterface>
+		</acturtor>
+	</transmission>
+
+	<link name="left_fix">
+		<visual>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<geometry>
+				<box size="0.05 0.005 -0.0325"/>
+			</geometry>
+			<material name="gray">
+				<color rgba="0.75 0.75 0.75 1"/>
+			</material>
+		</visual>
+	</link>
+
+	<joint name="left_fix_to_base_link" type="fixed">
+		<origin xyz="0 0.0225 -0.01875" rpy="0 0 0"/>
+		<parent link="base_link"/>
+		<child link="left_fix"/>
+	</joint>
+
+	<link name="left_fix2">
+		<visual>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<geometry>
+				<cylinder length="0.005" radius="0.025"/>
+			</geometry>
+			<material name="gray">
+				<color rgba="0.75 0.75 0.75 1"/>
+			</material>
+		</visual>
+	</link>
+
+	<joint name="left_fix2_to_left_fix" type="fixed">
+		<origin xyz="0 0 -0.01625" rpy="1.5707 0 0"/>
+		<parent link="left_fix"/>
+		<child link="left_fix2"/>
+	</joint>
+
+	<link name="left_fix3">
+		<visual>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<geometry>
+				<box size="0.05 0.005 -0.0325"/>
+			</geometry>
+			<material name="gray">
+				<color rgba="0.75 0.75 0.75 1"/>
+			</material>
+		</visual>
+	</link>
+
+	<joint name="left_fix3_to_base_link" type="fixed">
+		<origin xyz="0 0.0825 -0.01875" rpy="0 0 0"/>
+		<parent link="base_link"/>
+		<child link="left_fix3"/>
+	</joint>
+
+	<link name="left_fix4">
+		<visual>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<geometry>
+				<cylinder length="0.005" radius="0.025"/>
+			</geometry>
+			<material name="gray">
+				<color rgba="0.75 0.75 0.75 1"/>
+			</material>
+		</visual>
+	</link>
+
+	<joint name="left_fix4_to_left_fix3" type="fixed">
+		<origin xyz="0 0 -0.01625" rpy="1.5707 0 0"/>
+		<parent link="left_fix3"/>
+		<child link="left_fix4"/>
+	</joint>
+
+
+
+
+
+
+	<link name="right_motor">
+		<visual>
+			<origin rpy="1.5707 0 0" xyz="0 0 0"/>
+			<geometry>
+				<cylinder length="0.06" radius="0.02"/>
+			</geometry>
+			<material name="gray">
+				<color rgba="0.75 0.75 0.75 1"/>
+			</material>
+		</visual>
+	</link>
+
+	<joint name="base_link_to_right_motor" type="fixed">
+		<origin xyz="0 -0.055 -0.035" rpy="0 0 0"/>
+		<parent link="base_link"/>
+		<child link="right_motor"/>
+	</joint>
+
+	<link name="right_wheel">
+		<visual>
+			<origin rpy="1.5707 0 0" xyz="0 0 0"/>
+			<geometry>
+				<cylinder length="0.03" radius="0.03"/>
+			</geometry>
+			<material name="gray">
+				<color rgba="0.75 0.75 0.75 1"/>
+			</material>
+		</visual>
+	</link>
+
+	<joint name="right_motor_to_right_wheel" type="continuous">
+		<origin xyz="0 -0.045 0" rpy="0 0 0"/>
+		<parent link="right_motor"/>
+		<child link="right_wheel"/>
+		<axis xyz="0 1 0"/>
+	</joint>
+	<transmission name="simple_trans_right">
+		<type>transmission_interface/SimpleTransmission</type>
+		<joint name="right_motor_to_right_wheel"  />
+		<acturtor name="foo_motor">
+			<mechanicalReduction>1</mechanicalReduction>
+			<hardwareInterface>VelocityJointInterface</hardwareInterface>
+		</acturtor>
+	</transmission>
+
+	<link name="right_fix">
+		<visual>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<geometry>
+				<box size="0.05 0.005 -0.0325"/>
+			</geometry>
+			<material name="gray">
+				<color rgba="0.75 0.75 0.75 1"/>
+			</material>
+		</visual>
+	</link>
+
+	<joint name="right_fix_to_base_link" type="fixed">
+		<origin xyz="0 -0.0225 -0.01875" rpy="0 0 0"/>
+		<parent link="base_link"/>
+		<child link="right_fix"/>
+	</joint>
+
+	<link name="right_fix2">
+		<visual>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<geometry>
+				<cylinder length="0.005" radius="0.025"/>
+			</geometry>
+			<material name="gray">
+				<color rgba="0.75 0.75 0.75 1"/>
+			</material>
+		</visual>
+	</link>
+
+	<joint name="right_fix2_to_right_fix" type="fixed">
+		<origin xyz="0 0 -0.01625" rpy="1.5707 0 0"/>
+		<parent link="right_fix"/>
+		<child link="right_fix2"/>
+	</joint>
+
+	<link name="right_fix3">
+		<visual>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<geometry>
+				<box size="0.05 0.005 -0.0325"/>
+			</geometry>
+			<material name="gray">
+				<color rgba="0.75 0.75 0.75 1"/>
+			</material>
+		</visual>
+	</link>
+
+	<joint name="right_fix3_to_base_link" type="fixed">
+		<origin xyz="0 -0.0825 -0.01875" rpy="0 0 0"/>
+		<parent link="base_link"/>
+		<child link="right_fix3"/>
+	</joint>
+
+	<link name="right_fix4">
+		<visual>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<geometry>
+				<cylinder length="0.005" radius="0.025"/>
+			</geometry>
+			<material name="gray">
+				<color rgba="0.75 0.75 0.75 1"/>
+			</material>
+		</visual>
+	</link>
+
+	<joint name="right_fix4_to_right_fix3" type="fixed">
+		<origin xyz="0 0 -0.01625" rpy="1.5707 0 0"/>
+		<parent link="right_fix3"/>
+		<child link="right_fix4"/>
+	</joint>
+
+	<link name="forward_wheel_base">
+		<visual>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<geometry>
+				<box size="0.05 0.05 0.0325"/>
+			</geometry>
+			<material name="black">
+				<color rgba="0 0 0 1"/>
+			</material>
+		</visual>
+	</link>
+
+	<joint name="forward_wheel_to_base_link" type="fixed">
+		<origin xyz="0.08 0 -0.01875" rpy="0 0 0"/>
+		<parent link="base_link"/>
+		<child link="forward_wheel_base"/>
+	</joint>
+
+	<link name="forward_wheel">
+		<visual>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<geometry>
+				<sphere radius="0.03"/>
+			</geometry>
+			<material name="white">
+				<color rgba="1 1 1 1"/>
+			</material>
+		</visual>
+	</link>
+
+	<joint name="forward_wheel_to_forward_wheel_base" type="fixed">
+		<origin xyz="0 0 -0.01625" rpy="0 0 0"/>
+		<parent link="forward_wheel_base"/>
+		<child link="forward_wheel"/>
+	</joint>
+
+	<link name="back_wheel_base">
+		<visual>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<geometry>
+				<box size="0.05 0.05 0.0325"/>
+			</geometry>
+			<material name="black">
+				<color rgba="0 0 0 1"/>
+			</material>
+		</visual>
+	</link>
+
+	<joint name="back_wheel_to_base_link" type="fixed">
+		<origin xyz="-0.08 0 -0.01875" rpy="0 0 0"/>
+		<parent link="base_link"/>
+		<child link="back_wheel_base"/>
+	</joint>
+
+	<link name="back_wheel">
+		<visual>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<geometry>
+				<sphere radius="0.03"/>
+			</geometry>
+			<material name="white">
+				<color rgba="1 1 1 1"/>
+			</material>
+		</visual>
+	</link>
+	
+	<joint name="back_wheel_to_back_wheel_base" type="fixed">
+		<origin xyz="0 0 -0.01625" rpy="0 0 0"/>
+		<parent link="back_wheel_base"/>
+		<child link="back_wheel"/>
+	</joint>
+
+
+
+
+
+
+
+
+
+	<link name="second_base">
+		<visual>
+			<origin rpy="0 0 0" xyz="0 0 0.07"/>
+			<geometry>
+				<cylinder length="0.005" radius="0.13"/>
+			</geometry>
+			<material name="white">
+				<color rgba="1 1 1 1"/>
+			</material>
+		</visual>
+	</link>
+
+	<joint name="second_base_to_base_link" type="fixed">
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<parent link="base_link"/>
+		<child link="second_base"/>
+	</joint>
+
+	<link name="second_link1">
+		<visual>
+			<origin rpy="0 0 0" xyz="0.08 0.08 0.035"/>
+			<geometry>
+				<cylinder length="0.065" radius="0.003"/>
+			</geometry>
+			<material name="black">
+				<color rgba="0 0 0 1"/>
+			</material>
+		</visual>
+	</link>
+
+	<joint name="second_link1_to_second_link" type="fixed">
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<parent link="second_base"/>
+		<child link="second_link1"/>
+	</joint>
+
+	<link name="second_link2">
+		<visual>
+			<origin rpy="0 0 0" xyz="-0.08 0.08 0.035"/>
+			<geometry>
+				<cylinder length="0.065" radius="0.003"/>
+			</geometry>
+			<material name="black">
+				<color rgba="0 0 0 1"/>
+			</material>
+		</visual>
+	</link>
+
+	<joint name="second_link2_to_second_link" type="fixed">
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<parent link="second_base"/>
+		<child link="second_link2"/>
+	</joint>
+
+	<link name="second_link3">
+		<visual>
+			<origin rpy="0 0 0" xyz="-0.08 -0.08 0.035"/>
+			<geometry>
+				<cylinder length="0.065" radius="0.003"/>
+			</geometry>
+			<material name="black">
+				<color rgba="0 0 0 1"/>
+			</material>
+		</visual>
+	</link>
+
+	<joint name="second_link3_to_second_link" type="fixed">
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<parent link="second_base"/>
+		<child link="second_link3"/>
+	</joint>
+
+	<link name="second_link4">
+		<visual>
+			<origin rpy="0 0 0" xyz="0.08 -0.08 0.035"/>
+			<geometry>
+				<cylinder length="0.065" radius="0.003"/>
+			</geometry>
+			<material name="black">
+				<color rgba="0 0 0 1"/>
+			</material>
+		</visual>
+	</link>
+
+	<joint name="second_link4_to_second_link" type="fixed">
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<parent link="second_base"/>
+		<child link="second_link4"/>
+	</joint>
+
+
+
+
+
+
+
+
+
+	<link name="third_base">
+		<visual>
+			<origin rpy="0 0 0" xyz="0 0 0.14"/>
+			<geometry>
+				<cylinder length="0.005" radius="0.13"/>
+			</geometry>
+			<material name="white">
+				<color rgba="1 1 1 1"/>
+			</material>
+		</visual>
+	</link>
+
+	<joint name="third_base_to_base_link" type="fixed">
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<parent link="base_link"/>
+		<child link="third_base"/>
+	</joint>
+
+	<link name="third_link1">
+		<visual>
+			<origin rpy="0 0 0" xyz="0.08 0.08 0.105"/>
+			<geometry>
+				<cylinder length="0.065" radius="0.003"/>
+			</geometry>
+			<material name="black">
+				<color rgba="0 0 0 1"/>
+			</material>
+		</visual>
+	</link>
+
+	<joint name="third_link1_to_third_link" type="fixed">
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<parent link="third_base"/>
+		<child link="third_link1"/>
+	</joint>
+
+	<link name="third_link2">
+		<visual>
+			<origin rpy="0 0 0" xyz="-0.08 0.08 0.105"/>
+			<geometry>
+				<cylinder length="0.065" radius="0.003"/>
+			</geometry>
+			<material name="black">
+				<color rgba="0 0 0 1"/>
+			</material>
+		</visual>
+	</link>
+
+	<joint name="third_link2_to_third_link" type="fixed">
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<parent link="third_base"/>
+		<child link="third_link2"/>
+	</joint>
+
+	<link name="third_link3">
+		<visual>
+			<origin rpy="0 0 0" xyz="-0.08 -0.08 0.105"/>
+			<geometry>
+				<cylinder length="0.065" radius="0.003"/>
+			</geometry>
+			<material name="black">
+				<color rgba="0 0 0 1"/>
+			</material>
+		</visual>
+	</link>
+
+	<joint name="third_link3_to_third_link" type="fixed">
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<parent link="third_base"/>
+		<child link="third_link3"/>
+	</joint>
+
+	<link name="third_link4">
+		<visual>
+			<origin rpy="0 0 0" xyz="0.08 -0.08 0.105"/>
+			<geometry>
+				<cylinder length="0.065" radius="0.003"/>
+			</geometry>
+			<material name="black">
+				<color rgba="0 0 0 1"/>
+			</material>
+		</visual>
+	</link>
+
+	<joint name="third_link4_to_third_link" type="fixed">
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<parent link="third_base"/>
+		<child link="third_link4"/>
+	</joint>
+</robot>

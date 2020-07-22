@@ -1,20 +1,24 @@
 <!--
  * @Author: your name
  * @Date: 2019-11-05 21:41:24
- * @LastEditTime: 2020-05-13 00:05:20
+ * @LastEditTime: 2020-07-22 10:35:35
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/README.md
  -->
 # autonomus transport industrial system
 
-|Author|@lifuguan , @Wacokgde , @Yanwu Chen|
+|Author|@lifuguan , @Wacokgde , @zhuangzibo|
 |---|---
 |ROS|melodic
 |Compute platform| Intel Core I3-7100U|date 2019.11.3
 
 ![MAP](figures/map.png)
 
+## URDF model
+1. `car_.urdf`：原版小车（四轮驱动，体型小）
+2. `robot.urdf`：新版小车（两轮驱动，只有一层）
+3. `robot1.urdf`：新版小车（两轮驱动，三层结构）
 
 ## Execute file
 

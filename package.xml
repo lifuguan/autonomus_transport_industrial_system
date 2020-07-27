@@ -56,6 +56,7 @@
   <build_depend>std_msgs</build_depend>
   <build_depend>actionlib</build_depend>
   <build_depend>move_base_msgs</build_depend>
+  <build_depend>nodelet</build_depend>
   <build_export_depend>gazebo_plugins</build_export_depend>
   <build_export_depend>gazebo_ros</build_export_depend>
   <build_export_depend>roscpp</build_export_depend>
@@ -70,8 +71,9 @@
   <exec_depend>std_msgs</exec_depend>
   <exec_depend>actionlib</exec_depend>
   <exec_depend>move_base_msgs</exec_depend>
-
+  <exec_depend>nodelet</exec_depend>
   <build_depend>roscpp</build_depend>
+  <build_depend>nodelet</build_depend>
   <build_depend>pcl_conversions</build_depend>
   <build_depend>pcl_ros</build_depend>
   <build_depend>libpcl-all-dev</build_depend>
@@ -87,5 +89,8 @@
   <export>
     <!-- Other tools can request additional information be placed here -->
 
+	  <nodelet plugin="${prefix}/plugins/nodelet_plugins.xml" />
+	  <rviz plugin="${prefix}/plugins/plugin_description.xml"/>
+    <costmap_2d plugin="${prefix}/plugins/costmap_plugins.xml"/>
   </export>
 </package>

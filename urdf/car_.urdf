@@ -358,7 +358,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://gx2019_omni_simulations/urdf/meshes/hokuyo.dae"/>
+        <mesh filename="package://autonomus_transport_industrial_system/urdf/meshes/hokuyo.dae"/>
       </geometry>
     </visual>
 
@@ -408,7 +408,7 @@
       <camera>
         <horizontal_fov>1.047198</horizontal_fov>
         <image>
-          <width>480</width>
+          <width>640</width>
           <height>480</height>
           <format>R8G8B8</format>
         </image>
@@ -451,7 +451,7 @@
       <camera>
         <horizontal_fov>1.047198</horizontal_fov>
         <image>
-          <width>480</width>
+          <width>640</width>
           <height>480</height>
           <format>R8G8B8</format>
         </image>
@@ -494,7 +494,7 @@
       <camera>
         <horizontal_fov>1.047198</horizontal_fov>
         <image>
-          <width>480</width>
+          <width>640</width>
           <height>480</height>
           <format>R8G8B8</format>
         </image>

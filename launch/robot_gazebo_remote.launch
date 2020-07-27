@@ -1,5 +1,5 @@
 <launch>
-    <param name="robot_description" command="cat '$(find autonomus_transport_industrial_system)/urdf/car_.urdf'"/>
+    <param name="robot_description" command="cat '$(find autonomus_transport_industrial_system)/urdf/robot1.urdf'"/>
 
     <!-- send fake joint values -->
     <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
@@ -7,7 +7,7 @@
     </node>
 
     <!-- Combine joint values -->
-    <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
 
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="world_name" value="$(find autonomus_transport_industrial_system)/worlds/obstacle_map.world"/>

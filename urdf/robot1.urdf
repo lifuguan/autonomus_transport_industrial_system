@@ -654,6 +654,42 @@
 		</sensor>
 	</gazebo>
 
+	<!-- imu sensor -->
+	<link name="imu_link">
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0.05 0.05 0.0325"/>
+			</geometry>
+			<material name="Blue"/>
+		</visual>
+	</link>
+	<joint name="imu_joint" type="fixed">
+		<origin rpy="0.0 0 0" xyz="0.0 0.0 0.1"/>
+		<parent link="base_link"/>
+		<child link="imu_link"/>
+	</joint>
+	<gazebo reference="imu_link">
+		<gravity>true</gravity>
+		<sensor name="imu_sensor" type="imu">
+			<always_on>true</always_on>
+			<update_rate>100</update_rate>
+			<visualize>true</visualize>
+			<topic>imu</topic>
+			<plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+				<topicName>imu</topicName>
+				<bodyName>imu_link</bodyName>
+				<updateRateHZ>10.0</updateRateHZ>
+				<gaussianNoise>0.0</gaussianNoise>
+				<xyzOffset>0 0 0</xyzOffset>
+				<rpyOffset>0 0 0</rpyOffset>
+				<frameName>imu_link</frameName>
+				<initialOrientationAsReference>false</initialOrientationAsReference>
+			</plugin>
+			<pose>0 0 0 0 0 0</pose>
+		</sensor>
+	</gazebo>
+
 	<!-- Hokuyo Laser -->
 	<joint name="hokuyo_joint" type="fixed">
 		<axis xyz="0 1 0" />

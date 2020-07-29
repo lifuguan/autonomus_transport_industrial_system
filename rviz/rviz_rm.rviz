@@ -88,6 +88,8 @@ Visualization Manager:
           Value: true
         hokuyo_link:
           Value: false
+        imu_link:
+          Value: true
         left_fix:
           Value: true
         left_fix2:
@@ -152,6 +154,8 @@ Visualization Manager:
               {}
           hokuyo_link:
             {}
+          imu_link:
+            {}
           left_fix:
             left_fix2:
               {}
@@ -159,8 +163,9 @@ Visualization Manager:
             left_fix4:
               {}
           left_motor:
-            left_wheel:
-              {}
+            {}
+          left_wheel:
+            {}
           right_fix:
             right_fix2:
               {}
@@ -168,8 +173,9 @@ Visualization Manager:
             right_fix4:
               {}
           right_motor:
-            right_wheel:
-              {}
+            {}
+          right_wheel:
+            {}
           second_base:
             second_link1:
               {}
@@ -233,6 +239,11 @@ Visualization Manager:
           Show Trail: false
           Value: true
         hokuyo_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        imu_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false

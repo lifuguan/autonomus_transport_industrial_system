@@ -2,7 +2,7 @@
     <!-- For robot in simulation using single depth camera(Gazebo).  -->
 
     <arg name="database_path" default="rtabmap.db"/>
-    <arg name="rgbd_odometry" default="false"/>
+    <arg name="rgbd_odometry" default="true"/>
     <arg name="rtabmapviz" default="true"/>
     <arg name="localization" default="false"/>
     <arg name="simulation" default="true"/>

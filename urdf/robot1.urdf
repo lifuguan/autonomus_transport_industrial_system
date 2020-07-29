@@ -308,11 +308,6 @@
 				<cylinder length="0.03" radius="0.032"/>
 			</geometry>
 		</collision>
-		<inertial>
-			<mass value="2.5"/>
-			<origin xyz="0 0 0"/>
-			<inertia ixx="0.00108333333333" ixy="0" ixz="0" iyy="0.00108333333333" iyz="0" izz="0.002"/>
-		</inertial>
 	</link>
 
 	<joint name="forward_wheel_to_base_link" type="fixed">
@@ -384,11 +379,6 @@
 				<sphere radius="0.03"/>
 			</geometry>
 		</collision>
-		<inertial>
-			<mass value="2.5"/>
-			<origin xyz="0 0 0"/>
-			<inertia ixx="0.00108333333333" ixy="0" ixz="0" iyy="0.00108333333333" iyz="0" izz="0.002"/>
-		</inertial>
 	</link>
 
 	<joint name="back_wheel_to_back_wheel_base" type="fixed">
@@ -607,7 +597,7 @@
 		</visual>
 	</link>
 	<joint name="camera_front_joint" type="fixed">
-		<origin rpy="0.0 0.15 0" xyz="0.06 0.0 0.10"/>
+		<origin rpy="0.0 0.15 0" xyz="0.06 0.0 0.05"/>
 		<parent link="base_link"/>
 		<child link="camera_front_link"/>
 	</joint>
@@ -719,19 +709,6 @@
 			<inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
 		</inertial>
 	</link>
-	<gazebo>
-		<plugin name="object_controller" filename="libgazebo_ros_planar_move.so">
-			<commandTopic>cmd_vel</commandTopic>
-			<odometryTopic>odom</odometryTopic>
-			<odometryFrame>odom</odometryFrame>
-			<!-- <odometryRate>20.0</odometryRate> -->
-			<broadcastTF>false</broadcastTF>
-			<publishOdomTF>false</publishOdomTF>
-			<robotBaseFrame>base_link</robotBaseFrame>
-		</plugin>
-	</gazebo>
-
-	<!-- hokuyo laser sensor-->
 	<gazebo reference="hokuyo_link">
 		<sensor type="gpu_ray" name="head_hokuyo_sensor">
 			<pose>0 0 0 0 0 0</pose>
@@ -767,4 +744,16 @@
 			</plugin>
 		</sensor>
 	</gazebo>
+
+<gazebo>
+	<plugin name="object_controller" filename="libgazebo_ros_planar_move.so">
+		<commandTopic>cmd_vel</commandTopic>
+		<odometryTopic>odom</odometryTopic>
+		<odometryFrame>odom2</odometryFrame>
+		<odometryRate>20.0</odometryRate>
+		<robotBaseFrame>base_link</robotBaseFrame>
+		<publishOdomTF>false</publishOdomTF>
+	</plugin>
+</gazebo>
+
 </robot>

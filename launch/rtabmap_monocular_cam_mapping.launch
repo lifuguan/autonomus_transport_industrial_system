@@ -10,11 +10,11 @@
     <arg if="$(arg localization)" name="args" default=""/>
     <arg unless="$(arg localization)" name="args" default="--delete_db_on_start"/>
 
-    <arg if="$(arg simulation)" name="rgb_topic" default="/rgb/image_raw"/>
-    <arg unless="$(arg simulation)" name="rgb_topic" default="/rgb/image_rect_color"/>
-    <arg if="$(arg simulation)" name="depth_topic" default="/depth/image_raw"/>
-    <arg unless="$(arg simulation)" name="depth_topic" default="/depth_registered/image_raw"/>
-    <arg name="camera_info_topic" default="/rgb/camera_info"/>
+    <arg if="$(arg simulation)" name="rgb_topic" default="/kinect_alpha/rgb/image_raw"/>
+    <arg unless="$(arg simulation)" name="rgb_topic" default="/kinect_alpha/rgb/image_rect_color"/>
+    <arg if="$(arg simulation)" name="depth_topic" default="/kinect_alpha/depth/image_raw"/>
+    <arg unless="$(arg simulation)" name="depth_topic" default="/kinect_alpha/depth_registered/image_raw"/>
+    <arg name="camera_info_topic" default="/kinect_alpha/rgb/camera_info"/>
 
     <arg name="wait_for_transform" default="0.2"/>
     <!-- 

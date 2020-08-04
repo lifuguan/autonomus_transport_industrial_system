@@ -69,7 +69,7 @@
 		<material>Gazebo/Grey</material>
 		<turnGravityOff>false</turnGravityOff>
 	</gazebo>
-	<joint name="left_motor_to_left_wheel" type="continuous">
+	<joint name="base_link_to_left_wheel" type="continuous">
 		<origin xyz="0 0.1 -0.035" rpy="0 0 0"/>
 		<parent link="base_link"/>
 		<child link="left_wheel"/>
@@ -78,7 +78,7 @@
 	<transmission name="simple_trans_left">
 		<type>transmission_interface/SimpleTransmission</type>
 
-		<joint name="left_motor_to_left_wheel" />
+		<joint name="base_link_to_left_wheel" />
 
 		<acturtor name="foo_motor">
 			<mechanicalReduction>50</mechanicalReduction>
@@ -212,13 +212,22 @@
 		<material>Gazebo/Grey</material>
 		<turnGravityOff>false</turnGravityOff>
 	</gazebo>
-	<joint name="right_motor_to_right_wheel" type="continuous">
+	<joint name="base_link_to_right_wheel" type="continuous">
 		<origin xyz="0 -0.1 -0.035" rpy="0 0 0"/>
 		<parent link="base_link"/>
 		<child link="right_wheel"/>
 		<axis xyz="0 1 0"/>
 	</joint>
+	<transmission name="simple_trans_left">
+		<type>transmission_interface/SimpleTransmission</type>
 
+		<joint name="base_link_to_right_wheel" />
+
+		<acturtor name="foo_motor">
+			<mechanicalReduction>50</mechanicalReduction>
+			<hardwareInterface>VelocityJointInterface</hardwareInterface>
+		</acturtor>
+	</transmission>
 
 	<link name="right_fix">
 		<visual>
@@ -745,15 +754,21 @@
 		</sensor>
 	</gazebo>
 
-<gazebo>
-	<plugin name="object_controller" filename="libgazebo_ros_planar_move.so">
-		<commandTopic>cmd_vel</commandTopic>
-		<odometryTopic>odom</odometryTopic>
-		<odometryFrame>odom2</odometryFrame>
-		<odometryRate>20.0</odometryRate>
-		<robotBaseFrame>base_link</robotBaseFrame>
-		<publishOdomTF>false</publishOdomTF>
-	</plugin>
-</gazebo>
-
+	<gazebo>
+		<plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+			<alwaysOn>true</alwaysOn>
+			<updateRate>10</updateRate>
+			<leftJoint>base_link_to_left_wheel</leftJoint>
+			<rightJoint>base_link_to_right_wheel</rightJoint>
+			<wheelSeparation>0.11</wheelSeparation>
+			<wheelDiameter>0.03</wheelDiameter>
+			<torque>20</torque>
+			<commandTopic>cmd_vel</commandTopic>
+			<odometryTopic>odom</odometryTopic>
+			<odometryFrame>odom</odometryFrame>
+			<robotBaseFrame>base_link</robotBaseFrame>
+			<publishTf>false</publishTf>
+			<publishOdomTf>false</publishOdomTf>
+		</plugin>
+	</gazebo>
 </robot>

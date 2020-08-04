@@ -569,13 +569,24 @@
   </gazebo>
 
   <gazebo>
-    <plugin name="object_controller" filename="libgazebo_ros_planar_move.so">
-      <commandTopic>cmd_vel</commandTopic>
-      <odometryTopic>odom</odometryTopic>
-      <odometryFrame>odom</odometryFrame>
-      <!-- <odometryRate>20.0</odometryRate> -->
-      <broadcastTF>false</broadcastTF>
+    <plugin filename="libgazebo_ros_diff_drive.so" name="differential_drive_controller_front">
+      <rosDebugLevel>Debug</rosDebugLevel>
+      <publishWheelTF>True</publishWheelTF>
       <publishOdomTF>false</publishOdomTF>
+      <publishTf>1</publishTf>
+      <publishWheelJointState>true</publishWheelJointState>
+      <alwaysOn>true</alwaysOn>
+      <updateRate>100.0</updateRate>
+      <leftJoint>front_left_wheel_joint</leftJoint>
+      <rightJoint>front_right_wheel_joint</rightJoint>
+      <wheelSeparation>0.3</wheelSeparation>
+      <wheelDiameter>0.08</wheelDiameter>
+      <broadcastTF>1</broadcastTF>
+      <wheelTorque>30</wheelTorque>
+      <wheelAcceleration>1.8</wheelAcceleration>
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryFrame>odom</odometryFrame>
+      <odometryTopic>odom</odometryTopic>
       <robotBaseFrame>base_link</robotBaseFrame>
     </plugin>
   </gazebo>

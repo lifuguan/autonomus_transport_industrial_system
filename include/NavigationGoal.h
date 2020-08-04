@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-15 10:37:12
- * @LastEditTime: 2020-05-25 22:29:44
+ * @LastEditTime: 2020-08-04 15:55:15
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/include/NavigationGoal.h

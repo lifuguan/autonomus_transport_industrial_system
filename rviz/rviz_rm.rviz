@@ -7,6 +7,7 @@ Panels:
         - /Global Options1
         - /Status1
         - /Grid1
+        - /Grid1/Status1
         - /TF1
         - /TF1/Frames1
         - /PointCloud21
@@ -65,77 +66,75 @@ Visualization Manager:
       Frames:
         All Enabled: false
         back_wheel:
-          Value: true
+          Value: false
         back_wheel_base:
-          Value: true
+          Value: false
         base_link:
-          Value: true
+          Value: false
         camera_front:
-          Value: true
+          Value: false
         camera_front_link:
-          Value: true
+          Value: false
         camera_left:
-          Value: true
+          Value: false
         camera_left_link:
-          Value: true
+          Value: false
         camera_right:
-          Value: true
+          Value: false
         camera_right_link:
-          Value: true
+          Value: false
         forward_wheel:
-          Value: true
+          Value: false
         forward_wheel_base:
-          Value: true
+          Value: false
         hokuyo_link:
           Value: false
         imu_link:
-          Value: true
+          Value: false
         left_fix:
-          Value: true
+          Value: false
         left_fix2:
-          Value: true
+          Value: false
         left_fix3:
-          Value: true
+          Value: false
         left_fix4:
-          Value: true
+          Value: false
         left_motor:
-          Value: true
+          Value: false
         left_wheel:
           Value: true
-        odom:
-          Value: true
         right_fix:
-          Value: true
+          Value: false
         right_fix2:
-          Value: true
+          Value: false
         right_fix3:
-          Value: true
+          Value: false
         right_fix4:
-          Value: true
+          Value: false
         right_motor:
-          Value: true
+          Value: false
         right_wheel:
           Value: true
         second_base:
-          Value: true
+          Value: false
         second_link1:
-          Value: true
+          Value: false
         second_link2:
-          Value: true
+          Value: false
         second_link3:
-          Value: true
+          Value: false
         second_link4:
-          Value: true
+          Value: false
         third_base:
-          Value: true
+          Value: false
         third_link1:
-          Value: true
+          Value: false
         third_link2:
-          Value: true
+          Value: false
         third_link3:
-          Value: true
+          Value: false
         third_link4:
-          Value: true
+          Value: false
       Marker Scale: 1
       Name: TF
       Show Arrows: true
@@ -194,8 +193,6 @@ Visualization Manager:
               {}
             third_link4:
               {}
-        odom:
-          {}
       Update Interval: 0
       Value: true
     - Alpha: 1

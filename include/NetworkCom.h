@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-02 16:24:16
- * @LastEditTime: 2020-05-25 23:52:49
+ * @LastEditTime: 2020-08-04 15:55:24
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/include/NetworkCom.h
@@ -170,7 +170,6 @@ namespace AutonomusTransportIndustrialSystem
             {
                 ROS_ERROR("CHECK");
             }
-            
         }        
     }
 }

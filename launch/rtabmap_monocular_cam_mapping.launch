@@ -3,6 +3,8 @@
 
     <arg name="database_path" default="rtabmap.db"/>
     <arg name="rgbd_odometry" default="true"/>
+    <arg name="icp_odometry" default="false"/>
+    <arg name="r2fo" default="false"/>
     <arg name="rtabmapviz" default="true"/>
     <arg name="localization" default="false"/>
     <arg name="simulation" default="true"/>
@@ -15,8 +17,11 @@
     <arg if="$(arg simulation)" name="depth_topic" default="/kinect_alpha/depth/image_raw"/>
     <arg unless="$(arg simulation)" name="depth_topic" default="/kinect_alpha/depth_registered/image_raw"/>
     <arg name="camera_info_topic" default="/kinect_alpha/rgb/camera_info"/>
+    <arg name="depth_camera_info_topic" default="/kinect_alpha/depth/camera_info"/>
 
-    <arg name="wait_for_transform" default="0.2"/>
+    <arg name="wait_for_transform" default="0.1"/>
+
+    <arg name="pm" default="false"/>
     <!-- 
       robot_state_publisher's publishing frequency in "turtlebot_bringup/launch/includes/robot.launch.xml" 
       can be increase from 5 to 10 Hz to avoid some TF warnings.
@@ -31,7 +36,8 @@
             <param name="wait_for_transform_duration" type="double" value="$(arg wait_for_transform)"/>
             <param name="subscribe_depth" type="bool" value="true"/>
             <param name="subscribe_scan" type="bool" value="true"/>
-            <param name="map_negative_poses_ignored" type="bool" value="true"/>
+            <param name="map_always_update" type="bool" value="true"/>
+            <param name="publishTf" type="bool" value="true"/>
 
             <!-- When sending goals on /rtabmap/goal topic, use actionlib to communicate with move_base -->
             <param name="use_action_for_goal" type="bool" value="true"/>
@@ -47,6 +53,7 @@
             <param unless="$(arg rgbd_odometry)" name="odom_frame_id" value="odom"/>
             <param unless="$(arg rgbd_odometry)" name="odom_tf_linear_variance" value="0.001"/>
             <param unless="$(arg rgbd_odometry)" name="odom_tf_angular_variance" value="0.001"/>
+            <param name="Grid/FromDepth" type="string" value="false"/>
 
             <!-- output -->
             <remap from="grid_map" to="/map"/>
@@ -81,17 +88,6 @@
             <param name="Mem/InitWMWithAllNodes" type="string" value="$(arg localization)"/>
         </node>
 
-        <!-- Odometry : ONLY for testing without the actual robot! /odom TF should not be already published. -->
-        <node if="$(arg rgbd_odometry)" pkg="rtabmap_ros" type="rgbd_odometry" name="rgbd_odometry" output="screen">
-            <param name="frame_id" type="string" value="base_link"/>
-            <param name="wait_for_transform_duration" type="double" value="$(arg wait_for_transform)"/>
-            <param name="Reg/Force3DoF" type="string" value="true"/>
-            <param name="Vis/InlierDistance" type="string" value="0.05"/>
-
-            <remap from="rgb/image" to="$(arg rgb_topic)"/>
-            <remap from="depth/image" to="$(arg depth_topic)"/>
-            <remap from="rgb/camera_info" to="$(arg camera_info_topic)"/>
-        </node>
 
         <!-- visualization with rtabmapviz -->
         <node if="$(arg rtabmapviz)" pkg="rtabmap_ros" type="rtabmapviz" name="rtabmapviz" args="-d $(find rtabmap_ros)/launch/config/rgbd_gui.ini" output="screen">
@@ -105,6 +101,6 @@
             <remap from="rgb/camera_info" to="$(arg camera_info_topic)"/>
             <remap from="scan" to="/my_robot/laser/scan"/>
         </node>
-
+        
     </group>
 </launch>

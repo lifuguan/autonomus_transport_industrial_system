@@ -72,7 +72,7 @@
         <param name="odom_frame_id" value="/odom" />
 
         <param name="init_pose_from_topic" value="/odom" />
-        <param name="freq" value="6.0"/>
+        <param name="freq" value="10.0"/>
         <param name="verbose" value="true" />
     </node>
 

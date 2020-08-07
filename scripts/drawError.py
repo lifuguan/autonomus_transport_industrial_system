@@ -2,7 +2,7 @@
 '''
 Author: lifuguan
 Date: 2020-08-04 16:07:21
-LastEditTime: 2020-08-07 14:49:51
+LastEditTime: 2020-08-07 16:56:59
 LastEditors: Please set LastEditors
 Description: Aimed to draw the relative position between frame /odom and frame /map
 FilePath: /autonomus_transport_industrial_system/scripts/drawError.py
@@ -34,7 +34,7 @@ class DrawError(object):
         self.y_rf2o.append(data.pose.pose.position.y)
 
     # check if data is not received. If so, exit and plot the figure
-    def cbMonitor(self, plt):
+    def cbMonitor(self):
         self.cb_time = time.time()
         if not self.isCBAlive():
             rospy.logwarn("No data received!Exit!")
@@ -55,7 +55,7 @@ if __name__ == "__main__":
     plt.title("odom display")
 
     while not rospy.is_shutdown():
-        if de.cbMonitor(plt) == True:
+        if de.cbMonitor() == True:
             break
     plt.plot(de.x_odom, de.y_odom, color="b", label="/odom")
     plt.plot(de.x_rf2o, de.y_rf2o, color="r", label="/odom_rf2o")

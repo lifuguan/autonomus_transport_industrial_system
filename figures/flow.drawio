@@ -1,20 +1,23 @@
-<mxfile host="55f24642-cf87-4d21-90c3-b609424d9e6a" modified="2020-08-07T10:02:47.445Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.47.3 Chrome/78.0.3904.130 Electron/7.3.2 Safari/537.36" etag="6HVsWJE9bIn6PtRF3x98" version="13.1.3">
+<mxfile host="67853982-dcc3-4e61-8645-4b7cd1db800b" modified="2020-08-08T01:29:09.933Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.47.3 Chrome/78.0.3904.130 Electron/7.3.2 Safari/537.36" etag="7Slqz02BlZ34HMMf75M8" version="13.1.3">
     <diagram id="6hGFLwfOUW9BJ-s0fimq" name="Page-1">
-        <mxGraphModel dx="1705" dy="510" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="2029" dy="1020" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;align=center;" edge="1" parent="1" source="25" target="48">
+                <mxCell id="51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;align=center;" parent="1" source="25" target="48" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="-130" y="380"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
+                <mxCell id="110" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;strokeWidth=2;fontSize=16;" parent="1" source="25" target="94" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
                 <mxCell id="25" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;align=center;" parent="1" vertex="1">
                     <mxGeometry x="-238" y="240" width="290" height="140" as="geometry"/>
                 </mxCell>
-                <mxCell id="50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;align=center;dashed=1;" edge="1" parent="1" source="48">
+                <mxCell id="50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;align=center;dashed=1;" parent="1" source="48" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="-50" y="380" as="targetPoint"/>
                         <Array as="points">
@@ -22,14 +25,28 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="48" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;align=center;" vertex="1" parent="1">
+                <mxCell id="69" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="48" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-90" y="660" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="103" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;fontSize=16;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" parent="1" source="48" target="94" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-250" y="520" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="48" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;align=center;" parent="1" vertex="1">
                     <mxGeometry x="-170" y="460" width="160" height="120" as="geometry"/>
                 </mxCell>
-                <mxCell id="37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;align=center;" edge="1" parent="1" source="2" target="25">
-                    <mxGeometry relative="1" as="geometry"/>
+                <mxCell id="37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;align=center;" parent="1" source="2" target="25" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="-93" y="130"/>
+                        </Array>
+                    </mxGeometry>
                 </mxCell>
                 <mxCell id="2" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;align=center;" parent="1" vertex="1">
-                    <mxGeometry x="-186" y="10" width="186" height="120" as="geometry"/>
+                    <mxGeometry x="-170" y="10" width="160" height="120" as="geometry"/>
                 </mxCell>
                 <mxCell id="23" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;move_base规划&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fontSize=16;align=center;" parent="1" vertex="1">
                     <mxGeometry x="-218" y="280" width="120" height="80" as="geometry"/>
@@ -37,42 +54,97 @@
                 <mxCell id="27" value="&lt;font style=&quot;font-size: 16px&quot;&gt;扫描二维码&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fontSize=16;align=center;" parent="1" vertex="1">
                     <mxGeometry x="-88" y="280" width="120" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="28" value="&lt;font style=&quot;font-size: 16px&quot;&gt;导航状态&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-                    <mxGeometry x="-135.5" y="250" width="85" height="20" as="geometry"/>
+                <mxCell id="28" value="&lt;font style=&quot;font-size: 16px&quot;&gt;全局导航状态&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="-145.75" y="250" width="105.5" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="29" value="&lt;span style=&quot;color: rgb(240 , 240 , 240) ; font-family: &amp;quot;helvetica&amp;quot; ; font-size: 16px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(42 , 42 , 42) ; float: none ; display: inline&quot;&gt;MAIN&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
-                    <mxGeometry x="-153" y="10" width="120" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="30" value="&lt;font face=&quot;helvetica&quot;&gt;&lt;span style=&quot;font-size: 16px&quot;&gt;静止&lt;/span&gt;&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                <mxCell id="30" value="&lt;font face=&quot;helvetica&quot;&gt;&lt;span style=&quot;font-size: 16px&quot;&gt;静止&lt;/span&gt;&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
                     <mxGeometry x="-153" y="40" width="120" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="38" value="" style="curved=1;endArrow=classic;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;exitX=0;exitY=0.75;exitDx=0;exitDy=0;align=center;" edge="1" parent="1" source="25" target="25">
+                <mxCell id="62" value="&lt;font face=&quot;helvetica&quot;&gt;&lt;span style=&quot;font-size: 16px&quot;&gt;二维码扫描且匹配&lt;/span&gt;&lt;/font&gt;" style="text;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="-270" y="400" width="140" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="64" value="&lt;font style=&quot;font-size: 16px&quot;&gt;局部导航状态&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="-145.75" y="470" width="105.5" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="67" value="&lt;font face=&quot;helvetica&quot;&gt;&lt;span style=&quot;font-size: 16px&quot;&gt;UNKNOWN&lt;/span&gt;&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="-150" y="495" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="86" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeWidth=6;" parent="1" source="73" target="81" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="100" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeWidth=2;" parent="1" source="73" target="94" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="73" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="-170" y="660" width="160" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="74" value="&lt;font style=&quot;font-size: 16px&quot;&gt;调用机械臂&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="-145.75" y="670" width="105.5" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="75" value="&lt;font face=&quot;helvetica&quot;&gt;&lt;span style=&quot;font-size: 16px&quot;&gt;抓取&lt;/span&gt;&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="-150" y="695" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="87" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=6;" parent="1" source="81" target="2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="81" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="390" width="160" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="82" value="&lt;font style=&quot;font-size: 16px&quot;&gt;返回导航状态&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="224.25" y="400" width="105.5" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="83" value="&lt;font face=&quot;helvetica&quot;&gt;&lt;span style=&quot;font-size: 16px&quot;&gt;move_base规划&lt;/span&gt;&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="210" y="425" width="140" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="111" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fontSize=16;" parent="1" source="94" target="2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="94" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="-573" y="430" width="160" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="95" value="&lt;font style=&quot;font-size: 16px&quot;&gt;错误状态&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="-548.75" y="440" width="105.5" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="96" value="&lt;font face=&quot;helvetica&quot;&gt;&lt;span style=&quot;font-size: 16px&quot;&gt;发送错误代码&lt;/span&gt;&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="-553" y="465" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="99" value="&lt;font face=&quot;helvetica&quot;&gt;&lt;span style=&quot;font-size: 16px&quot;&gt;抓取成功&lt;/span&gt;&lt;/font&gt;" style="text;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="52" y="680" width="140" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="101" value="信息上传到云端" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=16;" parent="1" vertex="1">
+                    <mxGeometry x="-620" y="260" width="130" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="104" value="抓取失败" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=16;" parent="1" vertex="1">
+                    <mxGeometry x="-360" y="695" width="80" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="105" value="定位丢失 || 二维码跟踪失败" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=16;" parent="1" vertex="1">
+                    <mxGeometry x="-385" y="490" width="210" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="109" value="" style="curved=1;endArrow=classic;html=1;strokeWidth=2;fontSize=16;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" parent="1" source="25" target="25" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="-240" y="310" as="sourcePoint"/>
-                        <mxPoint x="-280" y="270" as="targetPoint"/>
+                        <mxPoint x="130" y="360" as="sourcePoint"/>
+                        <mxPoint x="180" y="310" as="targetPoint"/>
                         <Array as="points">
-                            <mxPoint x="-330" y="380"/>
-                            <mxPoint x="-330" y="240"/>
+                            <mxPoint x="120" y="380"/>
+                            <mxPoint x="130" y="320"/>
+                            <mxPoint x="120" y="240"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="39" value="&lt;span style=&quot;color: rgb(240 , 240 , 240) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 16px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(42 , 42 , 42) ; float: none ; display: inline&quot;&gt;中途监听导航目标&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
-                    <mxGeometry x="-470" y="295" width="140" height="30" as="geometry"/>
+                <mxCell id="191" value="&lt;font face=&quot;helvetica&quot;&gt;&lt;span style=&quot;font-size: 16px&quot;&gt;中途监听导航目标&lt;/span&gt;&lt;/font&gt;" style="text;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="130" y="295" width="140" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="40" value="&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;&lt;span style=&quot;color: rgb(240, 240, 240); font-family: helvetica; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(42, 42, 42); text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;监听导航目标&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
-                    <mxGeometry x="-218" y="170" width="120" height="30" as="geometry"/>
+                <mxCell id="192" value="&lt;font face=&quot;helvetica&quot;&gt;&lt;span style=&quot;font-size: 16px&quot;&gt;中途监听导航目标&lt;/span&gt;&lt;/font&gt;" style="text;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="-50" y="400" width="140" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="53" value="&lt;span style=&quot;color: rgb(240 , 240 , 240) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 16px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(42 , 42 , 42) ; float: none ; display: inline&quot;&gt;中途监听导航目标&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
-                    <mxGeometry x="-50.5" y="400" width="140" height="30" as="geometry"/>
+                <mxCell id="194" value="监听导航目标" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=16;" vertex="1" parent="1">
+                    <mxGeometry x="-208" y="180" width="110" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="62" value="&lt;font face=&quot;helvetica&quot;&gt;&lt;span style=&quot;font-size: 16px&quot;&gt;二维码扫描且匹配&lt;/span&gt;&lt;/font&gt;" style="text;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
-                    <mxGeometry x="-270" y="400" width="140" height="30" as="geometry"/>
+                <mxCell id="195" value="没找到二维码" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=16;" vertex="1" parent="1">
+                    <mxGeometry x="-450" y="360" width="110" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="64" value="&lt;font style=&quot;font-size: 16px&quot;&gt;局部导航状态&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-                    <mxGeometry x="-145.75" y="470" width="105.5" height="20" as="geometry"/>
-                </mxCell>
-                <mxCell id="67" value="&lt;font face=&quot;helvetica&quot;&gt;&lt;span style=&quot;font-size: 16px&quot;&gt;UNKNOWN&lt;/span&gt;&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
-                    <mxGeometry x="-150" y="495" width="120" height="80" as="geometry"/>
+                <mxCell id="197" value="MAIN" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=16;" vertex="1" parent="1">
+                    <mxGeometry x="-115" y="15" width="50" height="20" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

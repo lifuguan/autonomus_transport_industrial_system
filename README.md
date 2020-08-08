@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2019-11-05 21:41:24
- * @LastEditTime: 2020-07-22 10:35:35
+ * @LastEditTime: 2020-08-08 09:31:30
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/README.md
@@ -14,6 +14,9 @@
 |Compute platform| Intel Core I3-7100U|date 2019.11.3
 
 ![MAP](figures/map.png)
+
+![FLOW](figures/flow.png)
+
 
 ## URDF model
 1. `car_.urdf`：原版小车（四轮驱动，体型小）

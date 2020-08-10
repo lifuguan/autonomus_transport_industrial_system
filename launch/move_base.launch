@@ -3,6 +3,8 @@
   <arg name="cmd_vel_topic" default="/cmd_vel" />
   <arg name="odom_topic" default="odom" />
   <arg name="move_forward_only" default="false"/>
+  
+  <arg name="map_file" default="$(find autonomus_transport_industrial_system)/map/autonomus_map.yaml"/>
 
   <!-- move_base -->
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
@@ -17,4 +19,6 @@
     <remap from="odom" to="$(arg odom_topic)"/>
     <param name="DWAPlannerROS/min_vel_x" value="0.0" if="$(arg move_forward_only)" />
   </node>
+  <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
+
 </launch>

@@ -70,5 +70,6 @@
         "string_view": "cpp",
         "eigen": "cpp"
     },
-    "python.pythonPath": "/usr/bin/python"
+    "python.pythonPath": "/usr/bin/python",
+    "python.formatting.provider": "yapf"
 }

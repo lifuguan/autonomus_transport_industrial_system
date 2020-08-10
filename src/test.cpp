@@ -1,19 +1,12 @@
 /*
  * @Author: your name
  * @Date: 2020-04-10 08:57:47
- * @LastEditTime: 2020-05-25 22:31:25
+ * @LastEditTime: 2020-08-10 16:59:24
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/src/test.cpp
  */
-/*
- * @Author: lifuguan
- * @Date: 2019-11-27 16:24:05
- * @LastEditTime: 2020-04-12 22:50:38
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /autonomus_transport_industrial_system/src/test.cpp
- */
+
 
 #include <ros/ros.h>
 #include <tf/transform_broadcaster.h>
@@ -41,24 +34,6 @@ int main(int argc, char **argv)
         // 广播可视化提取点
         exd.extraction_pub.publish(exd.extraction_array);
 
-        // tf::StampedTransform tolerence_tf =pd.TfListener("map", "odom");
-        // ROS_INFO("Passing loop.");
-        // // 若tf对象不为空，则继续运算
-        // if (tolerence_tf.frame_id_ != "ERROR")
-        // {         
-        //     ROS_INFO("Passing tolerence_tf.");
-        //     // 若odom和map的欧拉距离小于阈值，则继续发布导航指令
-        //     if (hypot(tolerence_tf.getOrigin().getX(), tolerence_tf.getOrigin().getY()) < 5)
-        //     {
-        //         ROS_INFO("Passing hypot.");
-    
-        //         ng.pubNavigationGoal(); //广播goal坐标到move_base中
-        //     }   
-        //     else
-        //     {
-        //         ROS_ERROR("map and odom frame have a massive error!");
-        //     }
-        // }
         ros::spinOnce();
         rate.sleep();
     }

@@ -1,7 +1,7 @@
 /*
  * @Author: lifuguan
  * @Date: 2019-11-27 16:24:05
- * @LastEditTime: 2020-08-07 17:01:20
+ * @LastEditTime: 2020-08-10 11:11:05
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /autonomus_transport_industrial_system/src/test.cpp
@@ -23,15 +23,15 @@ int main(int argc, char **argv)
     ros::Rate rate(0.5);
     int i = 0;
 
-    #pragma omp parallelaa
-    #pragma omp parallel sections
+#pragma omp parallelaa
+#pragma omp parallel sections
     {
-        #pragma omp section
+#pragma omp section
         {
             while (ros::ok())
             {
                 location = pd.TfListener("map", "base_link");
-                std::cout << "location : "<<location.getOrigin().getX()<<","<< location.getOrigin().getY()<<std::endl;
+                std::cout << "location : " << location.getOrigin().getX() << "," << location.getOrigin().getY() << std::endl;
                 std::string json_str = sevcom.jsonGenerator(sevcom.current_pos, location.getOrigin().getX(), location.getOrigin().getY(), 0);
                 // ROS_INFO(json_str.c_str());
                 // 发送定位信息到服务器
@@ -40,7 +40,7 @@ int main(int argc, char **argv)
                 rate.sleep();
             }
         }
-        #pragma omp section
+#pragma omp section
         {
 
             while (ros::ok())
@@ -51,10 +51,6 @@ int main(int argc, char **argv)
             }
         }
     }
-    
-
-    
 
     return 0;
 }
-

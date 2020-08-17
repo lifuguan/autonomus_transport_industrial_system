@@ -1,0 +1,17 @@
+<launch>
+    <arg name="launch_prefix" default="" />
+    <arg name="node_namespace" default="apriltag_ros_continuous_node" />
+
+    <rosparam command="load" file="$(find autonomus_transport_industrial_system)/apriltag_config/settings.yaml" ns="$(arg node_namespace)" />
+    <rosparam command="load" file="$(find autonomus_transport_industrial_system)/apriltag_config/tags.yaml" ns="$(arg node_namespace)" />
+
+    <node pkg="apriltag_ros" type="apriltag_ros_continuous_node" name="$(arg node_namespace)" clear_params="true" output="screen" launch-prefix="$(arg launch_prefix)">
+        <!-- Remap topics from those used in code to those on the ROS network -->
+        <remap from="image_rect" to="/kinect_alpha/rgb/image_raw" />
+        <remap from="camera_info" to="/kinect_alpha/rgb/camera_info" />
+
+        <param name="camera_frame" type="str" value="camera_front" />
+        <param name="publish_tag_detections_image" type="bool" value="true" />
+        <!-- default: false -->
+    </node>
+</launch>

@@ -170,6 +170,8 @@ namespace AutonomusTransportIndustrialSystem
             {
                 ROS_ERROR("CHECK");
             }
+
+            // 此处采取Service向Navigation订阅目标信息，修改tf监听值
         }        
     }
 }

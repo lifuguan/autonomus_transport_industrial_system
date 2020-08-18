@@ -157,6 +157,10 @@ target_link_libraries(netComModule ${catkin_LIBRARIES} ${OpenMP_LIBS})
 
 add_executable(test src/test.cpp)
 target_link_libraries(test ${catkin_LIBRARIES})
+
+add_executable(tag_follower src/tag_follower.cpp)
+target_link_libraries(tag_follower ${catkin_LIBRARIES})
+
 # target_link_libraries(jsoncpp ${catkin_LIBRARIES})
 
 ## Rename C++ executable without prefix

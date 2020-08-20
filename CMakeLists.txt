@@ -155,8 +155,8 @@ target_compile_options(netComModule PRIVATE ${OpenMP_FLAGS})
 add_dependencies(netComModule ${catkin_EXPORTED_TARGETS})
 target_link_libraries(netComModule ${catkin_LIBRARIES} ${OpenMP_LIBS})
 
-add_executable(test src/test.cpp)
-target_link_libraries(test ${catkin_LIBRARIES})
+add_executable(masterNode src/test.cpp)
+target_link_libraries(masterNode ${catkin_LIBRARIES})
 
 add_executable(tag_follower src/tag_follower.cpp)
 target_link_libraries(tag_follower ${catkin_LIBRARIES})

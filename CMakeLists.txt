@@ -71,6 +71,7 @@ endif()
 add_service_files(
   FILES
   netComGoal.srv
+  netComTag.srv
 )
 
 ## Generate actions in the 'action' folder

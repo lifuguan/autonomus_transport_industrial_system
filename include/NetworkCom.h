@@ -26,9 +26,9 @@
 
 #include <ros/ros.h>
 #include "autonomus_transport_industrial_system/netComGoal.h"
-
+#include "autonomus_transport_industrial_system/netComTag.h"
 #include <omp.h>
-
+#include <unordered_map>
 #define MAXLINE 4096
 
 namespace AutonomusTransportIndustrialSystem
@@ -44,8 +44,13 @@ namespace AutonomusTransportIndustrialSystem
         char buf_recv[BUFSIZ];  //数据接收的缓冲区
 
         ros::NodeHandle nh;
-        ros::ServiceClient goal_client; //ros service广播goal
-        autonomus_transport_industrial_system::netComGoal goal;
+        ros::ServiceClient goal_client; //ros service广播goal信息给navigationGoal节点
+        ros::ServiceClient tag_client;  //ros service广播tag信息给tag_follower节点
+
+        autonomus_transport_industrial_system::netComGoal comGoal;
+        autonomus_transport_industrial_system::netComTag comTag;
+
+        std::unordered_map<std::pair<int, int>, int, hash_pair> goal_tag_hash_map;
     public:
         enum code_type
         {
@@ -53,6 +58,11 @@ namespace AutonomusTransportIndustrialSystem
             goal_pos = 100    // 送货位置
         };
 
+        /**
+         * @description: 初始化函数
+         * @param: none
+         * @return: none
+         */
         NetworkCom(std::string ipaddr, int port, ros::NodeHandle given_nh);
 
         ~NetworkCom() = default;
@@ -89,11 +99,17 @@ namespace AutonomusTransportIndustrialSystem
          */
         void recvJsonGoalToPub(std::string str);
     };
-    
+
     NetworkCom::NetworkCom(std::string ipaddr, int port, ros::NodeHandle given_nh):nh(given_nh)
     {
+        // 初始化：坐标——tag 哈希表
+        std::pair<int, int> goal1(1,1); goal_tag_hash_map[goal1] = 0;
+        std::pair<int, int> goal2(2,2); goal_tag_hash_map[goal2] = 1;
+        std::pair<int, int> goal3(3,3); goal_tag_hash_map[goal3] = 2;
+
         goal_client = nh.serviceClient<autonomus_transport_industrial_system::netComGoal>("netComGoal");
-        
+        tag_client = nh.serviceClient<autonomus_transport_industrial_system::netComTag>("netComTag");
+
         memset(&remote_addr,0,sizeof(remote_addr)); //数据初始化--清零
         remote_addr.sin_family=AF_INET; //设置为IP通信
         remote_addr.sin_addr.s_addr=inet_addr(ipaddr.c_str());//服务器IP地址
@@ -104,14 +120,14 @@ namespace AutonomusTransportIndustrialSystem
         {
             perror("socket error");
         }
-        
+
         /*将套接字绑定到服务器的网络地址上*/
         if(connect(client_sockfd,(struct sockaddr *)&remote_addr,sizeof(struct sockaddr))<0)
         {
             perror("connect error");
         }
     }
-    
+
     void NetworkCom::sevComUpload(std::string send_string)
     {
         for (int i = 0; i < send_string.length(); i++)
@@ -123,20 +139,20 @@ namespace AutonomusTransportIndustrialSystem
         {
             ROS_ERROR("Failed to send.");
             return;
-        }  
+        }
         else
         {
             ROS_INFO("Succeed to send.");
             memset(buf_send, 0, sizeof(buf_send));
         }
-              
+
     }
     std::string NetworkCom::sevComRecv()
     {
         // 接收服务器返回内容
         std::cout << "Waiting to receive..." << std::endl;
-		len=recv(client_sockfd, buf_recv, BUFSIZ, 0);
-		buf_recv[len]='/0';
+        len=recv(client_sockfd, buf_recv, BUFSIZ, 0);
+        buf_recv[len]='/0';
         return buf_recv;
     }
     std::string NetworkCom::jsonGenerator(int code, double p_x, double p_y, double p_w)
@@ -158,21 +174,21 @@ namespace AutonomusTransportIndustrialSystem
         reader.parse(str, root);
         if (root["type"] == NetworkCom::goal_pos)
         {
-            goal.request.g_x = root["data"]["x"].asDouble();
-            goal.request.g_y = root["data"]["y"].asDouble();
-            std::cout <<"x:" << goal.request.g_x << ", y:" << goal.request.g_y << std::endl;
+            comGoal.request.g_x = root["data"]["x"].asDouble();
+            comGoal.request.g_y = root["data"]["y"].asDouble();
+            std::cout <<"x:" << comGoal.request.g_x << ", y:" << comGoal.request.g_y << std::endl;
             // 尝试建立通信并上传信息
-            if (goal_client.call(goal))
+            if (goal_client.call(comGoal) && tag_client.call(comTag))
             {
-                std::cout << "STATUS:" << goal.response.status << std::endl; // 如果成功的话，接收返回信息
+                std::cout << "Movebase's Service:" << comGoal.response.status << std::endl; // 如果成功的话，接收返回信息
             }
             else
             {
-                ROS_ERROR("CHECK");
+                ROS_ERROR("Goal service's transaction failed.");
             }
 
             // 此处采取Service向Navigation订阅目标信息，修改tf监听值
-        }        
+        }
     }
 }
 #endif

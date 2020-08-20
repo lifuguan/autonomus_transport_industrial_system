@@ -46,7 +46,7 @@ int main(int argc, char **argv)
             while (ros::ok())
             {
                 std::string str_recv = sevcom.sevComRecv();
-                // 解析并发送到move_base
+                // 解析并发送到move_base和tag_follower
                 sevcom.recvJsonGoalToPub(str_recv);
             }
         }

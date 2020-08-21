@@ -116,7 +116,7 @@ namespace AutonomusTransportIndustrialSystem
         }
         else
         {
-            ROS_ERROR("/MAP and /ODOM is not linked.");
+            ROS_ERROR("/map and /odom is not linked.");
         }
         
         res.status = true;

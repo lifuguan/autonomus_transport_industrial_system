@@ -27,6 +27,13 @@ namespace AutonomusTransportIndustrialSystem
             auto hash2 = std::hash<T2>{}(p.second);
             return hash1 ^ hash2;
         }
+
+        // 这个没啥用
+        friend std::ostream& operator<<(std::ostream &out, const std::pair<double, double>& p)
+        {
+            out << "("<< p.first << ", " << p.second << ")";
+            return out;
+        }
     };
     class Utility
     {

@@ -27,6 +27,8 @@
 #include <ros/ros.h>
 #include "autonomus_transport_industrial_system/netComGoal.h"
 #include "autonomus_transport_industrial_system/netComTag.h"
+#include "utility.h"
+
 #include <omp.h>
 #include <unordered_map>
 #define MAXLINE 4096
@@ -50,7 +52,7 @@ namespace AutonomusTransportIndustrialSystem
         autonomus_transport_industrial_system::netComGoal comGoal;
         autonomus_transport_industrial_system::netComTag comTag;
 
-        std::unordered_map<std::pair<int, int>, int, hash_pair> goal_tag_hash_map;
+        std::unordered_map<std::pair<double, double>, int, hash_pair> goal_tag_hash_map;
     public:
         enum code_type
         {
@@ -103,9 +105,9 @@ namespace AutonomusTransportIndustrialSystem
     NetworkCom::NetworkCom(std::string ipaddr, int port, ros::NodeHandle given_nh):nh(given_nh)
     {
         // 初始化：坐标——tag 哈希表
-        std::pair<int, int> goal1(1,1); goal_tag_hash_map[goal1] = 0;
-        std::pair<int, int> goal2(2,2); goal_tag_hash_map[goal2] = 1;
-        std::pair<int, int> goal3(3,3); goal_tag_hash_map[goal3] = 2;
+        std::pair<double, double> goal1(1,1); goal_tag_hash_map[goal1] = 0;
+        std::pair<double, double> goal2(2,2); goal_tag_hash_map[goal2] = 1;
+        std::pair<double, double> goal3(3,3); goal_tag_hash_map[goal3] = 2;
 
         goal_client = nh.serviceClient<autonomus_transport_industrial_system::netComGoal>("netComGoal");
         tag_client = nh.serviceClient<autonomus_transport_industrial_system::netComTag>("netComTag");
@@ -174,20 +176,42 @@ namespace AutonomusTransportIndustrialSystem
         reader.parse(str, root);
         if (root["type"] == NetworkCom::goal_pos)
         {
-            comGoal.request.g_x = root["data"]["x"].asDouble();
-            comGoal.request.g_y = root["data"]["y"].asDouble();
-            std::cout <<"x:" << comGoal.request.g_x << ", y:" << comGoal.request.g_y << std::endl;
-            // 尝试建立通信并上传信息
-            if (goal_client.call(comGoal) && tag_client.call(comTag))
+            std::pair<double, double> goal_recv(root["data"]["x"].asDouble(), root["data"]["y"].asDouble());
+
+            // 在哈希表中查找是否存在该位置
+            if (goal_tag_hash_map.find(goal_recv) != goal_tag_hash_map.end())
             {
-                std::cout << "Movebase's Service:" << comGoal.response.status << std::endl; // 如果成功的话，接收返回信息
+                ROS_INFO_STREAM("(" << goal_recv.first << ", " << goal_recv.second  << ") match the hash map.");
+
+                comTag.request.tag_num = goal_tag_hash_map[goal_recv];
+
+                comGoal.request.g_x = root["data"]["x"].asDouble();
+                comGoal.request.g_y = root["data"]["y"].asDouble();
+
+                // 尝试建立通信并上传信息
+                if (goal_client.call(comGoal))
+                {
+                    std::cout << "Movebase's Service:" << comGoal.response.status << std::endl; // 如果成功的话，接收返回信息
+                }
+                else
+                {
+                    ROS_ERROR("Goal service's transaction failed."); return;
+                }
+
+                // 此处采取Service向Navigation订阅目标信息，修改tf监听值
+                if (tag_client.call(comTag))
+                {
+                    std::cout << "tag_follower's Service:" << comTag.response.status << std::endl;
+                }
+                else
+                {
+                    ROS_ERROR_STREAM("Tag service's transaction failed."); return;
+                }
             }
             else
             {
-                ROS_ERROR("Goal service's transaction failed.");
+                ROS_ERROR_STREAM("(" << goal_recv.first << ", " << goal_recv.second  << ") doesn't match the hash map."); return;
             }
-
-            // 此处采取Service向Navigation订阅目标信息，修改tf监听值
         }
     }
 }

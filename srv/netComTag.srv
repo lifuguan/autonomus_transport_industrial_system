@@ -1,3 +1,7 @@
 #目标位置对应的tag
 
 float32 tag_num
+
+---
+# 是否收到
+bool status

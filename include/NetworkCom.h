@@ -105,9 +105,9 @@ namespace AutonomusTransportIndustrialSystem
     NetworkCom::NetworkCom(std::string ipaddr, int port, ros::NodeHandle given_nh):nh(given_nh)
     {
         // 初始化：坐标——tag 哈希表
-        std::pair<double, double> goal1(1,1); goal_tag_hash_map[goal1] = 0;
-        std::pair<double, double> goal2(2,2); goal_tag_hash_map[goal2] = 1;
-        std::pair<double, double> goal3(3,3); goal_tag_hash_map[goal3] = 2;
+        std::pair<double, double> goal1(3.2,3); goal_tag_hash_map[goal1] = 0;
+        std::pair<double, double> goal2(7,2); goal_tag_hash_map[goal2] = 1;
+        std::pair<double, double> goal3(8.5,-1); goal_tag_hash_map[goal3] = 2;
 
         goal_client = nh.serviceClient<autonomus_transport_industrial_system::netComGoal>("netComGoal");
         tag_client = nh.serviceClient<autonomus_transport_industrial_system::netComTag>("netComTag");

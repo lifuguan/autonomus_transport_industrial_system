@@ -15,6 +15,7 @@
 #include <actionlib/client/simple_action_client.h>
 #include <geometry_msgs/PoseStamped.h>
 #include "autonomus_transport_industrial_system/netComGoal.h"
+#include "PoseDrawer.h"
 
 namespace AutonomusTransportIndustrialSystem
 {

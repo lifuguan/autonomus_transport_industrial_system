@@ -44,10 +44,10 @@ namespace AutonomusTransportIndustrialSystem
         }
         ~TagFollower() = default;
 
-        bool tagEventProcess(const ros::TimerEvent&);
+        void tagEventProcess(const ros::TimerEvent& event);
     };
 
-    bool TagFollower::tagEventProcess(const ros::TimerEvent &)
+    void TagFollower::tagEventProcess(const ros::TimerEvent &event)
     {
         // 读取tag的tf
         try

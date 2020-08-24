@@ -3,7 +3,11 @@
 //
 
 #include "tag_follower.h"
+#include "robot_planner.h"
 #include <ros/ros.h>
+#include <pluginlib/class_list_macros.h>
+
+
 
 int main(int argc, char **argv)
 {

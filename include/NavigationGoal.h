@@ -14,6 +14,9 @@
 #include <move_base_msgs/MoveBaseAction.h>
 #include <actionlib/client/simple_action_client.h>
 #include <geometry_msgs/PoseStamped.h>
+#include <ros/service_server.h>
+
+#include "autonomus_transport_industrial_system/tagDetected.h"
 #include "autonomus_transport_industrial_system/netComGoal.h"
 #include "PoseDrawer.h"
 
@@ -28,7 +31,7 @@ namespace AutonomusTransportIndustrialSystem
         move_base_msgs::MoveBaseGoal goal;
 
         ros::ServiceServer goalServer;
-
+        ros::ServiceServer tagServer;
         move_base_client ac;
 
     public:
@@ -42,8 +45,16 @@ namespace AutonomusTransportIndustrialSystem
          * @param res 要返回的信息
          * @return: none
          */
-        bool goalServiceCallBack(autonomus_transport_industrial_system::netComGoal::Request &req, autonomus_transport_industrial_system::netComGoal::Response &res);
-
+        bool goalServiceCallBack(autonomus_transport_industrial_system::netComGoal::Request &req,
+                                 autonomus_transport_industrial_system::netComGoal::Response &res);
+        /**
+         *
+         * @param req
+         * @param res
+         * @return
+         */
+        bool isTagDetectedCallBack(autonomus_transport_industrial_system::tagDetected::Request &req,
+                                   autonomus_transport_industrial_system::tagDetected::Response &res);
         /**
          * @description: 接受回调函数得到的位置并广播（Overload 1）
          * @param none
@@ -75,7 +86,7 @@ namespace AutonomusTransportIndustrialSystem
     NavigationGoal::NavigationGoal(ros::NodeHandle given_nh) : nh_(given_nh), PoseDrawer(given_nh), ac("move_base", true)
     {
         goalServer = nh_.advertiseService("netComGoal", &NavigationGoal::goalServiceCallBack, this);
-
+        tagServer = nh_.advertiseService("is_tag_detected", &NavigationGoal::isTagDetectedCallBack, this);
         // 等待move_base服务器响应
         while (!ac.waitForServer(ros::Duration(5.0)))
         {
@@ -165,6 +176,18 @@ namespace AutonomusTransportIndustrialSystem
         {
             ROS_INFO("Arrived.");
         }
+    }
+
+    bool NavigationGoal::isTagDetectedCallBack(autonomus_transport_industrial_system::tagDetected::Request &req,
+                                               autonomus_transport_industrial_system::tagDetected::Response &res)
+    {
+        if (req.is_tag_detected == true)
+        {
+            ROS_INFO_STREAM("tag detected, cancelling move_base navigation...");
+            ac.cancelAllGoals();
+        }
+        res.status = true;
+        return true;
     }
 } // namespace AutonomusTransportIndustrialSystem
 

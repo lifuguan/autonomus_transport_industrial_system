@@ -1,0 +1,7 @@
+#是否找到tag
+
+bool is_tag_detected
+
+---
+# 是否收到
+bool status

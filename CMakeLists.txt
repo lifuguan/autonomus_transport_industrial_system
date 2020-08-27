@@ -72,6 +72,7 @@ add_service_files(
   FILES
   netComGoal.srv
   netComTag.srv
+  tagDetected.srv
 )
 
 ## Generate actions in the 'action' folder

@@ -47,6 +47,13 @@ namespace AutonomusTransportIndustrialSystem
         double GetEuclideanDistance(const geometry_msgs::PoseStamped &pose_1, const geometry_msgs::PoseStamped &pose_2);
 
         /**
+         * @description: 计算两点之间距离(友元函数)
+         * @param transform 两个tf之间的静态变化呢
+         * @return: double型变量，返回欧几里得距离
+         */
+        friend double GetEuclideanDistance(tf::StampedTransform transform);
+
+        /**
          * @description: 计算两点之间距离
          * @param transform 两个tf之间的静态变化呢
          * @return: double型变量，返回欧几里得距离
@@ -62,6 +69,7 @@ namespace AutonomusTransportIndustrialSystem
         double *GetYawFromOrientation(const geometry_msgs::Quaternion &orientation);
 
     private:
+
     };
 
     double AutonomusTransportIndustrialSystem::Utility::GetEuclideanDistance(
@@ -85,6 +93,11 @@ namespace AutonomusTransportIndustrialSystem
         static double RPY[4];
         m.getRPY(RPY[0], RPY[1], RPY[2]);
         return RPY;
+    }
+
+    double GetEuclideanDistance(tf::StampedTransform transform)
+    {
+        return hypot(transform.getOrigin().getX(), transform.getOrigin().getY());
     }
 } // namespace AutonomusTransportIndustrialSystem
 

@@ -19,6 +19,8 @@
 #include <geometry_msgs/PoseWithCovarianceStamped.h>
 #include <visualization_msgs/Marker.h>
 
+#include <tf/tf.h>
+
 namespace AutonomusTransportIndustrialSystem
 {
 
@@ -91,117 +93,6 @@ namespace AutonomusTransportIndustrialSystem
     }
 
 
-    class RobotPlanner : public nav_core::BaseGlobalPlanner
-    {
-    public:
-
-        RobotPlanner();
-        /**
-         * @brief  ValentineRobotPlanner的构造函数
-         * @param  name The name of this planner
-         * @param  costmap_ros A pointer to the ROS wrapper of the costmap to use for planning
-         */
-        RobotPlanner(std::string name, costmap_2d::Costmap2DROS* costmap_ros);
-
-        ~RobotPlanner() = default;
-
-    private:
-        costmap_2d::Costmap2DROS* costmap_ros_;
-        double step_size_, min_dist_from_robot_;
-        costmap_2d::Costmap2D* costmap_;
-        base_local_planner::WorldModel* world_model_; ///< @brief The world model that the controller will use
-
-        bool initialized_;
-
-        /**
-         * 最重要的函数：接收一个来自world的goal_pose，并求出路径
-         * @param start 出发点pose
-         * @param goal 目标点pose
-         * @param plan  通过planner计算得出的plan序列
-         * @return
-         */
-        bool makePlan(const geometry_msgs::PoseStamped& start, const geometry_msgs::PoseStamped& goal,
-                      std::vector<geometry_msgs::PoseStamped>& plan);
-        /**
-         * 初始化函数
-         * @param name
-         * @param costmap_ros
-         */
-        void initialize(std::string name, costmap_2d::Costmap2DROS* costmap_ros);
-    };
-
-    RobotPlanner::RobotPlanner()
-    {
-        costmap_ros_ = NULL;
-        initialized_ = false;
-    }
-
-    RobotPlanner::RobotPlanner(std::string name, costmap_2d::Costmap2DROS *costmap_ros)
-    {
-        costmap_ros_ = NULL;
-        initialized_ = false;
-        initialize(name, costmap_ros);
-    }
-
-    void RobotPlanner::initialize(std::string name, costmap_2d::Costmap2DROS *costmap_ros)
-    {
-        if (initialized_ == true)
-        {
-            ROS_WARN_STREAM("This planner has already been initialized.");
-        }
-        else
-        {
-            costmap_ros_ = costmap_ros;
-            costmap_ = costmap_ros_->getCostmap();
-            ros::NodeHandle nh("~/"+name);
-
-            world_model_ = new base_local_planner::CostmapModel(*costmap_);
-
-            initialized_ = true;
-        }
-    }
-
-    bool RobotPlanner::makePlan(const geometry_msgs::PoseStamped &start,
-                                         const geometry_msgs::PoseStamped &goal,
-                                         std::vector<geometry_msgs::PoseStamped> &plan)
-    {
-        // 检查是否初始化
-        if (initialized_ == false)
-        {
-            ROS_ERROR_STREAM("The planner is not initialized, please call initialize() at the first time.");
-            return false;
-        }
-
-        ROS_DEBUG("Got a start: %.2f, %.2f, and a goal: %.2f, %.2f", start.pose.position.x, start.pose.position.y, goal.pose.position.x, goal.pose.position.y);
-
-        plan.clear();
-        costmap_ = costmap_ros_->getCostmap();
-
-        // 起始点
-        plan.push_back(start);
-
-        // 中途的采样点
-        for (int i=0; i<20; i++)
-        {
-            geometry_msgs::PoseStamped new_goal = goal;
-            tf::Quaternion goal_quat = tf::createQuaternionFromYaw(1.54);
-
-            new_goal.pose.position.x = -2.5+(0.05*i);
-            new_goal.pose.position.y = -3.5+(0.05*i);
-
-            new_goal.pose.orientation.x = goal_quat.x();
-            new_goal.pose.orientation.y = goal_quat.y();
-            new_goal.pose.orientation.z = goal_quat.z();
-            new_goal.pose.orientation.w = goal_quat.w();
-
-            plan.push_back(new_goal);
-        }
-
-        // 最终目的地
-        plan.push_back(goal);
-        return true;
-
-    }
 }
 
 

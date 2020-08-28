@@ -183,7 +183,7 @@ namespace AutonomusTransportIndustrialSystem
     {
         if (req.is_tag_detected == true)
         {
-            ROS_INFO_STREAM("tag detected, cancelling move_base navigation...");
+            ROS_INFO_STREAM("tag inside minimum distance, cancelling move_base navigation...");
             ac.cancelAllGoals();
         }
         res.status = true;

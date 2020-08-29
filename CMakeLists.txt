@@ -13,13 +13,17 @@ gazebo_ros
 roscpp
 rospy
 std_msgs
-image_transport 
+image_transport
 cv_bridge
 pcl_conversions
 pcl_ros
 message_generation
 )
 
+find_package(OpenCV REQUIRED)
+if(OPENCV_FOUND)
+
+endif()
 find_package(OpenMP REQUIRED)
 if(OPENMP_FOUND)
   message(STATUS "OPENMP FOUND")
@@ -134,6 +138,7 @@ include_directories(
   include
   /usr/include/
   ${catkin_INCLUDE_DIRS}
+  ${OpenCV_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -161,7 +166,7 @@ add_executable(masterNode src/test.cpp)
 target_link_libraries(masterNode ${catkin_LIBRARIES})
 
 add_executable(tag_follower src/tag_follower.cpp)
-target_link_libraries(tag_follower ${catkin_LIBRARIES})
+target_link_libraries(tag_follower ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
 # target_link_libraries(jsoncpp ${catkin_LIBRARIES})
 

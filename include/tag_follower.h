@@ -18,7 +18,7 @@
 #include <nav_msgs/Odometry.h>
 #include "tf/transform_datatypes.h"
 #include <ros/service_client.h>
-#include <opencv/cv.hpp>
+#include <opencv2/opencv.hpp>
 #include <tf/transform_broadcaster.h>
 
 #include "autonomus_transport_industrial_system/tagDetected.h"

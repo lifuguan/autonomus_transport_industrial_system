@@ -1,0 +1,47 @@
+<launch>
+    <param name="robot_description" command="cat '$(find autonomus_transport_industrial_system)/urdf/robot.urdf'"/>
+
+    <!-- open rplidar A2 -->
+    <node name="rplidarNode" pkg="rplidar_ros" type="rplidarNode" output="screen">
+        <param name="serial_port" type="string" value="/dev/ttyUSB0"/>
+        <param name="serial_baudrate" type="int" value="115200"/>
+        <param name="frame_id" type="string" value="hokuyo_link"/>
+        <param name="inverted" type="bool" value="true"/>
+        <param name="angle_compensate" type="bool" value="true"/>
+        <remap from="scan" to="my_robot/laser/scan"/>
+    </node>
+    <!-- open art imu -->
+    <node pkg="art_imu" name="imu" type="art_imu" output="screen">
+        <param name="port" value="/dev/ttyUSB1"/>
+        <param name="frame_id" type="string" value="imu_link"/>
+        <param name="model" value="art_imu_02a"/>
+        <param name="baud" value="115200"/>
+    </node>
+
+    <!-- open realsense D435i -->
+    <include file="$(find realsense2_camera)/launch/rs_camera.launch">
+        <arg name="align_depth" value="true"/>
+        <arg name="linear_accel_cov" value="1.0"/>
+        <arg name="unite_imu_method" value="linear_interpolation"/>
+    </include>
+
+
+    <include file="$(find autonomus_transport_industrial_system)/launch/autonomus_odometry.launch" />
+
+
+    <!-- send fake joint values -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+        <param name="use_gui" value="False"/>
+    </node>
+    <!-- Combine joint values -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+
+
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find autonomus_transport_industrial_system)/rviz/rviz_rm.rviz"/>
+
+    <node pkg="tf" type="static_transform_publisher" name="camera_front" args="0.0 0.0 0.0 -1.57 0 -1.57 camera_front_link camera_front 100" />
+    <!-- <node pkg="tf" type="static_transform_publisher" name="camera_right" args="0.0 0.0 0.0 -1.57 0 -1.57 camera_right_link camera_right 100" />
+    <node pkg="tf" type="static_transform_publisher" name="camera_left" args="0.0 0.0 0.0 -1.57 0 -1.57 camera_left_link camera_left 100" /> -->
+
+</launch>

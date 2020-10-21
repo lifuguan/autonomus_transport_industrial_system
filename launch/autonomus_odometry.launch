@@ -5,73 +5,17 @@
     <arg name="r2fo" default="true"/>
 
 
-    <arg name="simulation" default="true"/>
-    <arg if="$(arg simulation)" name="rgb_topic" default="/kinect_alpha/rgb/image_raw"/>
-    <arg unless="$(arg simulation)" name="rgb_topic" default="/kinect_alpha/rgb/image_rect_color"/>
-    <arg if="$(arg simulation)" name="depth_topic" default="/kinect_alpha/depth/image_raw"/>
-    <arg unless="$(arg simulation)" name="depth_topic" default="/kinect_alpha/depth_registered/image_raw"/>
-    <arg name="camera_info_topic" default="/kinect_alpha/rgb/camera_info"/>
-    <arg name="depth_camera_info_topic" default="/kinect_alpha/depth/camera_info"/>
 
-    <arg name="wait_for_transform" default="0.1"/>
-
-    <arg name="pm" default="false"/>
-
-    
-    <!-- Odometry : ONLY for testing without the actual robot! /odom TF should not be already published. -->
-    <node if="$(arg rgbd_odometry)" pkg="rtabmap_ros" type="rgbd_odometry" name="rgbd_odometry" output="screen">
-        <param name="frame_id" type="string" value="base_link"/>
-        <param name="wait_for_transform_duration" type="double" value="$(arg wait_for_transform)"/>
-        <param name="Reg/Force3DoF" type="string" value="true"/>
-        <param name="Vis/InlierDistance" type="string" value="0.05"/>
-
-        <param name="Odom/Strategy" type="string" value="1"/>
-        <param name="Odom/GuessMotion" type="string" value="true"/>
-        <param name="Vis/EstimationType" type="string" value="1"/>
-        <param name="Vis/CorType" type="string" value="1"/>
-        <param name="GFTT/MinDistance" type="string" value="5" />
-
-        <remap from="rgb/image" to="$(arg rgb_topic)"/>
-        <remap from="depth/image" to="$(arg depth_topic)"/>
-        <remap from="rgb/camera_info" to="$(arg camera_info_topic)"/>
-    </node>
-
-
-    <node if="$(arg icp_odometry)" pkg="nodelet" type="nodelet" name="points_xyz" argszz="load rtabmap_ros/point_cloud_xyz camera_nodelet_manager">
-        <remap from="depth/image" to="$(arg depth_topic)"/>
-        <remap from="depth/camera_info" to="$(arg depth_camera_info_topic)"/>
-        <remap from="cloud" to="/kinect_alpha/depth/points" />
-
-        <param name="voxel_size" type="double" value="0.05"/>
-        <param name="decimation" type="int" value="8"/>
-
-        <param name="Odom/AlignWithGround" type="string" value="true"/>
-    </node>
-    <node if="$(arg icp_odometry)" pkg="rtabmap_ros" type="rgbdicp_odometry" name="rgbdicp_odometry" output="screen">
-        <remap from="scan_cloud" to="/kinect_alpha/depth/points"/>
-        <remap from="rgb/image" to="$(arg rgb_topic)"/>
-        <remap from="depth/image" to="$(arg depth_topic)"/>
-        <remap from="rgb/camera_info" to="$(arg camera_info_topic)"/>
-
-        <param name="frame_id" type="string" value="camera_front_link"/>
-        <param name="scan_normal_k" type="int" value="10"/>
-        <param name="subscribe_scan_cloud" type="bool" value="true"/>
-
-        <param name="Icp/PointToPlane" type="string" value="true"/>
-        <param name="Icp/VoxelSize" type="string" value="0"/>
-        <param name="Icp/PM" type="string" value="$(arg pm)"/>
-        <param name="Icp/PMOutlierRatio" type="string" value="0.65"/>
-    </node>
 
 
     <node if="$(arg r2fo)" pkg="rf2o_laser_odometry" type="rf2o_laser_odometry_node" name="rf2o_laser_odometry" output="screen">
-        <param name="laser_scan_topic" value="/my_robot/laser/scan"/>
+        <param name="laser_scan_topic" value="my_robot/laser/scan"/>
         <param name="odom_topic" value="/odom_rf2o" />
         <param name="publish_tf" value="true" />
         <param name="base_frame_id" value="/base_link"/>
         <param name="odom_frame_id" value="/odom" />
 
-        <param name="init_pose_from_topic" value="/odom" />
+        <param name="init_pose_from_topic" value="" />
         <param name="freq" value="10.0"/>
         <param name="verbose" value="true" />
     </node>

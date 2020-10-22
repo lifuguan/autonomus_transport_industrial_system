@@ -1,23 +1,41 @@
 <launch>
-
-    <arg name="rgbd_odometry" default="false"/>
-    <arg name="icp_odometry" default="false"/>
     <arg name="r2fo" default="true"/>
 
+<!--    <node if="$(arg r2fo)" pkg="rf2o_laser_odometry" type="rf2o_laser_odometry_node" name="rf2o_laser_odometry" output="screen">-->
+<!--        <param name="laser_scan_topic" value="my_robot/laser/scan"/>-->
+<!--        <param name="odom_topic" value="/odom_rf2o" />-->
+<!--        <param name="publish_tf" value="true" />-->
+<!--        <param name="base_frame_id" value="/base_link"/>-->
+<!--        <param name="odom_frame_id" value="/odom" />-->
 
+<!--        <param name="init_pose_from_topic" value="" />-->
+<!--        <param name="freq" value="10.0"/>-->
+<!--        <param name="verbose" value="true" />-->
+<!--    </node>-->
 
+    <include file="$(find robot_localization)/launch/ukf_template.launch"/>
+    <param name="/ukf_se/frequency" value="300"/>
+    <param name="/ukf_se/base_link_frame" value="base_link"/>
+    <param name="/ukf_se/odom0" value="rtabmap/odom"/>
+    <rosparam param="/ukf_se/odom0_config">
+        [true,true,true,
+        true,true,true,
+        true,true,true,
+        true,true,true,
+        true,true,true]
+    </rosparam>
+    <param name="/ukf_se/odom0_relative" value="true"/>
+    <param name="/ukf_se/odom0_pose_rejection_threshold" value="10000000"/>
+    <param name="/ukf_se/odom0_twist_rejection_threshold" value="10000000"/>
 
-
-    <node if="$(arg r2fo)" pkg="rf2o_laser_odometry" type="rf2o_laser_odometry_node" name="rf2o_laser_odometry" output="screen">
-        <param name="laser_scan_topic" value="my_robot/laser/scan"/>
-        <param name="odom_topic" value="/odom_rf2o" />
-        <param name="publish_tf" value="true" />
-        <param name="base_frame_id" value="/base_link"/>
-        <param name="odom_frame_id" value="/odom" />
-
-        <param name="init_pose_from_topic" value="" />
-        <param name="freq" value="10.0"/>
-        <param name="verbose" value="true" />
-    </node>
-
+    <param name="/ukf_se/imu0" value="/imu/data"/>
+    <rosparam param="/ukf_se/imu0_config">[false, false, false,
+        true,  true,  true,
+        true,  true,  true,
+        true,  true,  true,
+        true,  true,  true]
+    </rosparam>
+    <param name="/ukf_se/imu0_differential" value="true"/>
+    <param name="/ukf_se/imu0_relative" value="false"/>
+    <param name="/ukf_se/use_control" value="false"/>
 </launch>
